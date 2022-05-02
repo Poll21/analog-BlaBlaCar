@@ -34,6 +34,12 @@ fontStyle: FontStyle.normal,
 fontWeight: FontWeight.w500,
 letterSpacing: 0.72);
 
+const selectedLabelStyle = TextStyle(
+height: 2,
+fontFamily: 'Montserrat',
+fontWeight: FontWeight.w500,
+fontSize: 10);
+
 //Size
 
 const double radiusBar = 16.5;

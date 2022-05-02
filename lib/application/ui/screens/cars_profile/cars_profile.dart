@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../../generate/my_flutter_app_icons.dart';
 
-class CarsProfile extends StatefulWidget {
-  const CarsProfile({Key? key}) : super(key: key);
+class CarsProfileScreen extends StatefulWidget {
+  const CarsProfileScreen({Key? key}) : super(key: key);
 
   @override
-  _CarsProfileState createState() => _CarsProfileState();
+  _CarsProfileScreenState createState() => _CarsProfileScreenState();
 }
 
-class _CarsProfileState extends State<CarsProfile> {
+class _CarsProfileScreenState extends State<CarsProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
