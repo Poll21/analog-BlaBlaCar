@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
+import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 
 class MyHomeScreen extends StatelessWidget {
   const MyHomeScreen({Key? key}) : super(key: key);
@@ -34,15 +35,18 @@ class MyHomeScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: ListView(
-                      children: const [
+                      children: [
                         HomeCard(text: 'СЩЗДАТЬ ПОЕЗДКЕ',
-                          assImage: 'assets/images/freepik_car.png',),
-                        SizedBox(height: 12,),
+                          assImage: 'assets/images/freepik_car.png',
+                        ),
+                        const SizedBox(height: 12,),
                         HomeCard(text: 'ПОИСК ПОЕДКИ',
-                          assImage: 'assets/images/man_searching.png',),
-                        SizedBox(height: 8,),
+                          assImage: 'assets/images/man_searching.png',
+                        ),
+                        const SizedBox(height: 8,),
                         HomeCard(
-                          text: 'ДЩСТАВКА', assImage: 'assets/images/male_delivery.png',),
+                          text: 'ДОСТАВКА', assImage: 'assets/images/male_delivery.png',
+                        ),
                       ],
                     ),
                   ),]
@@ -60,10 +64,12 @@ class HomeCard extends StatelessWidget {
   const HomeCard({Key? key,
     required this.text,
     required this.assImage,
+
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return SizedBox(
       height: 182,
       width: 340,
@@ -75,7 +81,8 @@ class HomeCard extends StatelessWidget {
             side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
             borderRadius: BorderRadius.all(Radius.circular(10))),
         child: InkWell(
-          onTap: () {},
+          onTap: () => Navigator.of(context).pushNamed(Screens.carProfile),
+
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

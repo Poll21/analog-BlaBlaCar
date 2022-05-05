@@ -87,16 +87,31 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Medium.ttf
+          weight: 500
+          style: normal
     - family: Montserrat
       fonts:
-        - asset: assets/fonts/Montserrat_Bold.ttf
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
+          weight: 600
+          style: normal
+        - asset: assets/fonts/Montserrat-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Montserrat-Bold.ttf
           weight: 700
-        - asset: assets/fonts/Montserrat_ThinItalic.ttf
-        - asset: assets/fonts/Montserrat_Medium.ttf
+          style: normal
+        - asset: assets/fonts/Montserrat-ThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/Montserrat-Medium.ttf
           weight: 500
-        - asset: assets/fonts/Montserrat_ExtraBold.ttf
+          style: normal
+        - asset: assets/fonts/Montserrat-ExtraBold.ttf
           weight: 800
-        - asset: assets/fonts/Montserrat_BoldItalic.ttf
+        - asset: assets/fonts/Montserrat-BoldItalic.ttf
           weight: 700
           style: italic
     - family: PostIcons

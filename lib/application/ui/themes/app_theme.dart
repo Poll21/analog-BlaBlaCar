@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/application/ui/constants/constants.dart';
 
 
 abstract class AppTheme {
   static final light = ThemeData(
-    primaryColor: const Color(0xFF4BA35B),
+    focusColor: selectedColor,
+    highlightColor: textActiveColor,
+    iconTheme: const IconThemeData(color: textPassiveColor),
+    primaryIconTheme: const IconThemeData(color: textActiveColor),
+    hintColor: textPassiveColor,
+    primaryColor: primaryColor,
+    textSelectionTheme: const TextSelectionThemeData(cursorColor: primaryColor),
     scaffoldBackgroundColor: Colors.white,
   );
 }
 
 abstract class STextTheme {
   static final light = ThemeData(
-    primaryColor: const Color(0xFF4BA35B),
+    primaryColor: primaryColor,
     scaffoldBackgroundColor: Colors.white,
   );
 }
