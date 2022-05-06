@@ -24,32 +24,52 @@ class _CarsProfileScreenState extends State<CarsProfileScreen> {
   }
 }
 
+
 class FormCar {
-  final String title, text;
-  final Icons icon;
+  final String title;
+  final Icon icon;
   FormCar({
     required this.title,
-    required this.text,
     required this.icon
 });
 }
+List<FormCar> formCar = [
+  FormCar(
+    title: 'Водительский стаж',
+    icon: const Icon(Icons.recent_actors_outlined, size: 15),
+    ),
+  FormCar(
+    title: 'Марка автомобиля',
+    icon: const Icon(Icons.recent_actors_outlined, size: 15),
+  ),
+  FormCar(
+    title: 'Модель авто',
+    icon: const Icon(Icons.recent_actors_outlined, size: 15),
+  ),
+  FormCar(
+    title: 'Номер Авто',
+    icon: const Icon(Icons.recent_actors_outlined, size: 15),
+  ),
+  FormCar(
+    title: 'Цвет',
+    icon: const Icon(Icons.recent_actors_outlined, size: 15),
+  ),
+];
+
 //генерация скрол-формы
 class ScrolFormCar extends StatelessWidget {
-
+  final List<FormCar> formCar;
   const ScrolFormCar({
     Key? key,
-
+    required this.formCar,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> scrolFormCar = FormCar
-        .map((PriceString smartPrice) => PriceDetale(
-      title: smartPrice,
-      image: smartPrice,
-      price: smartPrice,
-      kSize: kSize,
-    ))
+    final List<Widget> scrolFormCar = formCar
+        .map((FormCar formCar) => FormCarRegistrationWidget(
+      title: formCar,
+      icon: formCar,))
         .toList();
     return ListView(
       scrollDirection: Axis.vertical,
@@ -59,12 +79,11 @@ class ScrolFormCar extends StatelessWidget {
 }
 
 class FormCarRegistrationWidget extends StatefulWidget {
-  final String title, text;
-  final Icons icon;
+  final String title;
+  final Icon icon;
 
   const FormCarRegistrationWidget({Key? key,
     required this.title,
-    required this.text,
     required this.icon
   }) : super(key: key);
 
@@ -86,7 +105,7 @@ class _FormCarRegistrationWidgetState extends State<FormCarRegistrationWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-            'Водительский стаж',
+                title,
             style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.w700,
@@ -118,14 +137,14 @@ class _FormCarRegistrationWidgetState extends State<FormCarRegistrationWidget> {
                   fontWeight: FontWeight.w500,
                 ),
                 decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.recent_actors_outlined, size: 15),
+                  prefixIcon: icon,
                   prefixIconColor: textPassiveColor,
 
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: borderTextField, width: 1.04),
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                   ),
-                  focusedBorder: const OutlineInputBorder(
+                  focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: borderTextField, width: 1.5),
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                   ),
