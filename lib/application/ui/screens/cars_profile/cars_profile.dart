@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import '../../generate/my_flutter_app_icons.dart';
@@ -18,33 +19,54 @@ class _CarsProfileScreenState extends State<CarsProfileScreen> {
       HeadScreenWidget(),
       LoadingCarPhoto(),
       FormCarRegistrationWidget(),
-      TextField(
-          style: TextStyle(
-            fontSize: 14.57,
-            fontFamily: 'Montserrat_Medium',
-            fontStyle: FontStyle.normal,
-            fontWeight: FontWeight.w500,
-          ),
-          decoration: InputDecoration(
-              prefixIcon: Icon(Icons.recent_actors_outlined, size: 15),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                    // color: borderTextField,
-                    width: 1.04),
-                borderRadius: BorderRadius.all(Radius.circular(4.0)),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                    // color: borderTextField,
-                    width: 1.5),
-                borderRadius: BorderRadius.all(Radius.circular(4.0)),
-              ))),
+
     ]));
   }
 }
 
+class FormCar {
+  final String title, text;
+  final Icons icon;
+  FormCar({
+    required this.title,
+    required this.text,
+    required this.icon
+});
+}
+//генерация скрол-формы
+class ScrolFormCar extends StatelessWidget {
+
+  const ScrolFormCar({
+    Key? key,
+
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> scrolFormCar = FormCar
+        .map((PriceString smartPrice) => PriceDetale(
+      title: smartPrice,
+      image: smartPrice,
+      price: smartPrice,
+      kSize: kSize,
+    ))
+        .toList();
+    return ListView(
+      scrollDirection: Axis.vertical,
+      children: scrolFormCar,
+    );
+  }
+}
+
 class FormCarRegistrationWidget extends StatefulWidget {
-  const FormCarRegistrationWidget({Key? key}) : super(key: key);
+  final String title, text;
+  final Icons icon;
+
+  const FormCarRegistrationWidget({Key? key,
+    required this.title,
+    required this.text,
+    required this.icon
+  }) : super(key: key);
 
   @override
   State<FormCarRegistrationWidget> createState() =>
@@ -56,34 +78,67 @@ class _FormCarRegistrationWidgetState extends State<FormCarRegistrationWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-        // cursorColor: borderTextField,
-        controller: nameController,
-        style: const TextStyle(
-          color: textPassiveColor,
-          fontSize: 14.57,
-          fontFamily: 'Montserrat_Medium',
-          fontStyle: FontStyle.normal,
-          fontWeight: FontWeight.w500,
+    return Padding(
+      padding: const EdgeInsets.only(left: 25, right: 25, top: 16),
+      child: Column(
+        children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+            'Водительский стаж',
+            style: TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w700,
+              fontSize: 14,
+              color: textActiveColor,
+            )),
+            Text(
+                '*',
+                style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14,
+                  color: errorColor,
+                )),
+          ],
         ),
-        decoration: const InputDecoration(
-          prefixIcon: Icon(Icons.recent_actors_outlined, size: 15),
-          prefixIconColor: textPassiveColor,
+          SizedBox(height: 6,),
 
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: borderTextField, width: 1.04),
-            borderRadius: BorderRadius.all(Radius.circular(4.0)),
-          ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: borderTextField, width: 1.5),
-            borderRadius: BorderRadius.all(Radius.circular(4.0)),
-          ),
+          SizedBox(
+            height: 42,
+            child: TextField(
+                cursorColor: borderTextField,
+                controller: nameController,
+                style: const TextStyle(
+                  color: textPassiveColor,
+                  fontSize: 14.57,
+                  fontFamily: 'Montserrat_Medium',
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w500,
+                ),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.recent_actors_outlined, size: 15),
+                  prefixIconColor: textPassiveColor,
 
-          // border: OutlineInputBorder(
-          //   borderSide: BorderSide(color: borderTextField, width: 1.04),
-          //   borderRadius: BorderRadius.all(Radius.circular(4.0)),
-          // ),
-        ));
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: borderTextField, width: 1.04),
+                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                  ),
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: borderTextField, width: 1.5),
+                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                  ),
+
+                  // border: OutlineInputBorder(
+                  //   borderSide: BorderSide(color: borderTextField, width: 1.04),
+                  //   borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                  // ),
+                )),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -98,7 +153,7 @@ class _LoadingCarPhotoState extends State<LoadingCarPhoto> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 22),
+      padding: const EdgeInsets.only(left: 25, right: 25, top: 22, bottom: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
