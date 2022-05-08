@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
+import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import '../../generate/my_flutter_app_icons.dart';
 
 class CarsProfileScreen extends StatefulWidget {
@@ -15,61 +15,60 @@ class _CarsProfileScreenState extends State<CarsProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(children: const [
-      HeadScreenWidget(),
-      LoadingCarPhoto(),
-      FormCarRegistrationWidget(),
-
+        body: Column(children: [
+          const HeadScreenWidget(),
+          const LoadingCarPhoto(),
+          Expanded(child: ScrolFormCar()),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 50),
+            child: ProceedButton(text: 'ПОДТВЕРДИТЬ', press:()=> Navigator.of(context).pushNamed(Screens.carProfile)),
+          ),
     ]));
   }
 }
 
 
+
+
 class FormCar {
   final String title;
-  final Icon icon;
-  FormCar({
-    required this.title,
-    required this.icon
-});
+  final IconData icon;
+
+  FormCar({required this.title, required this.icon});
 }
-List<FormCar> formCar = [
-  FormCar(
-    title: 'Водительский стаж',
-    icon: const Icon(Icons.recent_actors_outlined, size: 15),
-    ),
-  FormCar(
-    title: 'Марка автомобиля',
-    icon: const Icon(Icons.recent_actors_outlined, size: 15),
-  ),
-  FormCar(
-    title: 'Модель авто',
-    icon: const Icon(Icons.recent_actors_outlined, size: 15),
-  ),
-  FormCar(
-    title: 'Номер Авто',
-    icon: const Icon(Icons.recent_actors_outlined, size: 15),
-  ),
-  FormCar(
-    title: 'Цвет',
-    icon: const Icon(Icons.recent_actors_outlined, size: 15),
-  ),
-];
 
 //генерация скрол-формы
 class ScrolFormCar extends StatelessWidget {
-  final List<FormCar> formCar;
-  const ScrolFormCar({
-    Key? key,
-    required this.formCar,
-  }) : super(key: key);
+  final List<FormCar> listFormCar = [
+    FormCar(
+      title: 'Водительский стаж',
+      icon: UiIcons.fluent_contact_card_group_48_filledexperience,
+    ),
+    FormCar(
+      title: 'Марка автомобиля',
+      icon: UiIcons.groupbrand,
+    ),
+    FormCar(
+      title: 'Модель авто',
+      icon: UiIcons.groupmodel,
+    ),
+    FormCar(
+      title: 'Номер Авто',
+      icon: UiIcons.groupnumber,
+    ),
+    FormCar(
+      title: 'Цвет',
+      icon: Icons.format_color_fill,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> scrolFormCar = formCar
+    final List<Widget> scrolFormCar = listFormCar
         .map((FormCar formCar) => FormCarRegistrationWidget(
-      title: formCar,
-      icon: formCar,))
+              title: formCar.title,
+              icon: formCar.icon,
+            ))
         .toList();
     return ListView(
       scrollDirection: Axis.vertical,
@@ -79,21 +78,23 @@ class ScrolFormCar extends StatelessWidget {
 }
 
 class FormCarRegistrationWidget extends StatefulWidget {
-  final String title;
-  final Icon icon;
+  String title = '';
+  IconData icon = Icons.error;
 
-  const FormCarRegistrationWidget({Key? key,
-    required this.title,
-    required this.icon
-  }) : super(key: key);
+  FormCarRegistrationWidget({Key? key, required this.title, required this.icon})
+      : super(key: key);
 
   @override
-  State<FormCarRegistrationWidget> createState() =>
-      _FormCarRegistrationWidgetState();
+  _FormCarRegistrationWidgetState createState() =>
+      _FormCarRegistrationWidgetState(this.title, this.icon);
 }
 
 class _FormCarRegistrationWidgetState extends State<FormCarRegistrationWidget> {
   TextEditingController nameController = TextEditingController();
+  String title = '';
+  IconData icon = Icons.error;
+
+  _FormCarRegistrationWidgetState(this.title, this.icon);
 
   @override
   Widget build(BuildContext context) {
@@ -101,29 +102,31 @@ class _FormCarRegistrationWidgetState extends State<FormCarRegistrationWidget> {
       padding: const EdgeInsets.only(left: 25, right: 25, top: 16),
       child: Column(
         children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-                title,
-            style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.w700,
-              fontSize: 14,
-              color: textActiveColor,
-            )),
-            Text(
-                '*',
-                style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14,
-                  color: errorColor,
-                )),
-          ],
-        ),
-          SizedBox(height: 6,),
-
+          SizedBox(
+            height: 21,
+            child:  Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(title,
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: textActiveColor,
+                    )),
+                Text('*',
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: errorColor,
+                    )),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 6,
+          ),
           SizedBox(
             height: 42,
             child: TextField(
@@ -136,15 +139,19 @@ class _FormCarRegistrationWidgetState extends State<FormCarRegistrationWidget> {
                   fontStyle: FontStyle.normal,
                   fontWeight: FontWeight.w500,
                 ),
-                decoration: const InputDecoration(
-                  prefixIcon: icon,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(horizontal: 35),
+                  prefixIcon: Container(
+                    width: 15,
+                      height: 15,
+                      child: Icon(icon, size: 15)),
                   prefixIconColor: textPassiveColor,
 
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: borderTextField, width: 1.04),
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: borderTextField, width: 1.5),
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                   ),
@@ -172,7 +179,7 @@ class _LoadingCarPhotoState extends State<LoadingCarPhoto> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25, right: 25, top: 22, bottom: 16),
+      padding: const EdgeInsets.only(left: 25, right: 25, top: 22, bottom: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

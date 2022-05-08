@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/generate/my_flutter_app_icons.dart';
 import 'package:untitled2/application/ui/screens/my_home_screen/my_home_screen.dart';
+import 'package:untitled2/application/ui/screens/profile_screen/profile_screen.dart';
 
 class MainTabsScreen extends StatefulWidget {
     const MainTabsScreen({Key? key}) : super(key: key);
@@ -13,9 +14,9 @@ class MainTabsScreen extends StatefulWidget {
 class _MainTabsScreenState extends State<MainTabsScreen> {
   int _selectedIndex = 1;
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('Index 0: Home',),
-    MyHomeScreen(),
     Text('Index 2: School',),
+    MyHomeScreen(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

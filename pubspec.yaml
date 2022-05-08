@@ -94,6 +94,9 @@ flutter:
           style: normal
     - family: Montserrat
       fonts:
+        - asset: assets/fonts/Montserrat-Light.ttf
+          weight: 300
+          style: normal
         - asset: assets/fonts/Montserrat-SemiBold.ttf
           weight: 600
           style: normal
@@ -114,7 +117,7 @@ flutter:
         - asset: assets/fonts/Montserrat-BoldItalic.ttf
           weight: 700
           style: italic
-    - family: PostIcons
+    - family: MyFlutterApp
       fonts:
         - asset: assets/fonts/MyFlutterApp.ttf
 

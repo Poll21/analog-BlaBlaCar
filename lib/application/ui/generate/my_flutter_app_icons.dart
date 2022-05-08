@@ -18,7 +18,7 @@ import 'package:flutter/widgets.dart';
 class UiIcons {
   UiIcons._();
 
-  static const _kFontFam = 'PostIcons';
+  static const _kFontFam = 'MyFlutterApp';
   static const String? _kFontPkg = null;
 
   static const IconData vector = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -37,4 +37,11 @@ class UiIcons {
   static const IconData food_yes = IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData luggage_yes = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData pets_no = IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData groupbrand = IconData(0xe819, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData vector__1_ = IconData(0xe81c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData vector_4 = IconData(0xe81d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData grouptrip = IconData(0xe81e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData fluent_contact_card_group_48_filledexperience = IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData groupnumber = IconData(0xe820, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData groupmodel = IconData(0xe821, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
