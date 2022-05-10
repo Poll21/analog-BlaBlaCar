@@ -86,7 +86,7 @@ class CodSmsScreen extends StatelessWidget {
           child: ProceedButton(
               text: 'ПОДТВЕРДИТЬ',
               press: () =>
-                  {Navigator.of(context).pushNamed(Screens.constcodSms)}),
+                  {Navigator.of(context).pushNamed(Screens.registrationProfile)}),
         ),
         const SizedBox(height: 10),
         Center(

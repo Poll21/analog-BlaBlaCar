@@ -5,6 +5,7 @@ abstract class Screens {
   static const main = "/";
   static const registrationPhone = "/registrationPhone";
   static const constcodSms = "/registrationPhone/constcodSms";
+  static const registrationProfile = "/registrationPhone/constcodSms/registrationProfile";
   static const carProfile = "/carProfile";
 
 }
@@ -15,6 +16,7 @@ class MainNavigation {
     Screens.main: (_) => _screenFactory.makeBringing(),
     Screens.registrationPhone: (_) => _screenFactory.makeRegistrationgPhone(),
     Screens.constcodSms: (_) => _screenFactory.makeCodSms(),
+    Screens.registrationProfile: (_) => _screenFactory.makeRegistrationProfile(),
     Screens.carProfile: (_) => _screenFactory.makeCarProfile(),
   };
   Route<dynamic>? onGenerateRoute(RouteSettings settings){
