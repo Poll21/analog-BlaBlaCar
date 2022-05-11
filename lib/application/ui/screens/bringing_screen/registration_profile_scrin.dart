@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
@@ -12,7 +10,7 @@ class RegistrationProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25),
+        padding: const EdgeInsets.only(left: 25, right: 25, top: 58),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -33,7 +31,7 @@ class RegistrationProfileScreen extends StatelessWidget {
               alignment: AlignmentDirectional.bottomEnd,
               children: [
                 CircleAvatar(
-                  radius: 83,
+                  radius: 75,
                   backgroundColor: notSelectedPhoto,
                   child: Image.asset(
                     'assets/images/photo.png',
@@ -51,9 +49,15 @@ class RegistrationProfileScreen extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(
+              height: 10,
+            ),
             FormProfileWidget(
               title: 'Имя',
               error: '*',
+            ),
+            const SizedBox(
+              height: 17,
             ),
             FormProfileWidget(
               title: 'Телефон',
@@ -65,30 +69,75 @@ class RegistrationProfileScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                // FormProfileWidget(
-                //   title: 'Социальные сети социальные сети',
-                //   error: '',
-                // ),
                 SizedBox(
-                  width: 29,
-                  height: 29,
-                  child: FloatingActionButton(
-                    elevation: 0,
-                    child: const Icon(
-                      Icons.add,
-                      color: backGroundColor,
-                      size: 16,
+                  width: 297,
+                  child: FormProfileWidget(
+                    title: 'Социальные сети социальные сети',
+                    error: '',
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.5, bottom: 8),
+                  child: SizedBox(
+                    width: 29,
+                    height: 29,
+                    child: FloatingActionButton(
+                      elevation: 0,
+                      child: const Icon(
+                        Icons.add,
+                        color: backGroundColor,
+                        size: 16,
+                      ),
+                      backgroundColor: primaryColor,
+                      onPressed: () {},
                     ),
-                    backgroundColor: primaryColor,
-                    onPressed: () {},
                   ),
                 ),
               ],
             ),
-            FormProfileWidget(
-              title: 'О себе',
-              error: '',
+            const SizedBox(height: 17),
+            SizedBox(
+              height: 21,
+              child: Text('О себе',
+                  style: const TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                    color: textActiveColor,
+                  )),
             ),
+            const SizedBox(
+              height: 6,
+            ),
+            const SizedBox(
+              height: 137,
+              child: TextField(
+                textCapitalization: TextCapitalization.sentences,
+                 maxLines: 15,
+                  cursorColor: borderTextField,
+                  style: TextStyle(
+                    color: textPassiveColor,
+                    fontSize: 14.57,
+                    fontFamily: 'Montserrat_Medium',
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 35),
+                    prefixIconColor: textPassiveColor,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: borderTextField, width: 1.04),
+                      borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: borderTextField, width: 1.5),
+                      borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                    ),
+                  )),
+            ),
+
+
+
             const SizedBox(height: 17),
             ProceedButton(
                 text: 'ПОДТВЕРДИТЬ',
@@ -120,13 +169,15 @@ class RegistrationProfileScreen extends StatelessWidget {
 class FormProfileWidget extends StatefulWidget {
   String title = '';
   String error = '*';
-
-  FormProfileWidget({Key? key, required this.title, required this.error})
+  FormProfileWidget({
+    Key? key, required this.title,
+    required this.error,
+  })
       : super(key: key);
 
   @override
   _FormProfileWidgetState createState() =>
-      _FormProfileWidgetState(this.title, this.error);
+      _FormProfileWidgetState(this.title, this.error,);
 }
 
 class _FormProfileWidgetState extends State<FormProfileWidget> {
@@ -134,7 +185,8 @@ class _FormProfileWidgetState extends State<FormProfileWidget> {
   String title = '';
   String error = '*';
 
-  _FormProfileWidgetState(this.title, this.error);
+
+  _FormProfileWidgetState(this.title, this.error,);
 
   @override
   Widget build(BuildContext context) {
@@ -146,14 +198,14 @@ class _FormProfileWidgetState extends State<FormProfileWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.w700,
                     fontSize: 14,
                     color: textActiveColor,
                   )),
               Text(error,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.w700,
                     fontSize: 14,
@@ -162,14 +214,16 @@ class _FormProfileWidgetState extends State<FormProfileWidget> {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 6,
         ),
-        SizedBox(
+        const SizedBox(
           height: 42,
           child: TextField(
+              // textCapitalization: TextCapitalization.sentences,
+              // maxLines: 9,
               cursorColor: borderTextField,
-              style: const TextStyle(
+              style: TextStyle(
                 color: textPassiveColor,
                 fontSize: 14.57,
                 fontFamily: 'Montserrat_Medium',
@@ -178,22 +232,15 @@ class _FormProfileWidgetState extends State<FormProfileWidget> {
               ),
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(horizontal: 35),
-
                 prefixIconColor: textPassiveColor,
-
-                enabledBorder: const OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: borderTextField, width: 1.04),
                   borderRadius: BorderRadius.all(Radius.circular(4.0)),
                 ),
-                focusedBorder: const OutlineInputBorder(
+                focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: borderTextField, width: 1.5),
                   borderRadius: BorderRadius.all(Radius.circular(4.0)),
                 ),
-
-                // border: OutlineInputBorder(
-                //   borderSide: BorderSide(color: borderTextField, width: 1.04),
-                //   borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                // ),
               )),
         ),
       ],
