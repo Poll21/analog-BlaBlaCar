@@ -117,7 +117,6 @@ class RegistrationProfileScreen extends StatelessWidget {
                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
                  ),
                )
-
            ),
 
             const SizedBox(height: 17),
@@ -225,3 +224,5 @@ class _FormProfileWidgetState extends State<FormProfileWidget> {
     );
   }
 }
+
+

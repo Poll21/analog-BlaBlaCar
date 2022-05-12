@@ -71,7 +71,7 @@ class ProfileScreen extends StatelessWidget {
                 icon: UiIcons.noun_delivery,
                 backColor: backGroundColor,
                 iconColor: textPassiveColor,
-                reviewBackColor:errorColor,
+                reviewBackColor: errorColor,
                 review: 6,
               ),
               DriversProfile(
@@ -81,9 +81,16 @@ class ProfileScreen extends StatelessWidget {
                 reviewBackColor: deliveryColor,
                 review: 6,
               ),
-
             ],
-          )
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          Row(
+            children: [
+              DriveWidget(),
+            ],
+          ),
         ],
       ),
     );
@@ -195,14 +202,15 @@ class DriversProfile extends StatelessWidget {
   final Color backColor, reviewBackColor, iconColor;
   final IconData icon;
   final int review;
-  const DriversProfile({
-    Key? key,
-    required this.backColor,
-    required this.reviewBackColor,
-    required this.iconColor,
-    required this.icon,
-    required this.review
-  }) : super(key: key);
+
+  const DriversProfile(
+      {Key? key,
+      required this.backColor,
+      required this.reviewBackColor,
+      required this.iconColor,
+      required this.icon,
+      required this.review})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -242,5 +250,35 @@ class DriversProfile extends StatelessWidget {
         ),
       ),
     ]);
+  }
+}
+
+class DriveWidget extends StatelessWidget {
+  const DriveWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          UiIcons.grouptrip,
+          size: 20,
+          color: primaryColor,
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 10),
+          child: Text(
+            '20',
+            style: TextStyle(
+              color: textActiveColor,
+              fontSize: 39
+              ,
+              fontFamily: 'Montserrat_Medium',
+              fontWeight: FontWeight.w300,
+              ),
+          ),
+        )
+      ],
+    );
   }
 }
