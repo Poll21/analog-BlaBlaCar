@@ -31,12 +31,9 @@ class ProfileScreen extends StatelessWidget {
           CircleAvatar(
             radius: 85,
             backgroundColor: notSelectedPhoto,
-            child: Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Image.asset(
-                  'assets/images/photo.png',
-                  width: 150,
-                )),
+            child: Image.asset(
+              'assets/images/photo.png',
+            ),
           ),
           const SizedBox(
             height: 16,
@@ -53,49 +50,110 @@ class ProfileScreen extends StatelessWidget {
           const SizedBox(
             height: 26,
           ),
-          ContactsProfile(),
-          const SizedBox(
-            height: 16,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              DriversProfile(
-                icon: UiIcons.vector__1_,
-                backColor: notSelectedPhoto,
-                iconColor: primaryColor,
-                reviewBackColor: favouriteColor,
-                review: 10,
-              ),
-              DriversProfile(
-                icon: UiIcons.noun_delivery,
-                backColor: backGroundColor,
-                iconColor: textPassiveColor,
-                reviewBackColor: errorColor,
-                review: 6,
-              ),
-              DriversProfile(
-                icon: UiIcons.delivery,
-                backColor: backGroundColor,
-                iconColor: textPassiveColor,
-                reviewBackColor: deliveryColor,
-                review: 6,
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          Row(
-            children: [
-              DriveWidget(),
-            ],
+          Expanded(
+            child: ListView(
+              children: [
+                ContactsProfile(),
+                const SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    DriversProfile(
+                      icon: UiIcons.vector__1_,
+                      backColor: notSelectedPhoto,
+                      iconColor: primaryColor,
+                      reviewBackColor: favouriteColor,
+                      review: 10,
+                    ),
+                    DriversProfile(
+                      icon: UiIcons.noun_delivery,
+                      backColor: backGroundColor,
+                      iconColor: textPassiveColor,
+                      reviewBackColor: errorColor,
+                      review: 6,
+                    ),
+                    DriversProfile(
+                      icon: UiIcons.delivery,
+                      backColor: backGroundColor,
+                      iconColor: textPassiveColor,
+                      reviewBackColor: deliveryColor,
+                      review: 6,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    DriveWidget(
+                      icon: UiIcons.grouptrip,
+                      iconColor: primaryColor,
+                      review: 20,
+                      iconBlockColor: errorColor,
+                    ),
+                    DriveWidget(
+                      icon: UiIcons.vector_5,
+                      iconColor: selectedColor,
+                      review: 8,
+                      iconBlockColor: notColor,
+                    ),
+                    DriveWidget(
+                      icon: UiIcons.grouptrip,
+                      iconColor: primaryColor,
+                      review: 10,
+                      iconBlockColor: notColor,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 32,
+                    bottom: 14,
+                  ),
+                  child: Text(
+                    'Общий рейтинг',
+                    style: TextStyle(
+                      color: textActiveColor,
+                      fontSize: 16,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                OverallRating(),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 24,
+                    bottom: 27,
+                  ),
+                  child: Text(
+                    'Последние поездки:',
+                    style: TextStyle(
+                      color: textActiveColor,
+                      fontSize: 16,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                NotReviewWidget(),
+                ReviewWidget(),
+
+
+              ],
+
+            ),
           ),
         ],
       ),
     );
   }
 }
+
 
 class ContactsProfile extends StatelessWidget {
   const ContactsProfile({Key? key}) : super(key: key);
@@ -254,31 +312,185 @@ class DriversProfile extends StatelessWidget {
 }
 
 class DriveWidget extends StatelessWidget {
-  const DriveWidget({Key? key}) : super(key: key);
+  final Color iconColor, iconBlockColor;
+  final IconData icon;
+  final int review;
+
+  const DriveWidget({
+    Key? key,
+    required this.iconColor,
+    required this.icon,
+    required this.review,
+    required this.iconBlockColor,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Icon(
-          UiIcons.grouptrip,
-          size: 20,
-          color: primaryColor,
-        ),
+        Stack(alignment: Alignment.centerLeft, children: [
+          Icon(
+            icon,
+            size: 20,
+            color: iconColor,
+          ),
+          Icon(
+            Icons.block_sharp,
+            size: 30,
+            color: iconBlockColor,
+          ),
+        ]),
         Padding(
           padding: EdgeInsets.only(left: 10),
           child: Text(
-            '20',
+            '$review',
             style: TextStyle(
               color: textActiveColor,
-              fontSize: 39
-              ,
-              fontFamily: 'Montserrat_Medium',
-              fontWeight: FontWeight.w300,
-              ),
+              fontSize: 32,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w500,
+            ),
           ),
         )
       ],
     );
   }
 }
+
+class OverallRating extends StatelessWidget {
+  const OverallRating({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          Icons.star,
+          size: 22,
+          color: primaryColor,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 7, right: 16),
+          child: Text(
+            '3.75/5',
+            style: TextStyle(
+              color: primaryColor,
+              fontSize: 32,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+        Text(
+          '5 оценок',
+          style: TextStyle(
+            color: textPassiveColor,
+            fontSize: 14,
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class NotReviewWidget extends StatelessWidget {
+  const NotReviewWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+         Image.asset('assets/images/review_star.png', height: 94,),
+          Padding(
+            padding: const EdgeInsets.only(top: 19, bottom: 16),
+            child: Text(
+              'Вам пока не оставили отзыв',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+class ReviewWidget extends StatelessWidget {
+  const ReviewWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Card(
+        shape: const RoundedRectangleBorder(
+            side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        color: backGroundColor,
+        shadowColor: textPassiveColor,
+        elevation: 1.5,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CircleAvatar(
+                radius: 20,
+                backgroundColor: notSelectedPhoto,
+                child: Image.asset(
+                  'assets/images/photo.png',
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Игорь', style: TextStyle(
+                    fontSize: 14,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w600,
+                    color: textActiveColor
+                      ),),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Row(
+                      children: [
+                        Icon(Icons.star, size: 16, color: selectedColor,),
+                        Icon(Icons.star, size: 16, color: selectedColor,),
+                        Icon(Icons.star, size: 16, color: textPassiveColor,),
+                        Icon(Icons.star, size: 16, color: textPassiveColor,),
+                        Icon(Icons.star, size: 16, color: textPassiveColor,),
+                      ],
+                    ),
+                  ),
+                  Text('Комфортное вождение', style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w500,
+                      color: textPassiveColor
+                  ),),
+                ],
+              ),
+              Text('24.02.22', style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w500,
+                  color: textPassiveColor
+              ),),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+

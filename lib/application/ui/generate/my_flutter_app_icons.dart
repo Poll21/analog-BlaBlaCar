@@ -44,4 +44,5 @@ class UiIcons {
   static const IconData fluent_contact_card_group_48_filledexperience = IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData groupnumber = IconData(0xe820, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData groupmodel = IconData(0xe821, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData vector_5 = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

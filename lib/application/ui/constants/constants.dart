@@ -11,6 +11,7 @@ const Color deliveryColor = Color(0xFFC2C2C2);
 const Color favouriteColor = Color(0xFFFEC124);
 const Color notSelectedPhoto = Color(0xFFC8E6C9);
 const Color borderTextField = Color(0xFFACB8C2);
+const Color notColor = Color(0x5ffffff);
 
 
 
@@ -29,7 +30,6 @@ const handTextStyleGrin = TextStyle(
   fontSize: 30,
   fontFamily:'Montserrat',
   fontWeight: FontWeight.w700,
-
   letterSpacing: -1.04,
 );
 
