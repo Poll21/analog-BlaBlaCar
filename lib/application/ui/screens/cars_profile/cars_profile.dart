@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
+import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import '../../generate/my_flutter_app_icons.dart';
 
@@ -16,12 +17,18 @@ class _CarsProfileScreenState extends State<CarsProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(children: [
-          const HeadScreenWidget(),
+          HeadScreenWidget(
+            title:'Данные автомобиля',
+            press: ()=>
+                Navigator.of(context).pushNamed(Screens.main)),
           const LoadingCarPhoto(),
           Expanded(child: ScrolFormCar()),
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 50),
-            child: ProceedButton(text: 'ПОДТВЕРДИТЬ', press:()=> Navigator.of(context).pushNamed(Screens.carProfile)),
+            child: ProceedButton(
+                text: 'ПОДТВЕРДИТЬ',
+                press:()=>
+                    Navigator.of(context).pushNamed(Screens.createTrip)),
           ),
     ]));
   }
@@ -272,42 +279,4 @@ class _LoadingCarPhotoState extends State<LoadingCarPhoto> {
   }
 }
 
-class HeadScreenWidget extends StatelessWidget {
-  const HeadScreenWidget({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25, top: 87),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            InkWell(
-              child: Image.asset(
-                'assets/images/back.png',
-                color: textPassiveColor,
-                width: 48,
-                height: 24,
-              ),
-              onTap: () => Navigator.of(context).pushNamed(Screens.main),
-            ),
-            const SizedBox(
-              height: 13,
-            ),
-            const SizedBox(
-              width: 300,
-              child: Text(
-                'Данные автомобиля',
-                style: handTextStyleGrin,
-                overflow: TextOverflow.clip,
-                softWrap: true,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

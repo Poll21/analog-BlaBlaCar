@@ -7,6 +7,8 @@ abstract class Screens {
   static const constcodSms = "/registrationPhone/constcodSms";
   static const registrationProfile = "/registrationPhone/constcodSms/registrationProfile";
   static const carProfile = "/carProfile";
+  static const createTrip = "/carProfile/createTrip";
+  static const driverProfile = "/carProfile/createTrip/driver_profile";
 
 }
 
@@ -18,6 +20,8 @@ class MainNavigation {
     Screens.constcodSms: (_) => _screenFactory.makeCodSms(),
     Screens.registrationProfile: (_) => _screenFactory.makeRegistrationProfile(),
     Screens.carProfile: (_) => _screenFactory.makeCarProfile(),
+    Screens.createTrip: (_) => _screenFactory.makeCreateTrip(),
+    Screens.driverProfile: (_) => _screenFactory.makeDriverProfile(),
   };
   Route<dynamic>? onGenerateRoute(RouteSettings settings){
     return null;
