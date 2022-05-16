@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:untitled2/application/ui/screens/additional_options/additional_options_screen.dart';
 import 'package:untitled2/application/ui/screens/bringing_screen/cod_sms_screen.dart';
 import 'package:untitled2/application/ui/screens/bringing_screen/registration_phone_screen.dart';
 import 'package:untitled2/application/ui/screens/bringing_screen/bringing_screen.dart';
@@ -18,4 +19,5 @@ class ScreenFactory {
   Widget makeCarProfile() => const CarsProfileScreen();
   Widget makeCreateTrip() => const CreateTripScreen();
   Widget makeDriverProfile() => const DriverProfileScreen();
+  Widget makeAdditionalOptions() => const AdditionalOptionsScreen();
 }

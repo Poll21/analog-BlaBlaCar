@@ -9,6 +9,7 @@ abstract class Screens {
   static const carProfile = "/carProfile";
   static const createTrip = "/carProfile/createTrip";
   static const driverProfile = "/carProfile/createTrip/driver_profile";
+  static const driverAdditionalOptions = "/carProfile/createTrip/driver_profile/";
 
 }
 
@@ -22,6 +23,7 @@ class MainNavigation {
     Screens.carProfile: (_) => _screenFactory.makeCarProfile(),
     Screens.createTrip: (_) => _screenFactory.makeCreateTrip(),
     Screens.driverProfile: (_) => _screenFactory.makeDriverProfile(),
+    Screens.driverAdditionalOptions: (_) => _screenFactory.makeAdditionalOptions(),
   };
   Route<dynamic>? onGenerateRoute(RouteSettings settings){
     return null;

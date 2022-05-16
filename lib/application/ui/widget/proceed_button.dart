@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
-import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 
 class ProceedButton extends StatelessWidget {
   final String text;

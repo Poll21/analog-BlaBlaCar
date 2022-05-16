@@ -36,7 +36,7 @@ const handTextStyleGrin = TextStyle(
 const cardText = TextStyle(
 color: Colors.white,
 fontSize: 14.36,
-fontFamily: 'Montserrat_Medium',
+fontFamily: 'Montserrat',
 fontStyle: FontStyle.normal,
 fontWeight: FontWeight.w500,
 letterSpacing: 0.72);

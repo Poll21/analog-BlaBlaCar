@@ -17,6 +17,9 @@ class DriverProfileScreen extends StatelessWidget {
           HeadScreenWidget(
               title: 'Профиль водителя',
               press: () => Navigator.of(context).pushNamed(Screens.createTrip)),
+          SizedBox(
+            height: 25,
+          ),
           TextFieldPrefixIcon(title: 'Водительский стаж'),
 
           Padding(
@@ -46,13 +49,20 @@ class DriverProfileScreen extends StatelessWidget {
             ),),
 
           CarCardWidget(),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, right: 25, top: 10,),
+            child: ProceedButton(
+                text: '+  ДОБАВИТЬ АВТО',
+                press: () =>
+                    Navigator.of(context).pushNamed(Screens.carProfile)),
+          ),
           Expanded(child: Container()),
           Padding(
-            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 12),
+            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 47),
             child: ProceedButton(
                 text: 'ПОДТВЕРДИТЬ',
                 press: () =>
-                    Navigator.of(context).pushNamed(Screens.createTrip)),
+                    Navigator.of(context).pushNamed(Screens.driverAdditionalOptions)),
           ),
         ],
       ),
@@ -75,23 +85,23 @@ class CarCardWidget extends StatelessWidget {
         shadowColor: textPassiveColor,
         elevation: 1.5,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 9),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Padding(padding: EdgeInsets.only(left: 4,),
-                child: Container(
-                  width: 109,
-                  height: 61,
-                  child: Image.asset(
-                    'assets/images/car.png',
-                  ),
+              Container(
+                padding: const EdgeInsets.only(left: 1, right: 11),
+                width: 109,
+                height: 61,
+                child: Image.asset(
+                  'assets/images/car.png',
                 ),
               ),
 
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text('Toyota Matrix', style: TextStyle(
                       fontSize: 14,
@@ -114,10 +124,16 @@ class CarCardWidget extends StatelessWidget {
                 ],
               ),
               Expanded(child: Container()),
-              Icon(
-                Icons.cancel_sharp,
-                size: 16,
-                color: textPassiveColor,
+              Padding(
+                padding: const EdgeInsets.only(right: 9),
+                child: InkWell(
+                  onTap: () {},
+                  child: Icon(
+                    Icons.cancel_sharp,
+                    size: 18,
+                    color: textPassiveColor,
+                  ),
+                ),
               )
 
             ],
