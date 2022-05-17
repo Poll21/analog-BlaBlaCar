@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
+import 'package:untitled2/application/ui/widget/proceed_button.dart';
 
 class AdditionalOptionsScreen extends StatelessWidget {
   const AdditionalOptionsScreen({Key? key}) : super(key: key);
@@ -21,6 +23,18 @@ class AdditionalOptionsScreen extends StatelessWidget {
         SwitchOptionsWidget(
           title: 'Курение в салоне',
         ),
+        TextField(
+          inputFormatters: [PhoneInputFormatter()],
+          decoration: InputDecoration(border: OutlineInputBorder()),
+        ),
+        Expanded(child: Container()),
+        Padding(
+          padding: const EdgeInsets.only(left: 25, right: 25, bottom:53,top: 16 ),
+          child: ProceedButton( text: 'ПОДТВЕРДИТЬ',
+              press:()=>
+                  Navigator.of(context).pushNamed(Screens.createTrip)),
+        ),
+
       ]),
     );
   }
@@ -38,6 +52,7 @@ class SwitchOptionsWidget extends StatefulWidget {
 }
 
 class _SwitchOptionsWidgetState extends State<SwitchOptionsWidget> {
+  
   String title;
 
   _SwitchOptionsWidgetState(
@@ -123,3 +138,39 @@ class _SwitchOptionsWidgetState extends State<SwitchOptionsWidget> {
     );
   }
 }
+
+class PhoneInputFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue,
+      TextEditingValue newValue,
+  ){
+    final digitsOnly = newValue.text.replaceAll(RegExp(r'[^\d]+'), '-');
+    final initialSpeshialSimbbolCount =newValue.selection
+    .textBefore(newValue.text)
+    .replaceAll(RegExp(r'[^\d]+'), '-')
+    .length;
+    final cursorPosition = newValue.selection.start - initialSpeshialSimbbolCount;
+    var finaCursorPosition = cursorPosition;
+    final digitOnlyChars = digitsOnly.split('-');
+    if (oldValue.selection.textInside(oldValue.text) == '-') {
+      digitOnlyChars.removeAt(cursorPosition - 1);
+    }
+    var newString = <String>[];
+    for (var i = 0; i < digitOnlyChars.length; i++){
+      if (i==3 || i==6 || i==8) {
+        newString.add('-');
+        newString.add(digitOnlyChars[i]);
+        if (i <= cursorPosition) finaCursorPosition +=1;
+        } else {
+          newString.add(digitOnlyChars[i]);
+        }
+      }
+      final resultString = newString.join('');
+      return TextEditingValue(
+        text: resultString,
+        selection: TextSelection.collapsed(offset: finaCursorPosition),
+      );
+    }
+  }
+
