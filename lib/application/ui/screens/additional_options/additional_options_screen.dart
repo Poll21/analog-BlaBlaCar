@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,8 +26,9 @@ class AdditionalOptionsScreen extends StatelessWidget {
           title: 'Курение в салоне',
         ),
         TextField(
+
           inputFormatters: [PhoneInputFormatter()],
-          decoration: InputDecoration(border: OutlineInputBorder()),
+          decoration: const InputDecoration(border: OutlineInputBorder()),
         ),
         Expanded(child: Container()),
         Padding(
@@ -145,23 +148,26 @@ class PhoneInputFormatter extends TextInputFormatter {
       TextEditingValue oldValue,
       TextEditingValue newValue,
   ){
-    final digitsOnly = newValue.text.replaceAll(RegExp(r'[^\d]+'), '-');
-    final initialSpeshialSimbbolCount =newValue.selection
+    final digitsOnly = newValue.text.replaceAll(RegExp(r'[^\d]+'), '');
+    final initialSpeshialSimbblCount = newValue.selection
     .textBefore(newValue.text)
-    .replaceAll(RegExp(r'[^\d]+'), '-')
+    .replaceAll(RegExp(r'[^\d]+'), '')
     .length;
-    final cursorPosition = newValue.selection.start - initialSpeshialSimbbolCount;
-    var finaCursorPosition = cursorPosition;
-    final digitOnlyChars = digitsOnly.split('-');
+    final cursorPostition =
+        newValue.selection.start - initialSpeshialSimbblCount;
+    var finaCursorPosition = cursorPostition;
+    final digitOnlyChars = digitsOnly.split('');
+
     if (oldValue.selection.textInside(oldValue.text) == '-') {
-      digitOnlyChars.removeAt(cursorPosition - 1);
+      digitOnlyChars.removeAt(cursorPostition - 1);
+      finaCursorPosition -= 2;
     }
     var newString = <String>[];
-    for (var i = 0; i < digitOnlyChars.length; i++){
+    for (var i = 0; i < digitOnlyChars.length; i++) {
       if (i==3 || i==6 || i==8) {
         newString.add('-');
         newString.add(digitOnlyChars[i]);
-        if (i <= cursorPosition) finaCursorPosition +=1;
+        if (i <= cursorPostition) finaCursorPosition += 1;
         } else {
           newString.add(digitOnlyChars[i]);
         }
