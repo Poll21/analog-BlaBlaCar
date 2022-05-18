@@ -43,6 +43,7 @@ class AdditionalOptionsScreen extends StatelessWidget {
   }
 }
 
+
 class SwitchOptionsWidget extends StatefulWidget {
   final String title;
 
@@ -55,12 +56,14 @@ class SwitchOptionsWidget extends StatefulWidget {
 }
 
 class _SwitchOptionsWidgetState extends State<SwitchOptionsWidget> {
-  
+
   String title;
 
   _SwitchOptionsWidgetState(
     this.title,
   );
+
+
 
   @override
   Widget build(BuildContext context) {
