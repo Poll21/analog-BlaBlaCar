@@ -19,17 +19,22 @@ class AdditionalOptionsScreen extends StatelessWidget {
             title: 'Дополнительные опции',
             press: () =>
                 Navigator.of(context).pushNamed(Screens.driverProfile)),
-        SizedBox(
+        const SizedBox(
           height:44,
         ),
-        SwitchOptionsWidget(
+        const SwitchOptionsWidget(
           title: 'Курение в салоне',
+        ),const SizedBox(
+          height:44,
         ),
-        TextField(
-
-          inputFormatters: [PhoneInputFormatter()],
-          decoration: const InputDecoration(border: OutlineInputBorder()),
+        const SwitchOptionsWidget(
+          title: 'Домашние животные',
         ),
+        // TextField(
+        //
+        //   inputFormatters: [PhoneInputFormatter()],
+        //   decoration: const InputDecoration(border: OutlineInputBorder()),
+        // ),
         Expanded(child: Container()),
         Padding(
           padding: const EdgeInsets.only(left: 25, right: 25, bottom:53,top: 16 ),
@@ -63,6 +68,27 @@ class _SwitchOptionsWidgetState extends State<SwitchOptionsWidget> {
     this.title,
   );
 
+  bool _switch = false;
+  Color _backColorY = textActiveColor;
+  Color _backColorN = primaryColor;
+  void _switchY() {
+    setState(() {
+      if(_switch == false ) {
+        _switch = true;
+        _backColorY = primaryColor;
+        _backColorN = textActiveColor;
+      }
+    });
+  }
+  void _switchN() {
+    setState(() {
+      if(_switch == true ) {
+        _switch = false;
+        _backColorY = textActiveColor;
+        _backColorN = primaryColor;
+      }
+    });
+  }
 
 
   @override
@@ -79,7 +105,7 @@ class _SwitchOptionsWidgetState extends State<SwitchOptionsWidget> {
             fontWeight: FontWeight.w700,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 18,
         ),
         Row(
@@ -93,13 +119,13 @@ class _SwitchOptionsWidgetState extends State<SwitchOptionsWidget> {
                       RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   )),
-                  backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
+                  backgroundColor: MaterialStateProperty.all<Color>(_backColorY),
                   elevation: MaterialStateProperty.all<double>(0),
                 ),
-                onPressed: () {},
-                child: Text(
+                onPressed: _switchY,
+                child: const Text(
                   'Да',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Montserrat',
                     color: backGroundColor,
                     fontSize: 14,
@@ -108,7 +134,7 @@ class _SwitchOptionsWidgetState extends State<SwitchOptionsWidget> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 8,
             ),
             SizedBox(
@@ -120,14 +146,14 @@ class _SwitchOptionsWidgetState extends State<SwitchOptionsWidget> {
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       )),
-                  backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
+                  backgroundColor: MaterialStateProperty.all<Color>(_backColorN),
                   elevation: MaterialStateProperty.all<double>(0),
                 ),
-                onPressed: () {},
-                child: Center(
+                onPressed: _switchN,
+                child: const Center(
                   child: Text(
                     'Нет',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: 'Montserrat',
                       color: backGroundColor,
                       fontSize: 14,
@@ -138,6 +164,8 @@ class _SwitchOptionsWidgetState extends State<SwitchOptionsWidget> {
                 ),
               ),
             ),
+
+            Text('$_switch')
           ],
         ),
       ],
