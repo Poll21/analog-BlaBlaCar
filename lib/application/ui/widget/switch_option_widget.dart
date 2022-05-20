@@ -1,73 +1,127 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/application/ui/constants/constants.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
+class SwitchOptionsWidget extends StatefulWidget {
   final String title;
 
+  const SwitchOptionsWidget({Key? key, required this.title}) : super(key: key);
+
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<SwitchOptionsWidget> createState() => _SwitchOptionsWidgetState(
+    this.title,
+  );
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  bool _counter = true;
-  Color _backColorY = Colors.black;
-  Color _backColorN = Colors.green;
+class _SwitchOptionsWidgetState extends State<SwitchOptionsWidget> {
+  String title;
 
-  void _incrementCounter() {
+  _SwitchOptionsWidgetState(
+      this.title,
+      );
+
+  bool _switch = false;
+  Color _backColorY = borderTextField;
+  Color _backColorN = primaryColor;
+
+  void _switchY() {
     setState(() {
+      if (_switch == false) {
+        _switch = true;
+        _backColorY = primaryColor;
+        _backColorN = borderTextField;
+      }
+    });
+  }
 
-      if(_counter == false) {
-        _counter = true;
-        _backColorY = Colors.black;
-        _backColorN = Colors.green;
-      }else{
-        _counter = false;
-        _backColorY = Colors.green;
-        _backColorN = Colors.black;
-
+  void _switchN() {
+    setState(() {
+      if (_switch == true) {
+        _switch = false;
+        _backColorY = borderTextField;
+        _backColorN = primaryColor;
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            color: textActiveColor,
+            fontSize: 14,
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(
+          height: 18,
+        ),
+        Row(
+          children: [
+            SizedBox(
+              // width: 60,
+              height: 32,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      )),
+                  backgroundColor:
+                  MaterialStateProperty.all<Color>(_backColorY),
+                  elevation: MaterialStateProperty.all<double>(0),
+                ),
+                onPressed: _switchY,
+                child: const Text(
+                  'Да',
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    color: backGroundColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            const SizedBox(
+              width: 8,
             ),
-            FloatingActionButton(
-              backgroundColor: _backColorY,
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            ),
-            FloatingActionButton(
-              backgroundColor: _backColorN,
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.text_decrease),
+            SizedBox(
+              //width: 60,
+              height: 32,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      )),
+                  backgroundColor:
+                  MaterialStateProperty.all<Color>(_backColorN),
+                  elevation: MaterialStateProperty.all<double>(0),
+                ),
+                onPressed: _switchN,
+                child: const Center(
+                  child: Text(
+                    'Нет',
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      color: backGroundColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 0.25,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
-      ),
-
-      // This trailing comma makes auto-formatting nicer for build methods.
+        const SizedBox(height: 16),
+      ],
     );
   }
 }

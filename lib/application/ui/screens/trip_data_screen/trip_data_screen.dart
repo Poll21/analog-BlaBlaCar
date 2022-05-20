@@ -1,46 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
+
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
-import '../../constants/constants.dart';
-import '../../widget/proceed_button.dart';
+import 'package:untitled2/application/ui/widget/proceed_button.dart';
+import 'package:untitled2/application/ui/widget/switch_option_widget.dart';
+import 'package:untitled2/application/ui/widget/textField_prefixIcon_widget.dart';
 
-class CreateTripScreen extends StatelessWidget {
-  const CreateTripScreen({Key? key}) : super(key: key);
+class TripDataScreen extends StatefulWidget {
+  const TripDataScreen({Key? key}) : super(key: key);
 
+  @override
+  State<TripDataScreen> createState() => _TripDataScreenState();
+}
+
+class _TripDataScreenState extends State<TripDataScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          HeadScreenWidget(
-              title: 'Создать поездку',
-              press: () => Navigator.of(context).pushNamed(Screens.carProfile)),
-          TimeTrip(title: 'Время отправления',),
-          TimeTrip(title:'Время прибытия'),
-          Expanded(child: Container()),
-          Padding(
-            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 50),
-            child: ProceedButton(
-                text: 'ПОДТВЕРДИТЬ',
-                press: () =>
-                    Navigator.of(context).pushNamed(Screens.driverProfile)),
-          ),
-        ],
-      ),
+      body: Column(children: [
+        HeadScreenWidget(
+            title: 'Данные поездки',
+            press: () =>
+                Navigator.of(context).pushNamed(Screens.driverAdditionalOptions)),
+        const SizedBox(
+          height: 44,
+        ),
+        Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: ListView(
+                children: [
+                  const SwitchOptionsWidget(
+                    title: 'Беру посылки:',
+                  ),
+                  PriseTrip(title: 'Цена за посылку'),
+                  PriseTrip(title: 'Цена за поездку'),
+                ],
+              ),
+            )),
+        Padding(
+          padding:
+          const EdgeInsets.only(left: 25, right: 25, bottom: 53,),
+          child: ProceedButton(
+              text: 'ПОДТВЕРДИТЬ',
+              press: () => Navigator.of(context).pushNamed(Screens.createTrip)),
+        ),
+      ]),
     );
   }
 }
-
-class TimeTrip extends StatelessWidget {
+class PriseTrip extends StatefulWidget {
   final String title;
-  const TimeTrip({Key? key,
+  const PriseTrip({Key? key,
     required this.title
   }) : super(key: key);
 
   @override
+  State<PriseTrip> createState() => _PriseTripState();
+}
+
+class _PriseTripState extends State<PriseTrip> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 25, right: 25, bottom: 16),
+      padding: EdgeInsets.only(bottom: 16),
       child: Column(
         children: [
           SizedBox(
@@ -48,7 +72,7 @@ class TimeTrip extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(title,
+                Text(widget.title,
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.w700,
@@ -71,6 +95,7 @@ class TimeTrip extends StatelessWidget {
           SizedBox(
             height: 42,
             child: TextField(
+              controller: TextEditingController(),
                 cursorColor: borderTextField,
                 // controller: nameController,
                 style: const TextStyle(
