@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
+import 'package:untitled2/application/ui/generate/my_flutter_app_icons.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
-
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import 'package:untitled2/application/ui/widget/switch_option_widget.dart';
-import 'package:untitled2/application/ui/widget/textField_prefixIcon_widget.dart';
 
 class TripDataScreen extends StatefulWidget {
   const TripDataScreen({Key? key}) : super(key: key);
@@ -21,27 +20,44 @@ class _TripDataScreenState extends State<TripDataScreen> {
       body: Column(children: [
         HeadScreenWidget(
             title: 'Данные поездки',
-            press: () =>
-                Navigator.of(context).pushNamed(Screens.driverAdditionalOptions)),
+            press: () => Navigator.of(context)
+                .pushNamed(Screens.driverAdditionalOptions)),
         const SizedBox(
           height: 44,
         ),
         Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: ListView(
-                children: [
-                  const SwitchOptionsWidget(
-                    title: 'Беру посылки:',
-                  ),
-                  PriseTrip(title: 'Цена за посылку'),
-                  PriseTrip(title: 'Цена за поездку'),
-                ],
+          padding: const EdgeInsets.symmetric(horizontal: 25),
+          child: ListView(
+            children: const [
+              SwitchOptionsWidget(
+                title: 'Беру посылки:',
               ),
-            )),
+              PriseTrip(title: 'Цена за посылку'),
+              PriseTrip(title: 'Цена за поездку'),
+              SizedBox(
+                height: 54,
+              ),
+              Text('Количество свободных мест',
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                    color: textActiveColor,
+                  )),
+              SizedBox(
+                height: 8.5,
+              ),
+              VacanciesWidget(),
+            ],
+          ),
+        )),
         Padding(
-          padding:
-          const EdgeInsets.only(left: 25, right: 25, bottom: 53,),
+          padding: const EdgeInsets.only(
+            left: 25,
+            right: 25,
+            bottom: 53,
+          ),
           child: ProceedButton(
               text: 'ПОДТВЕРДИТЬ',
               press: () => Navigator.of(context).pushNamed(Screens.createTrip)),
@@ -50,11 +66,63 @@ class _TripDataScreenState extends State<TripDataScreen> {
     );
   }
 }
+
+class VacanciesWidget extends StatefulWidget {
+  const VacanciesWidget({Key? key}) : super(key: key);
+
+  @override
+  _VacanciesWidgetState createState() => _VacanciesWidgetState();
+}
+
+class _VacanciesWidgetState extends State<VacanciesWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          height: 46,
+          width: 46,
+          child: FloatingActionButton(
+              backgroundColor: primaryColor,
+              child: const Icon(
+                Icons.remove,
+                color: backGroundColor,
+                size: 40,
+              ),
+              onPressed: () {}),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 22),
+          child: Text('1',
+              style: TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w700,
+                fontSize: 35,
+                color: textActiveColor,
+              )),
+        ),
+        SizedBox(
+          height: 46,
+          width: 46,
+          child: FloatingActionButton(
+              backgroundColor: primaryColor,
+              child: const Icon(
+                Icons.add,
+                color: backGroundColor,
+                size: 40,
+              ),
+              onPressed: () {}),
+        ),
+
+      ],
+    );
+  }
+}
+
 class PriseTrip extends StatefulWidget {
   final String title;
-  const PriseTrip({Key? key,
-    required this.title
-  }) : super(key: key);
+
+  const PriseTrip({Key? key, required this.title}) : super(key: key);
 
   @override
   State<PriseTrip> createState() => _PriseTripState();
@@ -95,7 +163,7 @@ class _PriseTripState extends State<PriseTrip> {
           SizedBox(
             height: 42,
             child: TextField(
-              controller: TextEditingController(),
+                controller: TextEditingController(),
                 cursorColor: borderTextField,
                 // controller: nameController,
                 style: const TextStyle(
@@ -107,10 +175,8 @@ class _PriseTripState extends State<PriseTrip> {
                 ),
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 35),
-                  suffixIcon:
-                  Icon(Icons.date_range_sharp, size: 20),
+                  suffixIcon: Icon(UiIcons.ruble_fill0, size: 20),
                   prefixIconColor: textPassiveColor,
-
                   enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: borderTextField, width: 1.04),
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
@@ -119,11 +185,9 @@ class _PriseTripState extends State<PriseTrip> {
                     borderSide: BorderSide(color: borderTextField, width: 1.5),
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                   ),
-
                 )),
           ),
         ],
-
       ),
     );
   }
