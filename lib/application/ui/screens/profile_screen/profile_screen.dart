@@ -158,7 +158,7 @@ class ContactsProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 156,
+      height: 300,
       child: Card(
         shape: const RoundedRectangleBorder(
             side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
