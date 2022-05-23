@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
+import 'package:untitled2/application/ui/generate/my_flutter_app_icons.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
-import '../../generate/my_flutter_app_icons.dart';
 
 class CarsProfileScreen extends StatefulWidget {
   const CarsProfileScreen({Key? key}) : super(key: key);

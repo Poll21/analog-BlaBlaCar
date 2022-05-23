@@ -29,26 +29,79 @@ class _TripDataScreenState extends State<TripDataScreen> {
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
           child: ListView(
-            children: const [
+            children: [
               SwitchOptionsWidget(
                 title: 'Беру посылки:',
               ),
               PriseTrip(title: 'Цена за посылку'),
               PriseTrip(title: 'Цена за поездку'),
-              SizedBox(
-                height: 54,
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text('Количество свободных мест',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: textActiveColor,
+                      )),
+                  Text('*',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: errorColor,
+                      )),
+                ],
               ),
-              Text('Количество свободных мест',
-                  style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
-                    color: textActiveColor,
-                  )),
-              SizedBox(
-                height: 8.5,
-              ),
+              const SizedBox(height: 6),
               VacanciesWidget(),
+              const SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const [
+                  Text('Описание',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: textActiveColor,
+                      )),
+                  Text('*',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: errorColor,
+                      )),
+                ],
+              ),
+              const SizedBox(height: 6),
+              const TextField(
+                  maxLines: 5,
+                  minLines: 3,
+                  cursorColor: borderTextField,
+                  style: TextStyle(
+                    color: textPassiveColor,
+                    fontSize: 14.57,
+                    fontFamily: 'Montserrat_Medium',
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(10),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: borderTextField, width: 1.04),
+                      borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: borderTextField, width: 1.5),
+                      borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                    ),
+                  ))
             ],
           ),
         )),
@@ -57,10 +110,11 @@ class _TripDataScreenState extends State<TripDataScreen> {
             left: 25,
             right: 25,
             bottom: 53,
+            top: 10,
           ),
           child: ProceedButton(
               text: 'ПОДТВЕРДИТЬ',
-              press: () => Navigator.of(context).pushNamed(Screens.createTrip)),
+              press: () => Navigator.of(context).pushNamed(Screens.paymentTrip)),
         ),
       ]),
     );
@@ -75,25 +129,45 @@ class VacanciesWidget extends StatefulWidget {
 }
 
 class _VacanciesWidgetState extends State<VacanciesWidget> {
+  int _counter = 0;
+
+  void _increment() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void _decrement() {
+    setState(() {
+      if (_counter > 0) {
+        _counter--;
+      } else {
+        _counter = 0;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           height: 46,
           width: 46,
           child: FloatingActionButton(
+              elevation: 0,
               backgroundColor: primaryColor,
               child: const Icon(
                 Icons.remove,
                 color: backGroundColor,
                 size: 40,
               ),
-              onPressed: () {}),
+              onPressed: _decrement),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 22),
-          child: Text('1',
+          child: Text('$_counter',
               style: TextStyle(
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.w700,
@@ -105,15 +179,15 @@ class _VacanciesWidgetState extends State<VacanciesWidget> {
           height: 46,
           width: 46,
           child: FloatingActionButton(
+              elevation: 0,
               backgroundColor: primaryColor,
               child: const Icon(
                 Icons.add,
                 color: backGroundColor,
                 size: 40,
               ),
-              onPressed: () {}),
+              onPressed: _increment),
         ),
-
       ],
     );
   }
@@ -173,15 +247,15 @@ class _PriseTripState extends State<PriseTrip> {
                   fontStyle: FontStyle.normal,
                   fontWeight: FontWeight.w500,
                 ),
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 35),
                   suffixIcon: Icon(UiIcons.ruble_fill0, size: 20),
                   prefixIconColor: textPassiveColor,
-                  enabledBorder: const OutlineInputBorder(
+                  enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: borderTextField, width: 1.04),
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                   ),
-                  focusedBorder: const OutlineInputBorder(
+                  focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: borderTextField, width: 1.5),
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                   ),

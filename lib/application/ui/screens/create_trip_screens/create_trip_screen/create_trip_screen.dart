@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
-import '../../constants/constants.dart';
-import '../../widget/proceed_button.dart';
+import 'package:untitled2/application/ui/widget/proceed_button.dart';
 
 class CreateTripScreen extends StatelessWidget {
   const CreateTripScreen({Key? key}) : super(key: key);

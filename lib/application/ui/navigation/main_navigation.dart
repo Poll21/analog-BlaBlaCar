@@ -11,7 +11,9 @@ abstract class Screens {
   static const driverProfile = "/carProfile/createTrip/driver_profile";
   static const driverAdditionalOptions = "/carProfile/createTrip/driver_profile/";
   static const driverTripData = "/carProfile/createTrip/driver_profile/trip_data";
-
+  static const paymentTrip = "/carProfile/createTrip/driver_profile/trip_data/payment_trip";
+  static const paymentCompleted = "/carProfile/createTrip/driver_profile/trip_data/payment_trip/payment_completed";
+  static const tripSearch = "/trip_search";
 
 }
 
@@ -27,6 +29,10 @@ class MainNavigation {
     Screens.driverProfile: (_) => _screenFactory.makeDriverProfile(),
     Screens.driverAdditionalOptions: (_) => _screenFactory.makeAdditionalOptions(),
     Screens.driverTripData: (_) => _screenFactory.makeTripData(),
+    Screens.paymentTrip: (_) => _screenFactory.makePaymentTrip(),
+    Screens.paymentCompleted: (_) => _screenFactory.makePaymentCompleted(),
+    Screens.tripSearch: (_) => _screenFactory.makeTripSearch(),
+
   };
   Route<dynamic>? onGenerateRoute(RouteSettings settings){
     return null;

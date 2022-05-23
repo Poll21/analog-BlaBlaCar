@@ -38,14 +38,20 @@ class MyHomeScreen extends StatelessWidget {
                       children: [
                         HomeCard(text: 'СЩЗДАТЬ ПОЕЗДКЕ',
                           assImage: 'assets/images/freepik_car.png',
+                          onTap: () =>
+                              Navigator.of(context).pushNamed(Screens.carProfile),
                         ),
                         const SizedBox(height: 12,),
                         HomeCard(text: 'ПОИСК ПОЕДКИ',
                           assImage: 'assets/images/man_searching.png',
+                          onTap: () =>
+                              Navigator.of(context).pushNamed(Screens.tripSearch),
                         ),
                         const SizedBox(height: 8,),
                         HomeCard(
                           text: 'ДОСТАВКА', assImage: 'assets/images/male_delivery.png',
+                          onTap: () =>
+                              Navigator.of(context).pushNamed(Screens.carProfile),
                         ),
                       ],
                     ),
@@ -60,10 +66,12 @@ class MyHomeScreen extends StatelessWidget {
 class HomeCard extends StatelessWidget {
   final String text;
   final String assImage;
+  final Function()  onTap;
 
   const HomeCard({Key? key,
     required this.text,
     required this.assImage,
+    required this.onTap,
 
   }) : super(key: key);
 
@@ -81,7 +89,7 @@ class HomeCard extends StatelessWidget {
             side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
             borderRadius: BorderRadius.all(Radius.circular(10))),
         child: InkWell(
-          onTap: () => Navigator.of(context).pushNamed(Screens.carProfile),
+          onTap: onTap,
 
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,

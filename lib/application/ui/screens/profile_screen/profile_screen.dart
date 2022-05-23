@@ -142,10 +142,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 NotReviewWidget(),
                 ReviewWidget(),
-
-
               ],
-
             ),
           ),
         ],
@@ -273,24 +270,7 @@ class DriversProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(alignment: AlignmentDirectional.topEnd, children: [
-      SizedBox(
-          height: 79,
-          width: 87,
-          child: Card(
-            shape: const RoundedRectangleBorder(
-                side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-            color: backColor,
-            shadowColor: textPassiveColor,
-            elevation: 1.5,
-            child: Padding(
-                padding: EdgeInsets.only(left: 16, right: 19),
-                child: Icon(
-                  icon,
-                  size: 39,
-                  color: iconColor,
-                )),
-          )),
+      ServiceCard(backColor: backColor, iconColor: iconColor, icon: icon),
       CircleAvatar(
         radius: 12,
         backgroundColor: reviewBackColor,
@@ -310,6 +290,39 @@ class DriversProfile extends StatelessWidget {
     ]);
   }
 }
+
+class ServiceCard extends StatelessWidget {
+  final Color backColor, iconColor;
+  final IconData icon;
+  const ServiceCard({
+    Key? key,
+    required this.backColor,
+    required this.iconColor,
+    required this.icon}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        height: 79,
+        width: 87,
+        child: Card(
+          shape: const RoundedRectangleBorder(
+              side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          color: backColor,
+          shadowColor: textPassiveColor,
+          elevation: 1.5,
+          child: Padding(
+              padding: EdgeInsets.only(left: 16, right: 19),
+              child: Icon(
+                icon,
+                size: 39,
+                color: iconColor,
+              )),
+        ));
+  }
+}
+
 
 class DriveWidget extends StatelessWidget {
   final Color iconColor, iconBlockColor;
