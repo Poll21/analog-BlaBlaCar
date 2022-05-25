@@ -256,9 +256,6 @@ class TripSearchCard extends StatelessWidget {
   }
 }
 
-<<<<<<< HEAD:lib/application/ui/screens/trip_search_screens/trip_search_screen.dart
-
-=======
 class PassiveSearch extends StatelessWidget {
   const PassiveSearch({Key? key}) : super(key: key);
 
@@ -382,4 +379,3 @@ class TripeCard extends StatelessWidget {
         ));
   }
 }
->>>>>>> 74fb40394a9cbce2d9be6eecef1f286296df618e:lib/application/ui/screens/trip_search_screens/trip_search_screen/trip_search_screen.dart
