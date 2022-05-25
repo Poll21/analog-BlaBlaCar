@@ -9,7 +9,8 @@ import 'package:untitled2/application/ui/screens/create_trip_screens/create_trip
 import 'package:untitled2/application/ui/screens/create_trip_screens/driver_profile_screen/driver_profile_screen.dart';
 import 'package:untitled2/application/ui/screens/create_trip_screens/trip_data_screen/trip_data_screen.dart';
 import 'package:untitled2/application/ui/screens/main_tabs/main_tabs_screen.dart';
-import 'package:untitled2/application/ui/screens/trip_search_screens/trip_search_screen.dart';
+import 'package:untitled2/application/ui/screens/trip_search_screens/trip_not_found/trip_not_found.dart';
+import 'package:untitled2/application/ui/screens/trip_search_screens/trip_search_screen/trip_search_screen.dart';
 import '../screens/create_trip_screens/payment_trip_screen/payment_completed.dart';
 import '../screens/create_trip_screens/payment_trip_screen/payment_trip_screen.dart';
 
@@ -27,4 +28,5 @@ class ScreenFactory {
   Widget makePaymentTrip() => const PaymentTripScreen();
   Widget makePaymentCompleted() => const PaymentCompletedScreen();
   Widget makeTripSearch() => const TripSearchScreen();
+  Widget makeTripNotFound() => const TripNotFoundScreen();
 }

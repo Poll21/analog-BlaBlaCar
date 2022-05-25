@@ -4,11 +4,15 @@ import 'package:flutter/material.dart';
 const Color primaryColor = Color(0xFF4BA35B);
 const Color backGroundColor = Colors.white;
 const Color errorColor = Color(0xFFF47458);
+
 const Color selectedColor = Color(0xFFFF9A3D);
+const Color favouriteColor = Color(0xFFFEC124);
+const Color iconDestColor = Color(0xFFFFD578);
+const Color iconDepColor = Color(0xFFEF8733);
+
 const Color textPassiveColor = Color(0xFF898989);
 const Color textActiveColor = Color(0xFF656F77);
 const Color deliveryColor = Color(0xFFC2C2C2);
-const Color favouriteColor = Color(0xFFFEC124);
 const Color notSelectedPhoto = Color(0xFFC8E6C9);
 const Color borderTextField = Color(0xFFACB8C2);
 const Color notColor = Color(0x5ffffff);

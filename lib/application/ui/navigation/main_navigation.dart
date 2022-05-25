@@ -14,6 +14,7 @@ abstract class Screens {
   static const paymentTrip = "/carProfile/createTrip/driver_profile/trip_data/payment_trip";
   static const paymentCompleted = "/carProfile/createTrip/driver_profile/trip_data/payment_trip/payment_completed";
   static const tripSearch = "/trip_search";
+  static const tripNotFound = "/trip_search/tripNotFound ";
 
 }
 
@@ -32,6 +33,7 @@ class MainNavigation {
     Screens.paymentTrip: (_) => _screenFactory.makePaymentTrip(),
     Screens.paymentCompleted: (_) => _screenFactory.makePaymentCompleted(),
     Screens.tripSearch: (_) => _screenFactory.makeTripSearch(),
+    Screens.tripNotFound: (_) => _screenFactory.makeTripNotFound(),
 
   };
   Route<dynamic>? onGenerateRoute(RouteSettings settings){

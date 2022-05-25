@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/generate/my_flutter_app_icons.dart';
 
@@ -158,7 +156,7 @@ class ContactsProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 154,
       child: Card(
         shape: const RoundedRectangleBorder(
             side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
