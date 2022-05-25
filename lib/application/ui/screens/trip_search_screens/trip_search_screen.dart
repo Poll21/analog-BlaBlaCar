@@ -233,3 +233,5 @@ class TripSearchCard extends StatelessWidget {
     );
   }
 }
+
+
