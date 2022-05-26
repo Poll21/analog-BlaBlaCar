@@ -31,4 +31,5 @@ class ScreenFactory {
   Widget makeTripSearch() => const TripSearchScreen();
   Widget makeTripNotFound() => const TripNotFoundScreen();
   Widget makeTripFound() => const TripFoundScreen();
+
 }

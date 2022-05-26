@@ -22,10 +22,11 @@ class TripFoundScreen extends StatelessWidget {
                   children: [
                     TripFoundCard( icon: UiIcons.noun,
                       departure: 'Москва',
-                      deptime: '22:00',
+                      deptime: '22:33',
                       destination: 'Выкса',
                       desttime: '03:15',
-                      data: 'Сегодня', tripTime: '5ч. 15',),
+                      data: 'Сегодня', tripTime: '22 ч. 15',
+                      price: 1000,),
                   ]
               )),
         ],
@@ -37,7 +38,8 @@ class TripFoundScreen extends StatelessWidget {
 class TripFoundCard extends StatelessWidget {
   final IconData icon;
   final String departure, destination, data,
-      deptime, desttime, tripTime ;
+      deptime, desttime, tripTime;
+  final int price;
 
   const TripFoundCard({
     Key? key,
@@ -48,6 +50,7 @@ class TripFoundCard extends StatelessWidget {
     required this.deptime,
     required this.desttime,
     required this.tripTime,
+    required this.price,
   }) : super(key: key);
 
 
@@ -67,23 +70,29 @@ class TripFoundCard extends StatelessWidget {
               child: Column(
                 children: [
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Row(
                             children: [
-                              Text(deptime , style: const TextStyle(
-                                color: textPassiveColor,
-                                fontSize: 14,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.w600),),
-                              Icon(UiIcons.geolocation, size: 16,color: iconDepColor,),
+                              SizedBox(
+                                width: 40,
+                                child: Text(deptime , style: const TextStyle(
+                                  color: textPassiveColor,
+                                  fontSize: 14,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w600),),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(5),
+                                child: Icon(UiIcons.geolocation, size: 16,color: iconDepColor,),
+                              ),
                               Text(departure , style: const TextStyle(
                                   color: textPassiveColor,
                                   fontSize: 14,
@@ -94,22 +103,34 @@ class TripFoundCard extends StatelessWidget {
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Text(tripTime , style: const TextStyle(
-                                  color: textPassiveColor,
-                                  fontSize: 14,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w600),),
-                              Image.asset('assets/images/Line 1.png', height: 40,)
+                              SizedBox(
+                                width: 45,
+                                child: Text(tripTime , style: const TextStyle(
+                                    color: textPassiveColor,
+                                    fontSize: 12,
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.w500),),
+                              ),
+                              SizedBox(
+                                width: 7,
+                              ),
+                              Image.asset('assets/images/Line.png', height: 35,)
                             ],
                           ),
 
                           Row(children: [
-                            Text(desttime , style: const TextStyle(
-                                color: textPassiveColor,
-                                fontSize: 14,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.w600),),
-                            Icon(UiIcons.geolocation, size: 16,color: errorColor,),
+                            SizedBox(
+                              width: 40,
+                              child: Text(desttime , style: const TextStyle(
+                                  color: textPassiveColor,
+                                  fontSize: 14,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w600),),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Icon(UiIcons.geolocation, size: 16,color: iconDestColor,),
+                            ),
                             Text(destination , style: const TextStyle(
                                 color: textPassiveColor,
                                 fontSize: 14,
@@ -144,7 +165,18 @@ class TripFoundCard extends StatelessWidget {
                       //     ),
                       //
                                                    ],
-                       )
+                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text('$price' , style: const TextStyle(
+                              color: textPassiveColor,
+                              fontSize: 20,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w600),),
+                          Icon(UiIcons.ruble_fill0, size: 20, color: textPassiveColor,),
+                        ],
+                      ),
                     ],
                   ),
                   // const SizedBox(height: 13,),
