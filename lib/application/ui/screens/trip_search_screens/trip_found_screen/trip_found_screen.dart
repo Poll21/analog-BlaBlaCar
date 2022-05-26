@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/generate/my_flutter_app_icons.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
-import 'package:untitled2/application/ui/screens/profile_screen/profile_screen.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 
 class TripFoundScreen extends StatelessWidget {
@@ -25,8 +23,8 @@ class TripFoundScreen extends StatelessWidget {
                       deptime: '22:33',
                       destination: 'Выкса',
                       desttime: '03:15',
-                      data: 'Сегодня', tripTime: '22 ч. 15',
-                      price: 1000,),
+                      data: 'Сегодня', tripTime: '22 ч. 38',
+                      price: 1000, vacancies: 3,),
                   ]
               )),
         ],
@@ -39,7 +37,7 @@ class TripFoundCard extends StatelessWidget {
   final IconData icon;
   final String departure, destination, data,
       deptime, desttime, tripTime;
-  final int price;
+  final int price, vacancies;
 
   const TripFoundCard({
     Key? key,
@@ -50,7 +48,8 @@ class TripFoundCard extends StatelessWidget {
     required this.deptime,
     required this.desttime,
     required this.tripTime,
-    required this.price,
+    required this.price, 
+    required this.vacancies,
   }) : super(key: key);
 
 
@@ -117,7 +116,6 @@ class TripFoundCard extends StatelessWidget {
                               Image.asset('assets/images/Line.png', height: 35,)
                             ],
                           ),
-
                           Row(children: [
                             SizedBox(
                               width: 40,
@@ -137,52 +135,67 @@ class TripFoundCard extends StatelessWidget {
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.w600),),
                           ],)
-
-
-                      //     const Padding(
-                      //       padding: EdgeInsets.only(right: 8.0),
-                      //
-                      //     ),
-                      //
-                      //
-                      //     const Expanded(
-                      //       child: Center(
-                      //         child: Text('----------', style: TextStyle(
-                      //             color: textPassiveColor,
-                      //             fontSize: 14,
-                      //             fontFamily: 'Montserrat',
-                      //             fontWeight: FontWeight.w600),),
-                      //       ),
-                      //     ),
-                      //     Text(destination, style: const TextStyle(
-                      //         color: textPassiveColor,
-                      //         fontSize: 14,
-                      //         fontFamily: 'Montserrat',
-                      //         fontWeight: FontWeight.w600),),
-                      //     const Padding(
-                      //       padding: EdgeInsets.only(left: 8.0),
-                      //       child: Icon(UiIcons.geolocation, size: 16, color: iconDestColor,),
-                      //     ),
-                      //
-                                                   ],
+                        ],
                        ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                      Column(
                         children: [
-                          Text('$price' , style: const TextStyle(
-                              color: textPassiveColor,
-                              fontSize: 20,
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.w600),),
-                          Icon(UiIcons.ruble_fill0, size: 20, color: textPassiveColor,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text('$price' , style: const TextStyle(
+                                  color: textPassiveColor,
+                                  fontSize: 20,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w600),),
+                              const Icon(UiIcons.ruble_fill0, size: 20, color: textPassiveColor,),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text('$vacancies' , style: const TextStyle(
+                                  color: textPassiveColor,
+                                  fontSize: 12,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w500),),
+                              Text(' места' , style: const TextStyle(
+                                  color: textPassiveColor,
+                                  fontSize: 12,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w500),),
+                            ],
+                          ),
+
+
                         ],
                       ),
                     ],
                   ),
-                  // const SizedBox(height: 13,),
-                  //
-                  // const SizedBox(height: 13,),
-
+                  SizedBox(
+                    height: ,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                      radius: 20,
+                      backgroundColor: notSelectedPhoto,
+                        child: Image.asset(
+                        'assets/images/photo.png',
+                        ),
+                      ) ,
+                      Text('$vacancies' , style: const TextStyle(
+                          color: textPassiveColor,
+                          fontSize: 12,
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.w500),),
+                      Text(' места' , style: const TextStyle(
+                          color: textPassiveColor,
+                          fontSize: 12,
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.w500),),
+                    ],
+                  ),
                 ],
               ),
             )
