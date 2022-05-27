@@ -9,6 +9,7 @@ import 'package:untitled2/application/ui/screens/create_trip_screens/create_trip
 import 'package:untitled2/application/ui/screens/create_trip_screens/driver_profile_screen/driver_profile_screen.dart';
 import 'package:untitled2/application/ui/screens/create_trip_screens/trip_data_screen/trip_data_screen.dart';
 import 'package:untitled2/application/ui/screens/main_tabs/main_tabs_screen.dart';
+import 'package:untitled2/application/ui/screens/trip_search_screens/trip_found_detal_screen/trip_found_detal_screen.dart';
 import 'package:untitled2/application/ui/screens/trip_search_screens/trip_found_screen/trip_found_screen.dart';
 import 'package:untitled2/application/ui/screens/trip_search_screens/trip_not_found_screen/trip_not_found_screen.dart';
 import 'package:untitled2/application/ui/screens/trip_search_screens/trip_search_screen/trip_search_screen.dart';
@@ -31,5 +32,6 @@ class ScreenFactory {
   Widget makeTripSearch() => const TripSearchScreen();
   Widget makeTripNotFound() => const TripNotFoundScreen();
   Widget makeTripFound() => const TripFoundScreen();
+  Widget makeTripDetalFound() => const TripFoundDetalScreen();
 
 }

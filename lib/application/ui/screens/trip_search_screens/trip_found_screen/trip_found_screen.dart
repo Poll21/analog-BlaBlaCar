@@ -160,10 +160,11 @@ class TripFoundCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return SizedBox(
         width: 87,
         child: InkWell(
-          onTap: () {},
+          onTap: () => Navigator.of(context).pushNamed(Screens.tripDetalFound),
           child: Card(
               shape: const RoundedRectangleBorder(
                   side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
