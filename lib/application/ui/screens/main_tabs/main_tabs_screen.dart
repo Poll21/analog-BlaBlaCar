@@ -3,6 +3,7 @@ import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/generate/my_flutter_app_icons.dart';
 import 'package:untitled2/application/ui/screens/my_home_screen/my_home_screen.dart';
 import 'package:untitled2/application/ui/screens/profile_screen/profile_screen.dart';
+import 'package:untitled2/application/ui/screens/travel_requests_screens/travel_requests_screen/travel_requests_screen.dart';
 import 'package:untitled2/application/ui/screens/trip_search_screens/trip_search_screen/trip_search_screen.dart';
 
 class MainTabsScreen extends StatefulWidget {
@@ -15,7 +16,8 @@ class MainTabsScreen extends StatefulWidget {
 class _MainTabsScreenState extends State<MainTabsScreen> {
   int _selectedIndex = 1;//поменять согласно бизнес логике
   static const List<Widget> _widgetOptions = <Widget>[
-    TripSearchScreen(),
+    //TripSearchScreen(), //пользователь пассажир
+    TravelRequestsScreen(), //пользователь перевозчик
     MyHomeScreen(),
     ProfileScreen(),
   ];

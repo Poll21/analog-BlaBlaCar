@@ -17,7 +17,8 @@ abstract class Screens {
   static const tripNotFound = "/trip_search/tripNotFound ";
   static const tripFound = "/trip_search/tripNotFound/tripFound ";
   static const tripDetalFound = "/trip_search/tripNotFound/tripFound/tripDetalFound";
-
+  static const successRequest = "/trip_search/tripNotFound/tripFound/tripDetalFound/successRequest";
+  static const travelRequests = "/travelRequests";
 }
 
 class MainNavigation {
@@ -38,6 +39,8 @@ class MainNavigation {
     Screens.tripNotFound: (_) => _screenFactory.makeTripNotFound(),
     Screens.tripFound: (_) => _screenFactory.makeTripFound(),
     Screens.tripDetalFound: (_) => _screenFactory.makeTripDetalFound(),
+    Screens.successRequest: (_) => _screenFactory.makeSuccessRequest(),
+    Screens.travelRequests: (_) => _screenFactory.makeTravelRequests()
 
   };
   Route<dynamic>? onGenerateRoute(RouteSettings settings){

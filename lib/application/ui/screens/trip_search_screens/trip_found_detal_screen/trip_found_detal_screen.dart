@@ -1,11 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
-import 'package:untitled2/application/ui/screens/trip_search_screens/trip_found_screen/trip_found_screen.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
+import 'package:untitled2/application/ui/widget/transmittal_letter_widget.dart';
+import 'package:untitled2/application/ui/widget/trip_additional_form_widget.dart';
 import '../../../generate/my_flutter_app_icons.dart';
-
 
 class TripFoundDetalScreen extends StatelessWidget {
   const TripFoundDetalScreen({Key? key}) : super(key: key);
@@ -14,43 +16,56 @@ class TripFoundDetalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(
-          children: [
-            HeadScreenWidget(
-                title: 'СТРАНИЦА ПОЕЗДКИ',
-                press: () =>
-                    Navigator.of(context).pushNamed(Screens.tripFound)),
-            Expanded(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                  child: TripDetalFoundCard(
-                      package: 'Берет посылки',
-                      avatar: 'assets/images/photo.png',
-                      icon: UiIcons.noun,
-                      departure: 'Москва',
-                      deptime: '22:33',
-                      destination: 'Выкса',
-                      desttime: '03:15',
-                      data: 'Сегодня',
-                      tripTime: '22 ч. 38',
-                      price: 1000,
-                      brand: 'BMW',
-                      name: 'Иван',
-                      carModel: 'X5',
-                      review: 5,
-                      rating: 3.5,
-                      carNumber: 'Ф345ИА',
-                      phone: '+7 126 345 78 90',
-                      carColor: 'blue',
-                      carphoto: 'assets/images/car.png',
-                    ),
-
-
-                 ),
+      children: [
+        HeadScreenWidget(
+            title: 'СТРАНИЦА ПОЕЗДКИ',
+            press: () => Navigator.of(context).pushNamed(Screens.tripFound)),
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+            child: TripDetalFoundCard(
+              package: 'Берет посылки',
+              avatar: 'assets/images/photo.png',
+              icon: UiIcons.noun,
+              departure: 'Москва',
+              deptime: '22:33',
+              destination: 'Выкса',
+              desttime: '03:15',
+              data: 'Сегодня',
+              tripTime: '22 ч. 38',
+              price: 1000,
+              brand: 'BMW',
+              name: 'Иван',
+              carModel: 'X5',
+              review: 5,
+              rating: 3.5,
+              carNumber: 'Ф345ИА',
+              phone: '+7 126 345 78 90',
+              carColor: 'blue',
+              carphoto: 'assets/images/car.png',
             ),
-            ProceedButton( text: 'ОТПРАВИТЬ ЗАПРОС', press: () {  },),
-          ],
-        )
-    );
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 25, right: 25, bottom: 40),
+          child: ProceedButton(
+            text: 'ОТПРАВИТЬ ЗАПРОС',
+            press: () {
+              showDialog(
+                  barrierColor: backGroundColor,
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                        elevation: 0,
+                        titlePadding: EdgeInsetsDirectional.zero,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(0))),
+                        title: TransmittalLetterWidget(),
+                      ));
+            },
+          ),
+        ),
+      ],
+    ));
   }
 }
 
@@ -67,7 +82,7 @@ class TripDetalFoundCard extends StatelessWidget {
       brand,
       carModel,
       carNumber,
-  phone,
+      phone,
       carphoto,
       carColor,
       avatar;
@@ -95,76 +110,84 @@ class TripDetalFoundCard extends StatelessWidget {
     required this.phone,
     required this.carphoto,
     required this.carColor,
-
-
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return
-         InkWell(
-          onTap: () => Navigator.of(context).pushNamed(Screens.tripDetalFound),
-          child: Card(
-              shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              color: backGroundColor,
-              shadowColor: textPassiveColor,
-              elevation: 1.5,
-              child: Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                child: Column(
-                  children: [
-                    TripInfoFoundWidget(
-                      desttime: desttime,
-                      deptime: deptime,
-                      data: data,
-                      departure: departure,
-                      package: package,
-                      destination: destination,
-                      price: price,
-                      tripTime: tripTime,
-                    ),
-                    const SizedBox(height: 20),
-                    CarrierProfileWidget(
-                      name: name,
-                      review: review,
-                      avatar: avatar,
-                      rating: rating,
-                      phone: phone,
-                    ),
-                    Text(
-                      'Гарантирую хорошую поездку на комфортабельном автомобиле.'
-                      ' Я отвечу и перезвоню',
-                      style: const TextStyle(
-                          color: textPassiveColor,
-                          fontSize: 14,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.w500),
-                    ),
-                    CarProfileFoundWidget(
-                      brand: brand,
-                      carNumber: carNumber,
-                      carColor: carColor,
-                      carModel: carModel,
-                      carphoto:  carphoto,
-                    ),
-                    TripAdditionalFormWid(),
-                  ],
+    return InkWell(
+      onTap: () => Navigator.of(context).pushNamed(Screens.tripDetalFound),
+      child: Card(
+          shape: const RoundedRectangleBorder(
+              side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          color: backGroundColor,
+          shadowColor: textPassiveColor,
+          elevation: 1.5,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            child: ListView(
+              children: [
+                TripInfoFoundWidget(
+                  desttime: desttime,
+                  deptime: deptime,
+                  data: data,
+                  departure: departure,
+                  package: package,
+                  destination: destination,
+                  price: price,
+                  tripTime: tripTime,
                 ),
-              )),
-        );
+                const SizedBox(height: 20),
+                CarrierProfileWidget(
+                  name: name,
+                  review: review,
+                  avatar: avatar,
+                  rating: rating,
+                  phone: phone,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    'Гарантирую хорошую поездку на комфортабельном автомобиле.'
+                    ' Я отвечу и перезвоню',
+                    style: const TextStyle(
+                        color: textPassiveColor,
+                        fontSize: 14,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: CarProfileFoundWidget(
+                    brand: brand,
+                    carNumber: carNumber,
+                    carColor: carColor,
+                    carModel: carModel,
+                    carphoto: carphoto,
+                  ),
+                ),
+                TripAdditionalNotFormWidget(
+                    tripAdditionalNot: tripAdditionalNot),
+              ],
+            ),
+          )),
+    );
   }
 }
 
 class TripInfoFoundWidget extends StatelessWidget {
-  final String departure, destination, data, deptime, desttime, tripTime,
+  final String departure,
+      destination,
+      data,
+      deptime,
+      desttime,
+      tripTime,
       package;
   final int price;
 
-
-  const TripInfoFoundWidget({Key? key,
+  const TripInfoFoundWidget({
+    Key? key,
     required this.departure,
     required this.destination,
     required this.data,
@@ -173,8 +196,7 @@ class TripInfoFoundWidget extends StatelessWidget {
     required this.price,
     required this.tripTime,
     required this.package,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -303,8 +325,6 @@ class TripInfoFoundWidget extends StatelessWidget {
                   fontFamily: 'Montserrat',
                   fontWeight: FontWeight.w500),
             ),
-
-
           ],
         ),
       ],
@@ -313,21 +333,18 @@ class TripInfoFoundWidget extends StatelessWidget {
 }
 
 class CarrierProfileWidget extends StatelessWidget {
-  final String
-      avatar,
-      name,
-      phone;
+  final String avatar, name, phone;
   final int review;
   final double rating;
 
-  const CarrierProfileWidget({
-    Key? key,
-    required this.avatar,
-    required this.name,
-    required this.review,
-    required this.rating,
-  required this.phone
-  }) : super(key: key);
+  const CarrierProfileWidget(
+      {Key? key,
+      required this.avatar,
+      required this.name,
+      required this.review,
+      required this.rating,
+      required this.phone})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -361,8 +378,7 @@ class CarrierProfileWidget extends StatelessWidget {
                   size: 15,
                 ),
                 Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 5),
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Text(
                     phone,
                     style: const TextStyle(
@@ -398,20 +414,16 @@ class CarrierProfileWidget extends StatelessWidget {
 }
 
 class CarProfileFoundWidget extends StatelessWidget {
-  final String
-      carphoto,
-      brand,
-      carModel,
-      carColor,
-      carNumber;
-  const CarProfileFoundWidget({
-    Key? key,
-    required this.brand,
-    required this.carModel,
-    required this.carNumber,
-    required this.carphoto,
-    required this.carColor
-  }) : super(key: key);
+  final String carphoto, brand, carModel, carColor, carNumber;
+
+  const CarProfileFoundWidget(
+      {Key? key,
+      required this.brand,
+      required this.carModel,
+      required this.carNumber,
+      required this.carphoto,
+      required this.carColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -422,7 +434,8 @@ class CarProfileFoundWidget extends StatelessWidget {
           radius: 20,
           backgroundColor: notSelectedPhoto,
           child: Image.asset(
-            carphoto, height: 40,
+            carphoto,
+            height: 40,
           ),
         ),
         const SizedBox(width: 8),
@@ -436,21 +449,20 @@ class CarProfileFoundWidget extends StatelessWidget {
                   size: 15,
                 ),
                 Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 5),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Text(
                     brand,
                     style: const TextStyle(
-                        color: textPassiveColor,
+                        color: textActiveColor,
                         fontSize: 14,
                         fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
                 Text(
                   carModel,
                   style: const TextStyle(
-                      color: textPassiveColor,
+                      color: textActiveColor,
                       fontSize: 14,
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.w500),
@@ -463,29 +475,35 @@ class CarProfileFoundWidget extends StatelessWidget {
                   Icons.format_color_fill,
                   size: 15,
                 ),
-                Text(
-                  carColor,
-                  style: const TextStyle(
-                      color: textPassiveColor,
-                      fontSize: 14,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w500),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Text(
+                    carColor,
+                    style: const TextStyle(
+                        color: textPassiveColor,
+                        fontSize: 14,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500),
+                  ),
                 ),
               ],
             ),
             Row(
               children: [
                 const Icon(
-                  UiIcons.number,
-                  size: 15,
+                  UiIcons.groupnumber,
+                  size: 10,
                 ),
-                Text(
-                  carNumber,
-                  style: const TextStyle(
-                      color: textPassiveColor,
-                      fontSize: 14,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w500),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Text(
+                    carNumber,
+                    style: const TextStyle(
+                        color: textPassiveColor,
+                        fontSize: 14,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500),
+                  ),
                 ),
               ],
             ),
@@ -495,174 +513,3 @@ class CarProfileFoundWidget extends StatelessWidget {
     );
   }
 }
-
-class TripAdditionalFormWid extends StatelessWidget {
-  const TripAdditionalFormWid({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
-            children: [
-              Icon(
-                UiIcons.pets_yes,
-                size: 20,
-              ),
-              Text(
-                'Можно с животными',
-                style: const TextStyle(
-                    color: textPassiveColor,
-                    fontSize: 14,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500),
-              ),
-
-            ]),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
-            children: [
-              Icon(
-                UiIcons.alcohol_yes,
-                size: 20,
-              ),
-              Text(
-                'Можно с животными',
-                style: const TextStyle(
-                    color: textPassiveColor,
-                    fontSize: 14,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500),
-              ),
-
-            ]),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
-            children: [
-              Icon(
-                UiIcons.smoke_yes,
-                size: 20,
-              ),
-              Text(
-                'Можно с животными',
-                style: const TextStyle(
-                    color: textPassiveColor,
-                    fontSize: 14,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500),
-              ),
-
-            ]),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
-            children: [
-              Icon(
-                UiIcons.baby,
-                size: 20,
-              ),
-              Text(
-                'Можно с животными',
-                style: const TextStyle(
-                    color: textPassiveColor,
-                    fontSize: 14,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500),
-              ),
-
-            ]),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
-            children: [
-              Icon(
-                UiIcons.food_yes,
-                size: 20,
-              ),
-              Text(
-                'Можно с животными',
-                style: const TextStyle(
-                    color: textPassiveColor,
-                    fontSize: 14,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500),
-              ),
-
-            ]),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
-            children: [
-              Icon(
-                UiIcons.smoke_yes,
-                size: 20,
-              ),
-              Text(
-                'Можно с животными',
-                style: const TextStyle(
-                    color: textPassiveColor,
-                    fontSize: 14,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500),
-              ),
-
-            ]),
-        const SizedBox(
-          height: 10,
-        ),
-      ],
-    );
-  }
-}
-// Row(
-//     mainAxisAlignment:
-//     MainAxisAlignment.spaceBetween,
-//     children: [
-//       Icon(
-//         UiIcons.baby,
-//         size: 20,
-//       ),
-//       Padding(
-//         padding: const EdgeInsets.symmetric(
-//             horizontal: 10),
-//         child: Icon(
-//           UiIcons.food_yes,
-//           size: 20,
-//         ),
-//       ),
-//       Icon(
-//         UiIcons.luggage_yes,
-//         size: 20,
-//       ),
-//     ]),
-// Padding(
-//   padding: const EdgeInsets.symmetric(
-//       horizontal: 10),
-//   child: Icon(
-//     UiIcons.alcohol_yes,
-//     size: 20,
-//   ),
-// ),
-// Icon(
-//   UiIcons.smoke_yes,
-//   size: 20,
-// ),
