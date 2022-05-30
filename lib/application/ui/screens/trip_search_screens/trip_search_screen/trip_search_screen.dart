@@ -36,12 +36,13 @@ class _TripSearchScreenState extends State<TripSearchScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text('Активные поиски', style: const TextStyle(
+                children: const [
+                  Text('Активные поиски', style: TextStyle(
                       color: textPassiveColor,
                       fontSize: 20,
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.w700),),
+                  //переделать в кнопку
                   Text('ЗАКРЫТЬ ВСЕ', style: const TextStyle(
                       color: errorColor,
                       fontSize: 14,
@@ -54,13 +55,13 @@ class _TripSearchScreenState extends State<TripSearchScreen> {
               ),
               Expanded(
                 child: ListView(
-                  children: [
-                    const TripeCard(
+                  children: const [
+                    TripeCard(
                       icon: UiIcons.noun,
                       departure: 'Москва',
                       destination: 'Выкса',
                       data: 'Сегодня',),
-                    const TripeCard(
+                    TripeCard(
                       icon: UiIcons.delivery,
                       departure: 'Барнаул',
                       destination: 'Новосибирск',
@@ -376,6 +377,7 @@ class TripeCard extends StatelessWidget {
               ],
             ),
           )
-        ));
+        )
+    );
   }
 }

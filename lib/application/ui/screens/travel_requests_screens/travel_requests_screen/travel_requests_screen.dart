@@ -6,6 +6,7 @@ import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/generate/my_flutter_app_icons.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
+import 'package:untitled2/application/ui/widget/proceed_button.dart';
 
 class TravelRequestsScreen extends StatelessWidget {
   const TravelRequestsScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class TravelRequestsScreen extends StatelessWidget {
       body: Column(
         children: [
           HeadScreenWidget(title: 'Заявки на поездку', press: () {}),
-         
+
 
         ],
       ),
@@ -63,14 +64,38 @@ final List<PassengerInformation> passengerInformation = [
     review: 5, rating: 5,
     allTrips: 0,)
 ];
-
 class PassengerInformationWidget extends StatelessWidget {
+  final List<PassengerInformation> passengerInformation;
+
+  const PassengerInformationWidget({
+    Key? key, required this.passengerInformation,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> passengerInformationlist = passengerInformation
+        .map((PassengerInformation passengerInformation)=>
+        CardPassengerInformationWidget(
+        icon: passengerInformationlist,
+          avatar: passengerInformationlist,
+          rating: passengerInformationlist,
+          allTrips: passengerInformationlist,
+          transmittalLetter: passengerInformationlist,
+    ))
+    .toString();
+    return passengerInformationlist;
+  }
+}
+
+
+
+class CardPassengerInformationWidget extends StatelessWidget {
   final IconData icon;
   final String name, transmittalLetter, phone, avatar;
   final int review,  allTrips;
   final double rating;
 
-  const PassengerInformationWidget({
+  const CardPassengerInformationWidget({
     Key? key,
     required this.icon,
     required this.name,
