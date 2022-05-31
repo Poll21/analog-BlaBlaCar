@@ -26,9 +26,9 @@ class _CarsProfileScreenState extends State<CarsProfileScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 50),
             child: ProceedButton(
-                text: 'ПОДТВЕРДИТЬ',
-                press:()=>
-                    Navigator.of(context).pushNamed(Screens.createTrip)),
+              text: 'ПОДТВЕРДИТЬ',
+              press:()=>Navigator.of(context).pushNamed(Screens.createTrip),
+              color: primaryColor,),
           ),
     ]));
   }

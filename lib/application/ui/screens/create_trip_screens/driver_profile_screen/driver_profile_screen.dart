@@ -52,17 +52,18 @@ class DriverProfileScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, top: 10,),
             child: ProceedButton(
-                text: '+  ДОБАВИТЬ АВТО',
-                press: () =>
-                    Navigator.of(context).pushNamed(Screens.carProfile)),
+              text: '+  ДОБАВИТЬ АВТО',
+              press: () => Navigator.of(context).pushNamed(Screens.carProfile),
+              color: primaryColor,),
           ),
           Expanded(child: Container()),
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 47),
             child: ProceedButton(
-                text: 'ПОДТВЕРДИТЬ',
-                press: () =>
-                    Navigator.of(context).pushNamed(Screens.driverAdditionalOptions)),
+              text: 'ПОДТВЕРДИТЬ',
+              press: () =>
+                  Navigator.of(context).pushNamed(Screens.driverAdditionalOptions),
+              color: primaryColor,),
           ),
         ],
       ),

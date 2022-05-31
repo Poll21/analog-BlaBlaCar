@@ -47,9 +47,9 @@ class _PaymentTripScreenState extends State<PaymentTripScreen> {
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 20, top: 10,
             ),
             child: ProceedButton(
-                text: 'ОПЛАТИТЬ',
-                press: () =>
-                    Navigator.of(context).pushNamed(Screens.paymentCompleted)),
+              text: 'ОПЛАТИТЬ',
+              press: () =>  Navigator.of(context).pushNamed(Screens.paymentCompleted),
+              color: primaryColor,),
           ),
           const Icon(Icons.error, color: errorColor, size: 20,),
           const Padding(

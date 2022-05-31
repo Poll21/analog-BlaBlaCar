@@ -59,7 +59,8 @@ class _TransmittalLetterWidgetState extends State<TransmittalLetterWidget> {
             )),
         const SizedBox(height: 16,),
         ProceedButton( text: 'ОТПРАВИТЬ ЗАПРОС',
-            press: () => Navigator.of(context).pushNamed(Screens.successRequest)),
+          press: () => Navigator.of(context).pushNamed(Screens.successRequest),
+          color: primaryColor,),
         const SizedBox(height: 16,),
       ],
     );

@@ -42,10 +42,9 @@ class BringingScreen extends StatelessWidget {
                     height: 1.5)),
             const SizedBox(height: 32),
             ProceedButton(
-                text: 'ПРОДОЛЖИТЬ',
-                press: () => {
-                      Navigator.of(context).pushNamed(Screens.registrationPhone)
-                    }),
+              text: 'ПРОДОЛЖИТЬ',
+              press: () => {Navigator.of(context).pushNamed(Screens.registrationPhone)},
+              color: primaryColor,),
           ],
         ),
       ),

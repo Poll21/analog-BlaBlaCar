@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
@@ -31,7 +30,8 @@ class SuccessRequestScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 24),
               child: ProceedButton(text: 'ПРОДОЛЖИТЬ',
-                press: () => Navigator.of(context).pushNamed(Screens.main),),
+                press: () => Navigator.of(context).pushNamed(Screens.main),
+                color: primaryColor,),
             ),
             Icon(Icons.error, color: errorColor, size: 20,),
             Padding(

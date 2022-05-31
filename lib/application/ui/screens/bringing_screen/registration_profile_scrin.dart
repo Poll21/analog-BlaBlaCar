@@ -123,9 +123,9 @@ class RegistrationProfileScreen extends StatelessWidget {
             ProceedButton(
                 text: 'ПОДТВЕРДИТЬ',
                 press: () => {
-                      Navigator.of(context)
-                          .pushNamed(Screens.registrationProfile)
-                    }),
+                      Navigator.of(context).pushNamed(Screens.registrationProfile)
+                    },
+              color: primaryColor,),
             const SizedBox(height: 10),
             Center(
               child: TextButton(

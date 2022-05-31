@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 
 class ProceedButton extends StatelessWidget {
+  final Color color;
   final String text;
   final Function() press;
   const ProceedButton({
     Key? key,
     required this.text,
-    required this.press
+    required this.press,
+    required this.color
   }) : super(key: key);
 
   @override
@@ -21,7 +23,7 @@ class ProceedButton extends StatelessWidget {
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               )),
-          backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
+          backgroundColor: MaterialStateProperty.all<Color>(color),
           elevation: MaterialStateProperty.all<double>(0),
         ),
         onPressed: press,

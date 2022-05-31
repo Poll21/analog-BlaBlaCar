@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
@@ -61,7 +59,7 @@ class TripFoundDetalScreen extends StatelessWidget {
                             borderRadius: BorderRadius.all(Radius.circular(0))),
                         title: TransmittalLetterWidget(),
                       ));
-            },
+            }, color: primaryColor,
           ),
         ),
       ],
@@ -255,7 +253,7 @@ class TripInfoFoundWidget extends StatelessWidget {
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 7,
                 ),
                 Image.asset(

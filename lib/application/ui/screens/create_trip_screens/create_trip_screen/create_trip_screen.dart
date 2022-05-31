@@ -21,9 +21,9 @@ class CreateTripScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 50),
             child: ProceedButton(
-                text: 'ПОДТВЕРДИТЬ',
-                press: () =>
-                    Navigator.of(context).pushNamed(Screens.driverProfile)),
+              text: 'ПОДТВЕРДИТЬ',
+              press: () => Navigator.of(context).pushNamed(Screens.driverProfile),
+              color: primaryColor,),
           ),
         ],
       ),

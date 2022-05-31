@@ -34,8 +34,9 @@ class TripNotFoundScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: ProceedButton(
-                text: 'НАЙТИ ПОЕЗДКУ',
-                press: () => Navigator.of(context).pushNamed(Screens.tripFound)),
+              text: 'НАЙТИ ПОЕЗДКУ',
+              press: () => Navigator.of(context).pushNamed(Screens.tripFound),
+              color: primaryColor,),
           ),
         ],
       ),

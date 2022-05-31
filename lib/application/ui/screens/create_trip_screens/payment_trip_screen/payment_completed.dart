@@ -36,9 +36,9 @@ class PaymentCompletedScreen extends StatelessWidget {
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 20, top: 10,
             ),
             child: ProceedButton(
-                text: 'ПРОДОЛЖИТЬ',
-                press: () =>
-                    Navigator.of(context).pushNamed(Screens.main)),
+              text: 'ПРОДОЛЖИТЬ',
+              press: () =>  Navigator.of(context).pushNamed(Screens.main),
+              color: primaryColor,),
           ),
 
         ],

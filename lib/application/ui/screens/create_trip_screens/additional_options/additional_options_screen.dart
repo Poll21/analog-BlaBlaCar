@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
@@ -50,8 +51,9 @@ class _AdditionalOptionsScreenState extends State<AdditionalOptionsScreen> {
           padding:
               const EdgeInsets.only(left: 25, right: 25, bottom: 53,),
           child: ProceedButton(
-              text: 'ПОДТВЕРДИТЬ',
-              press: () => Navigator.of(context).pushNamed(Screens.driverTripData)),
+            text: 'ПОДТВЕРДИТЬ',
+            press: () => Navigator.of(context).pushNamed(Screens.driverTripData),
+            color: primaryColor,),
         ),
       ]),
     );

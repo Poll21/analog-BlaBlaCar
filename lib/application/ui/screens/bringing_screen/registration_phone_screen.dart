@@ -99,7 +99,8 @@ class RegistrationPhoneScreen extends StatelessWidget {
               child: ProceedButton(
                   text: 'ОТПРАВИТЬ КОД',
                   press: () =>
-                      {Navigator.of(context).pushNamed(Screens.constcodSms)}),
+                      {Navigator.of(context).pushNamed(Screens.constcodSms)},
+                color: primaryColor,),
             ),
           ],
         ));

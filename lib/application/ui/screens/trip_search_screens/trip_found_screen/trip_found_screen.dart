@@ -455,7 +455,7 @@ class TripInfoWidget extends StatelessWidget {
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 7,
                 ),
                 Image.asset(

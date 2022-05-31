@@ -113,8 +113,9 @@ class _TripDataScreenState extends State<TripDataScreen> {
             top: 10,
           ),
           child: ProceedButton(
-              text: 'ПОДТВЕРДИТЬ',
-              press: () => Navigator.of(context).pushNamed(Screens.paymentTrip)),
+            text: 'ПОДТВЕРДИТЬ',
+            press: () => Navigator.of(context).pushNamed(Screens.paymentTrip),
+            color: primaryColor,),
         ),
       ]),
     );
