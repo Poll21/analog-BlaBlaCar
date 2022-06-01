@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
+import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/screens/travel_requests_screens/travel_requests_screen/travel_requests_screen.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
@@ -12,7 +14,11 @@ class TravelRequestDetailScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          HeadScreenWidget(title: 'Пассажир', press: () {}),          //текст зависит от типа запроса
+          HeadScreenWidget(
+              title: 'Пассажир',
+              press: () =>
+                  Navigator.of(context).pushNamed(Screens.travelRequests)),
+          //текст зависит от типа запроса
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -31,13 +37,17 @@ class TravelRequestDetailScreen extends StatelessWidget {
           const SizedBox(height: 24),
           ProceedButton(
             text: 'Подтвердить',
-            press: () {  },
-            color: primaryColor,),
+            press: () =>
+                Navigator.of(context).pushNamed(Screens.travelPassengerAccepted),
+            color: primaryColor,
+          ),
           const SizedBox(height: 24),
           ProceedButton(
             text: 'Отказать',
-            press: () {  },
-            color: errorColor,),
+            press: () => //при переходе должен отробатыватся отказ
+                Navigator.of(context).pushNamed(Screens.travelRequests),
+            color: errorColor,
+          ),
           const SizedBox(height: 80),
         ],
       ),
@@ -47,21 +57,25 @@ class TravelRequestDetailScreen extends StatelessWidget {
 
 class PassengerInformationDetailWidget extends StatelessWidget {
   final PassengerInformation icon,
-      name, transmittalLetter, phone, avatar,
-      review,  allTrips,
+      name,
+      transmittalLetter,
+      phone,
+      avatar,
+      review,
+      allTrips,
       rating;
 
-  const PassengerInformationDetailWidget({
-    Key? key,
-    required this.icon,
-    required this.name,
-    required this.transmittalLetter,
-    required this.phone,
-    required this.review,
-    required this.rating,
-    required this.avatar,
-    required this.allTrips
-  }) : super(key: key);
+  const PassengerInformationDetailWidget(
+      {Key? key,
+      required this.icon,
+      required this.name,
+      required this.transmittalLetter,
+      required this.phone,
+      required this.review,
+      required this.rating,
+      required this.avatar,
+      required this.allTrips})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +87,7 @@ class PassengerInformationDetailWidget extends StatelessWidget {
         shadowColor: textPassiveColor,
         elevation: 1.5,
         child: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: 16, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             child: Column(children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,23 +100,81 @@ class PassengerInformationDetailWidget extends StatelessWidget {
                     rating: rating.rating,
                     review: review.review,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Icon(icon.icon, color: primaryColor,size: 24,),
+                  const SizedBox(
+                    width: 5,
                   ),
+                  AllTrips(
+                    allTrips: allTrips.allTrips,
+                  )
                 ],
               ),
-              const SizedBox(height: 18,),
-              Text(transmittalLetter.transmittalLetter,
-                maxLines: 4,
-                overflow:TextOverflow.ellipsis,
+              const SizedBox(
+                height: 18,
+              ),
+              Text(
+                'Сопроводительное письмо:',
                 style: const TextStyle(
                     color: textActiveColor,
                     fontSize: 14,
                     fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500),)
+                    fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                 decoration: BoxDecoration(
+                     color:backgroundColorTextField,
+                   borderRadius: BorderRadius.all(Radius.circular(4))
+                 ),
+                  child: Text(
+                    
+                    transmittalLetter.transmittalLetter,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        color: textActiveColor,
+                        fontSize: 14,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              )
+            ])));
+  }
+}
 
-            ])
-        ));
+class AllTrips extends StatelessWidget {
+  final int allTrips;
+
+  const AllTrips({Key? key, required this.allTrips}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const Text(
+            'Всего поездок:',
+            style: TextStyle(
+                color: errorColor,
+                fontSize: 12,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w600),
+          ),
+          Text(
+            '$allTrips',
+            style: const TextStyle(
+                color: errorColor,
+                fontSize: 14,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w600),
+          ),
+        ],
+      ),
+    );
   }
 }

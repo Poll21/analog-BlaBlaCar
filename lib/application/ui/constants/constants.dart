@@ -15,6 +15,7 @@ const Color textActiveColor = Color(0xFF656F77);
 const Color deliveryColor = Color(0xFFC2C2C2);
 const Color notSelectedPhoto = Color(0xFFC8E6C9);
 const Color borderTextField = Color(0xFFACB8C2);
+const Color backgroundColorTextField = Color(0x72CACFD4);
 const Color notColor = Color(0x5ffffff);
 
 
