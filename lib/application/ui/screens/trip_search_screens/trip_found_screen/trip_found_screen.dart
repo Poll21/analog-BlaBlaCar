@@ -182,7 +182,6 @@ class TripFoundCard extends StatelessWidget {
                       deptime: deptime,
                       data: data,
                       departure: departure,
-                      vacancies: vacancies,
                       destination: destination,
                       price: price,
                       tripTime: tripTime,
@@ -382,7 +381,7 @@ class TripInfoModel {
 
 class TripInfoWidget extends StatelessWidget {
   final String departure, destination, data, deptime, desttime, tripTime ;
-  final int price, vacancies;
+  final int price;
 
 
   const TripInfoWidget(
@@ -393,7 +392,6 @@ class TripInfoWidget extends StatelessWidget {
       required this.deptime,
       required this.desttime,
       required this.price,
-      required this.vacancies,
       required this.tripTime,
       })
       : super(key: key);
@@ -517,30 +515,42 @@ class TripInfoWidget extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  '$vacancies',
-                  style: const TextStyle(
-                      color: textPassiveColor,
-                      fontSize: 12,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  ' места',
-                  style: const TextStyle(
-                      color: textPassiveColor,
-                      fontSize: 12,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
+            Vacancies(vacancies: 3),
           ],
         ),
       ],
     );
   }
 }
+
+// виджет отображающий с
+class Vacancies extends StatelessWidget {
+  final int vacancies;
+  const Vacancies({Key? key, required this.vacancies}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Text(
+          '$vacancies',
+          style: const TextStyle(
+              color: textPassiveColor,
+              fontSize: 12,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w500),
+        ),
+        const Text(
+          ' места',
+          style: TextStyle(
+              color: textPassiveColor,
+              fontSize: 12,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w500),
+        ),
+      ],
+    );
+  }
+}
+
