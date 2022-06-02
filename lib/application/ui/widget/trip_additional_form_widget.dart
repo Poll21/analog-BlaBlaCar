@@ -1,45 +1,69 @@
 //список дополнительных опций поезки, на "спранице поезки"
 
 import 'package:flutter/material.dart';
+import 'package:untitled2/application/data/data_trip/data_trip.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/generate/my_flutter_app_icons.dart';
 
 class TripAdditionalFormWidget extends StatelessWidget {
-  final List<AdditionalForm> tripAdditional;
-
-  const TripAdditionalFormWidget({Key? key, required this.tripAdditional})
-      : super(key: key);
+  final DataTrip tripList;
+  const TripAdditionalFormWidget({
+    Key? key,required this.tripList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> additionalItem = tripAdditional
-        .map((AdditionalForm tripAdditional) => TripAdditionalForm(
-              iconAdd: tripAdditional,
-              descriptionAdd: tripAdditional,
-            ))
-        .toList();
+    List<Widget> additionalItem =[];
+    if (tripList.pats == true) {
+      additionalItem.add(TripAdditionalForm(
+          iconAdd: UiIcons.pets_yes,
+          descriptionAdd: 'Можно с животными'));
+    }else{
+      additionalItem.add(TripAdditionalNotForm(
+          iconAdd: UiIcons.pets_yes,
+          descriptionAdd: 'Нельзя с животными'));
+    }
+    if (tripList.babyChair == true) {
+      additionalItem.add(TripAdditionalForm(
+          iconAdd: UiIcons.baby,
+          descriptionAdd: 'Есть детское кресло'));
+    }else{
+      additionalItem.add(TripAdditionalNotForm(
+          iconAdd: UiIcons.baby,
+          descriptionAdd: 'Нет детского кресла'));
+    }
+    if (tripList.pats == true) {
+      additionalItem.add(TripAdditionalForm(
+          iconAdd: UiIcons.luggage_yes,
+          descriptionAdd: 'Можно с багажом'));
+    }else{
+      additionalItem.add(TripAdditionalNotForm(
+          iconAdd: UiIcons.luggage_yes,
+          descriptionAdd: 'Нельзя с багажом'));
+    }
+    if (tripList.pats == true) {
+      additionalItem.add(TripAdditionalForm(iconAdd: UiIcons.pets_yes,
+          descriptionAdd: 'Можно с животными'));
+    }else{
+      additionalItem.add(TripAdditionalNotForm(iconAdd: UiIcons.pets_yes,
+          descriptionAdd: 'Нельзя с животными'));
+    }
+    if (tripList.pats == true) {
+      additionalItem.add(TripAdditionalForm(iconAdd: UiIcons.pets_yes,
+          descriptionAdd: 'Можно с животными'));
+    }else{
+      additionalItem.add(TripAdditionalNotForm(iconAdd: UiIcons.pets_yes,
+          descriptionAdd: 'Нельзя с животными'));
+    }
+    if (tripList.pats == true) {
+      additionalItem.add(TripAdditionalForm(iconAdd: UiIcons.pets_yes,
+          descriptionAdd: 'Можно с животными'));
+    }else{
+      additionalItem.add(TripAdditionalNotForm(iconAdd: UiIcons.pets_yes,
+          descriptionAdd: 'Нельзя с животными'));
+    }
+
     return Column(
       children: additionalItem,
-    );
-  }
-}
-
-class TripAdditionalNotFormWidget extends StatelessWidget {
-  final List<AdditionalForm> tripAdditionalNot;
-
-  const TripAdditionalNotFormWidget({Key? key, required this.tripAdditionalNot})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final List<Widget> additionalNotItem = tripAdditionalNot
-        .map((AdditionalForm tripAdditionalNot) => TripAdditionalNotForm(
-              iconAdd: tripAdditionalNot,
-              descriptionAdd: tripAdditionalNot,
-            ))
-        .toList();
-    return Column(
-      children: additionalNotItem,
     );
   }
 }
@@ -72,8 +96,8 @@ List<AdditionalForm> tripAdditionalNot = [
 ];
 
 class TripAdditionalForm extends StatelessWidget {
-  final AdditionalForm iconAdd, //иконва опции
-      descriptionAdd; //описание опции
+  final IconData iconAdd; //иконва опции
+  final String descriptionAdd; //описание опции
 
   const TripAdditionalForm(
       {Key? key, required this.iconAdd, required this.descriptionAdd})
@@ -85,12 +109,12 @@ class TripAdditionalForm extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Icon(
-          iconAdd.iconAdd,
+          iconAdd,
           size: 20,
         ),
         const SizedBox(width: 5),
         Text(
-          descriptionAdd.descriptionAdd,
+          descriptionAdd,
           style: const TextStyle(
               color: textPassiveColor,
               fontSize: 14,
@@ -103,8 +127,8 @@ class TripAdditionalForm extends StatelessWidget {
 }
 
 class TripAdditionalNotForm extends StatelessWidget {
-  final AdditionalForm iconAdd, //иконва опции
-      descriptionAdd; //описание опции
+  final IconData iconAdd; //иконва опции
+  final String descriptionAdd; //описание опции
   const TripAdditionalNotForm(
       {Key? key, required this.iconAdd, required this.descriptionAdd})
       : super(key: key);
@@ -118,16 +142,16 @@ class TripAdditionalNotForm extends StatelessWidget {
           alignment: AlignmentDirectional.center,
           children: [
             Icon(
-              iconAdd.iconAdd,
+              iconAdd,
               size: 20,
               color: textPassiveColor,
             ),
-            Icon(Icons.block_sharp, size: 26,color: errorColor,)
+            const Icon(Icons.block_sharp, size: 26,color: errorColor,)
           ],
         ),
         const SizedBox(width: 5),
         Text(
-          descriptionAdd.descriptionAdd,
+          descriptionAdd,
           style: const TextStyle(
               color: errorColor,
               fontSize: 14,

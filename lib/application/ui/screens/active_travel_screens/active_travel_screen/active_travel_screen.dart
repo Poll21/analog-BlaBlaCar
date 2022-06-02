@@ -11,9 +11,10 @@ class ActiveTravelScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: ActiveTravelWidget()
-        //ActiveTravelNotWidget(),
-        );
+    return Scaffold(
+        body: ActiveTravelWidget()
+      //ActiveTravelNotWidget(),
+    );
   }
 }
 
@@ -38,90 +39,102 @@ class ActiveTravelWidget extends StatelessWidget {
               softWrap: true,
             ),
           ),
-          CardActiveTravelWidget(
-            departure: 'Москва',
-            deptime: '22:33',
-            destination: 'Выкса',
-            desttime: '03:15',
-            data: 'Сегодня',
-            tripTime: '22 ч. 38',
-            price: 1000, applicationsTrip: 3,
-            applicationspackage: 5,
-          )
+          CardActiveTravelWidget(),
         ],
       ),
     );
   }
 }
-//карта поезки
+
+//карта общей информации о поезке
 class CardActiveTravelWidget extends StatelessWidget {
- final String
-      departure, //пункт отправления
-      destination, //пункт назначения
-      data,      //дата пщуздки
-      deptime,  //время отправления
-      desttime, //время прбытия
-      tripTime; //время в пути
-
-  final int price,        //цена поезки
-      applicationsTrip,   // количество заявок на поезку
-      applicationspackage;// количество заявок на посылку
-
-  const CardActiveTravelWidget({
-    Key? key,
-    required this.departure,
-    required this.destination,
-    required this.data,
-    required this.deptime,
-    required this.desttime,
-    required this.tripTime,
-    required this.price,
-    required this.applicationsTrip,
-    required this.applicationspackage,
-    }) : super(key: key);
+  const CardActiveTravelWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
 
-        child: InkWell(
+      child: InkWell(
           onTap: () => Navigator.of(context).pushNamed(Screens.tripDetalFound),
           child: Card(
-              shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              color: backGroundColor,
-              shadowColor: textPassiveColor,
-              elevation: 1.5,
-              child: Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                child: Column(
+            shape: const RoundedRectangleBorder(
+                side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            color: backGroundColor,
+            shadowColor: textPassiveColor,
+            elevation: 1.5,
+            child: Padding(
+              padding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              child:
+              Row(children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TripInfoWidget(tripList: listDataTrip[0],
-
-                    ),
-                    const SizedBox(height: 20),
-
-                  ],
+                   TripDataWidget(tripList: listDataTrip[0]),
+                    SizedBox(height: 16,),
+                   TripTimeWidget(tripList: listDataTrip[0]),
+                  ]
                 ),
-              )),
-        ));
+                Column(
+                  children: [
+                    TripPriceWidget(tripList: listDataTrip[0])]),
+
+
+
+              ],),
+
+            ),
+          )),
+    );
   }
 }
 
-class TripInfoWidget extends StatelessWidget {
+//отображает дополнительные опции поездки
+class TripAdditionalWidget extends StatelessWidget {
+  final DataTrip tripList;
+  const TripAdditionalWidget({Key? key, required this.tripList}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+
+//виджет отображающий дату поездки
+class TripDataWidget extends StatelessWidget {
+  final DataTrip tripList;
+  const TripDataWidget({Key? key, required this.tripList}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        const Icon(UiIcons.number, size: 15, color: textActiveColor,),
+        const SizedBox(width: 8,),
+        Text(
+          tripList.dateTrip,
+          style: const TextStyle(
+            color: textPassiveColor,
+            fontSize: 14,
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.w600),)
+      ],
+    );
+  }
+}
+
+// виджет отображающий время отправления из пункта отправления
+// и время прибытия в пункт назначения
+class TripTimeWidget extends StatelessWidget {
   final DataTrip tripList;
 
-  const TripInfoWidget(
-      {Key? key, required this.tripList,
-
-      })
+  const TripTimeWidget({Key? key, required this.tripList})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var _priceTrip = tripList.priceTrip;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -137,7 +150,7 @@ class TripInfoWidget extends StatelessWidget {
                 SizedBox(
                   width: 40,
                   child: Text(
-                    tripList.departure,
+                    tripList.destTime,
                     style: const TextStyle(
                         color: textPassiveColor,
                         fontSize: 14,
@@ -166,11 +179,11 @@ class TripInfoWidget extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 45,
                   child: Text(
                     '4 ч.',
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: textPassiveColor,
                         fontSize: 12,
                         fontFamily: 'Montserrat',
@@ -219,31 +232,44 @@ class TripInfoWidget extends StatelessWidget {
             )
           ],
         ),
-        Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  '$_priceTrip',
-                  style: const TextStyle(
-                      color: textPassiveColor,
-                      fontSize: 20,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w600),
-                ),
-                const Icon(
-                  UiIcons.ruble_fill0,
-                  size: 20,
-                  color: textPassiveColor,
-                ),
-              ],
-            ),
+      ],
+    );
+  }
+}
 
+//виджет отображающий стоимость поездки
+class TripPriceWidget extends StatelessWidget {
+  final DataTrip tripList;
+
+  const TripPriceWidget({Key? key, required this.tripList})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final _priceTrip = tripList.priceTrip;
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              '$_priceTrip',
+              style: const TextStyle(
+                  color: textPassiveColor,
+                  fontSize: 20,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w600),
+            ),
+            const Icon(
+              UiIcons.ruble_fill0,
+              size: 20,
+              color: textPassiveColor,
+            ),
           ],
         ),
       ],
     );
   }
 }
+
 

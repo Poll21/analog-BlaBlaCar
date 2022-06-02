@@ -6,6 +6,7 @@ import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import 'package:untitled2/application/ui/widget/transmittal_letter_widget.dart';
 import 'package:untitled2/application/ui/widget/trip_additional_form_widget.dart';
 import '../../../generate/my_flutter_app_icons.dart';
+import 'package:untitled2/application/data/data_trip/data_trip.dart';
 
 class TripFoundDetalScreen extends StatelessWidget {
   const TripFoundDetalScreen({Key? key}) : super(key: key);
@@ -165,8 +166,7 @@ class TripDetalFoundCard extends StatelessWidget {
                     carphoto: carphoto,
                   ),
                 ),
-                TripAdditionalNotFormWidget(
-                    tripAdditionalNot: tripAdditionalNot),
+                TripAdditionalFormWidget(tripList: listDataTrip[0],),
               ],
             ),
           )),
