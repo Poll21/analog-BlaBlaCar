@@ -169,7 +169,7 @@ class _VacanciesWidgetState extends State<VacanciesWidget> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 22),
           child: Text('$_counter',
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.w700,
                 fontSize: 35,

@@ -523,7 +523,7 @@ class TripInfoWidget extends StatelessWidget {
   }
 }
 
-// виджет отображающий с
+// виджет отображающий свободные места
 class Vacancies extends StatelessWidget {
   final int vacancies;
   const Vacancies({Key? key, required this.vacancies}) : super(key: key);

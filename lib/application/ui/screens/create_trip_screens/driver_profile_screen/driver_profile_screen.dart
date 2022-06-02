@@ -136,7 +136,6 @@ class CarCardWidget extends StatelessWidget {
                   ),
                 ),
               )
-
             ],
           ),
         ),

@@ -111,9 +111,9 @@ class PassengerInformationDetailWidget extends StatelessWidget {
               const SizedBox(
                 height: 18,
               ),
-              Text(
+              const Text(
                 'Сопроводительное письмо:',
-                style: const TextStyle(
+                style: TextStyle(
                     color: textActiveColor,
                     fontSize: 14,
                     fontFamily: 'Montserrat',
@@ -124,13 +124,12 @@ class PassengerInformationDetailWidget extends StatelessWidget {
               ),
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.all(12),
-                 decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(12),
+                 decoration: const BoxDecoration(
                      color:backgroundColorTextField,
                    borderRadius: BorderRadius.all(Radius.circular(4))
                  ),
                   child: Text(
-                    
                     transmittalLetter.transmittalLetter,
                     maxLines: 4,
                     overflow: TextOverflow.ellipsis,
