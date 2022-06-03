@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/application/data/data_trip/data_trip.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/generate/my_flutter_app_icons.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
+import 'package:untitled2/application/ux/factory/trip_additional_factory/trip_additional_factory.dart';
 
 class TripFoundScreen extends StatelessWidget {
   const TripFoundScreen({Key? key}) : super(key: key);
@@ -55,7 +57,6 @@ class TripFoundScreen extends StatelessWidget {
                 rating: 3.5,
                 carNumber: 'Ф345ИА',
               ),
-
             ]),
           )),
         ],
@@ -66,8 +67,7 @@ class TripFoundScreen extends StatelessWidget {
 
 class TripFoundCardModel {
   final IconData icon;
-  final String
-      avatar,
+  final String avatar,
       departure,
       destination,
       data,
@@ -160,7 +160,6 @@ class TripFoundCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SizedBox(
         width: 87,
         child: InkWell(
@@ -204,24 +203,20 @@ class TripFoundCard extends StatelessWidget {
 }
 
 class CarProfileWidget extends StatelessWidget {
-  final String
-      avatar,
-      name,
-      brand,
-      carModel,
-      carNumber;
+  final String avatar, name, brand, carModel, carNumber;
   final int review;
   final double rating;
-  const CarProfileWidget({
-    Key? key,
-    required this.avatar,
-    required this.name,
-    required this.brand,
-    required this.carModel,
-    required this.carNumber,
-    required this.review,
-    required this.rating
-  }) : super(key: key);
+
+  const CarProfileWidget(
+      {Key? key,
+      required this.avatar,
+      required this.name,
+      required this.brand,
+      required this.carModel,
+      required this.carNumber,
+      required this.review,
+      required this.rating})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -255,8 +250,7 @@ class CarProfileWidget extends StatelessWidget {
                   size: 15,
                 ),
                 Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 5),
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Text(
                     brand,
                     style: const TextStyle(
@@ -297,70 +291,17 @@ class CarProfileWidget extends StatelessWidget {
         Expanded(
           child: Container(),
         ),
-        AdditionalOptionsWidget(),
+        SizedBox(
+          width: 70,
+          height: 50,
+          child: Expanded(
+            child: TripAdditionalShortFactory(tripList: listDataTrip[1]),
+          ),
+        )
       ],
     );
   }
 }
-
-
-class AdditionalOptionsWidget extends StatelessWidget {
-  const AdditionalOptionsWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
-            children: [
-              Icon(
-                UiIcons.pets_yes,
-                size: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 10),
-                child: Icon(
-                  UiIcons.alcohol_yes,
-                  size: 20,
-                ),
-              ),
-              Icon(
-                UiIcons.smoke_yes,
-                size: 20,
-              ),
-            ]),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceBetween,
-            children: [
-              Icon(
-                UiIcons.baby,
-                size: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 10),
-                child: Icon(
-                  UiIcons.food_yes,
-                  size: 20,
-                ),
-              ),
-              Icon(
-                UiIcons.luggage_yes,
-                size: 20,
-              ),
-            ])
-      ],
-    );
-  }
-}
-
 
 class TripInfoModel {
   final String departure, destination, data, deptime, desttime;
@@ -380,21 +321,20 @@ class TripInfoModel {
 }
 
 class TripInfoWidget extends StatelessWidget {
-  final String departure, destination, data, deptime, desttime, tripTime ;
+  final String departure, destination, data, deptime, desttime, tripTime;
+
   final int price;
 
-
-  const TripInfoWidget(
-      {Key? key,
-      required this.departure,
-      required this.destination,
-      required this.data,
-      required this.deptime,
-      required this.desttime,
-      required this.price,
-      required this.tripTime,
-      })
-      : super(key: key);
+  const TripInfoWidget({
+    Key? key,
+    required this.departure,
+    required this.destination,
+    required this.data,
+    required this.deptime,
+    required this.desttime,
+    required this.price,
+    required this.tripTime,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -526,6 +466,7 @@ class TripInfoWidget extends StatelessWidget {
 // виджет отображающий свободные места
 class Vacancies extends StatelessWidget {
   final int vacancies;
+
   const Vacancies({Key? key, required this.vacancies}) : super(key: key);
 
   @override
@@ -553,4 +494,3 @@ class Vacancies extends StatelessWidget {
     );
   }
 }
-

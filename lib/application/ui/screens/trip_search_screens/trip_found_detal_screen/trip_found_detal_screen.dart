@@ -5,6 +5,7 @@ import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import 'package:untitled2/application/ui/widget/transmittal_letter_widget.dart';
 import 'package:untitled2/application/ui/widget/trip_additional_form_widget.dart';
+import 'package:untitled2/application/ux/factory/trip_additional_factory/trip_additional_factory.dart';
 import '../../../generate/my_flutter_app_icons.dart';
 import 'package:untitled2/application/data/data_trip/data_trip.dart';
 
@@ -166,7 +167,7 @@ class TripDetalFoundCard extends StatelessWidget {
                     carphoto: carphoto,
                   ),
                 ),
-                TripAdditionalFormWidget(tripList: listDataTrip[0],),
+                TripAdditionalFactory(tripList: listDataTrip[2],),
               ],
             ),
           )),

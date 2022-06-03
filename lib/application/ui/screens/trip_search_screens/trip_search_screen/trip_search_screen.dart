@@ -347,7 +347,6 @@ class TripeCard extends StatelessWidget {
                       padding: EdgeInsets.only(right: 8.0),
                       child: Icon(UiIcons.geolocation, size: 16,color: iconDepColor,),
                     ),
-
                     Text(departure , style: const TextStyle(
                         color: textPassiveColor,
                         fontSize: 14,
@@ -371,7 +370,6 @@ class TripeCard extends StatelessWidget {
                       padding: EdgeInsets.only(left: 8.0),
                       child: Icon(UiIcons.geolocation, size: 16, color: iconDestColor,),
                     ),
-
                   ],
                 )
               ],
