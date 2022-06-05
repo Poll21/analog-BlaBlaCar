@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 const Color primaryColor = Color(0xFF4BA35B);
 const Color backGroundColor = Colors.white;
 const Color errorColor = Color(0xFFF47458);
+const Color backGroundAvatarColor = Color(0x304BA35B);
 
 const Color selectedColor = Color(0xFFFF9A3D);
 const Color favouriteColor = Color(0xFFFEC124);

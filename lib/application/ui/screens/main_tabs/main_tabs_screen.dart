@@ -15,7 +15,7 @@ class MainTabsScreen extends StatefulWidget {
 }
 
 class _MainTabsScreenState extends State<MainTabsScreen> {
-  int _selectedIndex = 1;//поменять согласно бизнес логике
+  int _selectedIndex = 0;//поменять согласно бизнес логике
   static const List<Widget> _widgetOptions = <Widget>[
     ActiveTravelScreen(),
     MyHomeScreen(),

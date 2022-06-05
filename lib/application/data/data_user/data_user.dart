@@ -2,13 +2,15 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled2/application/data/data_car_user/data_car_user.dart';
 
 class DataUser{
   final String nameUser;
   final Image avatarUser;
   final int idUser, reviewUser, phoneUser, allTripsUser;
   final double ratingUser;
-  const DataUser({
+  final DataCar? userCar;
+  const DataUser( {
     required this.idUser,       //id пользователя
     required this.nameUser,     //имя пользователя
     required this.avatarUser,   //фото пользователя
@@ -16,6 +18,7 @@ class DataUser{
     required this.reviewUser,   //колличество отзывов
     required this.ratingUser,   //рейтинг
     required this.allTripsUser, //число поездок
+    this.userCar,               //автомобиль пользователя (не обязательный параметор)
 });
 }
 
@@ -24,23 +27,64 @@ final List<DataUser> listDataUser = [
     idUser: 1,
     avatarUser: Image.asset('assets/images/photo.png'),
     nameUser: 'Анна',
-    phoneUser: 9236784579,
+    phoneUser: 9236784501,
     reviewUser: 5,
     ratingUser: 4.5,
-    allTripsUser: 5, ),
+    allTripsUser: 5,
+    userCar: listDataCar[1], ),
   DataUser(
     idUser: 2,
-    avatarUser: Image.asset('assets/images/photo.png'),
+    avatarUser: Image.asset('assets/images/user_3.png'),
     nameUser: 'Фудор',
-    phoneUser: 9366784555,
+    phoneUser: 9366784502,
     reviewUser: 4,
     ratingUser: 3.5,
     allTripsUser: 6,),
   DataUser(
     idUser: 3,
-    avatarUser: Image.asset('assets/images/photo.png'),
+    avatarUser: Image.asset('assets/images/user_2.png'),
     nameUser: 'Инна',
-    phoneUser: 9366784533,
+    phoneUser: 9366784503,
+    reviewUser: 2,
+    ratingUser: 3.6,
+    allTripsUser: 3,),
+  DataUser(
+    idUser: 4,
+    avatarUser: Image.asset('assets/images/user_3.png'),
+    nameUser: 'Петя',
+    phoneUser: 9366784504,
+    reviewUser: 2,
+    ratingUser: 3.6,
+    allTripsUser: 3,),
+  DataUser(
+    idUser: 5,
+    avatarUser: Image.asset('assets/images/user_4.png'),
+    nameUser: 'Соня',
+    phoneUser: 9366784505,
+    reviewUser: 2,
+    ratingUser: 3.6,
+    allTripsUser: 3,),
+  DataUser(
+    idUser: 6,
+    avatarUser: Image.asset('assets/images/user_3.png'),
+    nameUser: 'Игорь',
+    phoneUser: 9366784506,
+    reviewUser: 2,
+    ratingUser: 3.6,
+    allTripsUser: 3,),
+  DataUser(
+    idUser: 7,
+    avatarUser: Image.asset('assets/images/user_2.png'),
+    nameUser: 'Елена',
+    phoneUser: 9366784507,
+    reviewUser: 2,
+    ratingUser: 3.6,
+    allTripsUser: 3,),
+  DataUser(
+    idUser: 8,
+    avatarUser: Image.asset('assets/images/user_3.png'),
+    nameUser: 'Николай',
+    phoneUser: 9366784508,
     reviewUser: 2,
     ratingUser: 3.6,
     allTripsUser: 3,),

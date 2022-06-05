@@ -6,9 +6,10 @@ import 'package:flutter/material.dart';
 class DataCar{
   final String brandCar, modelCar, numberCar, colorCar;
   final Image photoCar;
-  final int idUser, drivingExperienceUser;
+  final int idUser, idCar, drivingExperienceUser;
 
-  DataCar( {
+  DataCar(  {
+    required this.idCar,                  //id автомобиля
     required this.idUser,                 //id водителя
     required this.drivingExperienceUser,  //стаж вождения
     required this.brandCar,               //бренд авто
@@ -21,16 +22,18 @@ class DataCar{
 
 final List<DataCar> listDataCar =[
   DataCar(
-      idUser: 2,
+      idCar: 1,
+      idUser: 1,
       drivingExperienceUser: 5,
       brandCar: 'BMW',
       modelCar: 'X5',
       numberCar: 'ВА555Л',
       colorCar: 'Черный',
-      photoCar: Image.asset('assets/images/car.png')
+      photoCar: Image.asset('assets/images/car.png'),
   ),
   DataCar(
-      idUser: 4,
+      idCar: 2,
+      idUser: 1,
       drivingExperienceUser: 3,
       brandCar: 'Mazda',
       modelCar: '3',

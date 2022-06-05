@@ -331,6 +331,7 @@ class TripInfoFoundWidget extends StatelessWidget {
   }
 }
 
+//заменить!!!!!
 class CarrierProfileWidget extends StatelessWidget {
   final String avatar, name, phone;
   final int review;

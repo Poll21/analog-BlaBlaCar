@@ -5,10 +5,14 @@ import 'package:flutter/material.dart';
 class DataTrip{
   final String departure, destination,
       destTime, depTime, dateTrip, commentTrip;
-  final int idUser, idTrip, priceTrip, pricePak;
-  final bool package,pats, baggage, alcohol, food, babyChair, smoking;
+  final int idUser, idTrip, priceTrip, pricePak, vacancies ;
+  final bool package, pats, baggage, alcohol, food, babyChair, smoking;
+  final List <int> passengers;
+  final List <int> travelRequests;
+  final List <int> packageId;
 
-  DataTrip({
+
+  DataTrip( {
     required this.idTrip,       //id поездки
     required this.idUser,       //id водителя
     required this.departure,    //пункт отправления
@@ -18,6 +22,7 @@ class DataTrip{
     required this.dateTrip,     //дата поездки
     required this.priceTrip,    //цена поездки
     required this.pricePak,     //цена перевозки посылки
+    required this.vacancies,    //количество мест
     required this.commentTrip,  //комментарий водителя
 
     required this.package,      //берет посылки
@@ -27,8 +32,13 @@ class DataTrip{
     required this.food,         //еда
     required this.babyChair,    //детское кресло
     required this.smoking,      //курение
+
+    required this.packageId,      //список ID отправителей посылки
+    required this.passengers,     //список ID пасожиров принятых заявок
+    required this.travelRequests, //ID пасожиров подавших заявку
   });
 }
+
 final List<DataTrip> listDataTrip =[
   DataTrip(
     idUser: 2,
@@ -40,15 +50,21 @@ final List<DataTrip> listDataTrip =[
     dateTrip: 'Сегодня',
     priceTrip: 1000,
     pricePak: 200,
+    vacancies: 3,
     commentTrip: 'Гарантирую хорошую поездку на комфортабельном автомобиле.',
 
-    package: true,
+    package: false,
     smoking: false,
     food: true,
     pats: false,
     baggage: true,
     babyChair: false,
     alcohol: false,
+
+    passengers: [4,3,2],
+    travelRequests: [7,6,5],
+    packageId: [],
+
   ),
   DataTrip(
     idUser: 2,
@@ -59,6 +75,7 @@ final List<DataTrip> listDataTrip =[
     destTime: '03:15',
     dateTrip: 'Сегодня',
     priceTrip: 1000,
+    vacancies: 3,
     pricePak: 200,
     commentTrip: 'Гарантирую хорошую поездку на комфортабельном автомобиле.',
 
@@ -69,6 +86,10 @@ final List<DataTrip> listDataTrip =[
     baggage: true,
     babyChair: false,
     alcohol: false,
+
+    passengers: [],
+    travelRequests: [],
+    packageId: [1,2],
   ),
   DataTrip(
     idUser: 3,
@@ -80,6 +101,7 @@ final List<DataTrip> listDataTrip =[
     dateTrip: '22.07.22',
     priceTrip: 800,
     pricePak: 200,
+    vacancies: 5,
     commentTrip: 'Гарантирую хорошую поездку на комфортабельном автомобиле. '
         'Я отвечу и перезвоню',
 
@@ -90,5 +112,9 @@ final List<DataTrip> listDataTrip =[
     baggage: true,
     babyChair: true,
     alcohol:true,
+
+    passengers: [4,3,2,1],
+    travelRequests: [7,6,5],
+    packageId: [2,3],
   ),
 ];
