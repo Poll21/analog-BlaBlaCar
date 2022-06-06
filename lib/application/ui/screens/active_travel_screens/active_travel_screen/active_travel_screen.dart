@@ -26,6 +26,7 @@ class ActiveTravelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
       child: Column(
@@ -49,6 +50,17 @@ class ActiveTravelWidget extends StatelessWidget {
     );
   }
 }
+//формирует список активных поездок
+// createCardActiveTravel (Widget card, DataTrip listDataTrip) {
+//  final List<Widget> listCard = listDataTrip.map((e) =>
+//      CardActiveTravelWidget())
+// }
+// final List<Widget> scrolFormCar = listFormCar
+//     .map((FormCar formCar) => FormCarRegistrationWidget(
+//   title: formCar.title,
+//   icon: formCar.icon,
+// ))
+//     .toList();
 
 //карта общей информации о поезке
 class CardActiveTravelWidget extends StatelessWidget {
@@ -68,14 +80,16 @@ class CardActiveTravelWidget extends StatelessWidget {
               elevation: 1.5,
               child:
                   //InfoTripForCarrierWidget(),
-                  InfoTripForPassenger())),
+                  InfoTripForPassenger(request: true, tripIndex: 1,)
+          )),
     );
   }
 }
 
 //содержание карты общей информации о поезке для перевозчика
 class InfoTripForCarrierWidget extends StatelessWidget {
-  const InfoTripForCarrierWidget({Key? key}) : super(key: key);
+  final int tripIndex; 
+  const InfoTripForCarrierWidget({Key? key, required this.tripIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -87,15 +101,15 @@ class InfoTripForCarrierWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                TripDataWidget(tripList: listDataTrip[0]),
+                TripDataWidget(tripList: listDataTrip[tripIndex]),
                 const SizedBox(
                   height: 16,
                 ),
-                TripTimeWidget(tripList: listDataTrip[0]),
+                TripTimeWidget(tripList: listDataTrip[tripIndex]),
               ]),
               Expanded(child: Container()),
               Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-                TripPriceWidget(tripList: listDataTrip[0]),
+                TripPriceWidget(tripList: listDataTrip[tripIndex]),
                 TripAdditionalShortFactory(
                   tripList: listDataTrip[0],
                 ),
@@ -103,7 +117,7 @@ class InfoTripForCarrierWidget extends StatelessWidget {
                   height: 16,
                 ),
                 TripPackageWidget(
-                  tripList: listDataTrip[0],
+                  tripList: listDataTrip[tripIndex],
                 ),
               ]),
             ],
@@ -144,7 +158,7 @@ class InfoTripForCarrierWidget extends StatelessWidget {
                             fontWeight: FontWeight.w500),
                       ),
                       RequestsAvatarsWidget(
-                        tripList: listDataTrip[0],
+                        tripList: listDataTrip[tripIndex],
                       ),
                     ],
                   )),
@@ -158,10 +172,33 @@ class InfoTripForCarrierWidget extends StatelessWidget {
 
 //содержание карты общей информации о поезке для пассажира
 class InfoTripForPassenger extends StatelessWidget {
-  const InfoTripForPassenger({Key? key}) : super(key: key);
+  final int tripIndex;
+  final bool request;
+  const InfoTripForPassenger({
+    Key? key, 
+    required this.request, required this.tripIndex
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    requestTrip ({bool? request}){ if(request == true){
+      return const Text(
+        'Ваш заказ подтвержден',
+        style: TextStyle(
+            color: primaryColor,
+            fontSize: 14,
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.w600),
+      );
+    } return const Text(
+    'Ожидайте подтверждения заказа',
+    style: TextStyle(
+    color: iconDepColor,
+      fontSize: 14,
+      fontFamily: 'Montserrat',
+      fontWeight: FontWeight.w600),
+      );
+      }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Column(
@@ -171,23 +208,23 @@ class InfoTripForPassenger extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                TripDataWidget(tripList: listDataTrip[0]),
+                TripDataWidget(tripList: listDataTrip[tripIndex]),
                 const SizedBox(
                   height: 16,
                 ),
-                TripTimeWidget(tripList: listDataTrip[0]),
+                TripTimeWidget(tripList: listDataTrip[tripIndex]),
               ]),
               Expanded(child: Container()),
               Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-                TripPriceWidget(tripList: listDataTrip[0]),
+                TripPriceWidget(tripList: listDataTrip[tripIndex]),
                 TripAdditionalShortFactory(
-                  tripList: listDataTrip[0],
+                  tripList: listDataTrip[tripIndex],
                 ),
                 const SizedBox(
                   height: 16,
                 ),
                 TripPackageWidget(
-                  tripList: listDataTrip[0],
+                  tripList: listDataTrip[tripIndex],
                 ),
               ]),
             ],
@@ -210,7 +247,7 @@ class InfoTripForPassenger extends StatelessWidget {
                       fontWeight: FontWeight.w500),
                 ),
                 PassengersAvatarsWidget(
-                  tripList: listDataTrip[0],
+                  tripList: listDataTrip[tripIndex],
                 ),
               ],
             ),
@@ -229,26 +266,11 @@ class InfoTripForPassenger extends StatelessWidget {
           const SizedBox(
             height: 12,
           ),
-          InfoFoCarrierWidget(listDataUser: listDataUser[1],),
+          InfoFoCarrierWidget(listDataUser: listDataUser[tripIndex],),
           const SizedBox(
             height: 12,
           ),
-          const Text(
-            'Ожидайте подтверждения заказа',
-            style: TextStyle(
-                color: iconDepColor,
-                fontSize: 14,
-                fontFamily: 'Montserrat',
-                fontWeight: FontWeight.w600),
-          ),
-          const Text(
-            'Ваш заказ подтвержден',
-            style: TextStyle(
-                color: primaryColor,
-                fontSize: 14,
-                fontFamily: 'Montserrat',
-                fontWeight: FontWeight.w600),
-          ),
+          requestTrip(request:request)
         ],
       ),
     );
