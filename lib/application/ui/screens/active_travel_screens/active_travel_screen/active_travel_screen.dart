@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/data/data_car_user/data_car_user.dart';
 import 'package:untitled2/application/data/data_trip/data_trip.dart';
@@ -15,7 +14,7 @@ class ActiveTravelScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: const ActiveTravelWidget()
+    return const Scaffold(body: ActiveTravelWidget()
         //ActiveTravelNotWidget(),
         );
   }
@@ -26,7 +25,7 @@ class ActiveTravelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+    final List<DataTrip> _listDataTrip = listDataTrip;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
       child: Column(
@@ -35,53 +34,66 @@ class ActiveTravelWidget extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
-          SizedBox(
-            width: 250,
-            child: Text(
-              'Активные поездки',
-              style: handTextStyleGrin,
-              overflow: TextOverflow.clip,
-              softWrap: true,
+          Padding(
+            padding: EdgeInsets.only(bottom: 25),
+            child: SizedBox(
+              width: 250,
+              child: Text(
+                'Активные поездки',
+                style: handTextStyleGrin,
+                overflow: TextOverflow.clip,
+                softWrap: true,
+              ),
             ),
           ),
-          CardActiveTravelWidget(),
+
+          Expanded(child: ScrolCardActiveTravel()),
         ],
       ),
     );
   }
 }
 //формирует список активных поездок
-// createCardActiveTravel (Widget card, DataTrip listDataTrip) {
-//  final List<Widget> listCard = listDataTrip.map((e) =>
-//      CardActiveTravelWidget())
-// }
-// final List<Widget> scrolFormCar = listFormCar
-//     .map((FormCar formCar) => FormCarRegistrationWidget(
-//   title: formCar.title,
-//   icon: formCar.icon,
-// ))
-//     .toList();
+class ScrolCardActiveTravel extends StatelessWidget {
+  const ScrolCardActiveTravel({Key? key,}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> cardActiveTravel = listDataTrip
+        .map((DataTrip cardActive) => CardActiveTravelWidget(
+      tripIndex: cardActive.idTrip,
+    ))
+        .toList();
+    return ListView(children: cardActiveTravel);
+  }
+}
+
+
+
 
 //карта общей информации о поезке
 class CardActiveTravelWidget extends StatelessWidget {
-  const CardActiveTravelWidget({Key? key}) : super(key: key);
+  final int tripIndex;
+  const CardActiveTravelWidget({Key? key, required this.tripIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: InkWell(
-          onTap: () => Navigator.of(context).pushNamed(Screens.tripDetalFound),
-          child: Card(
-              shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              color: backGroundColor,
-              shadowColor: textPassiveColor,
-              elevation: 1.5,
-              child:
-                  //InfoTripForCarrierWidget(),
-                  InfoTripForPassenger(request: true, tripIndex: 1,)
-          )),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: SizedBox(
+        child: InkWell(
+            onTap: () => Navigator.of(context).pushNamed(Screens.tripDetalFound),
+            child: Card(
+                shape: const RoundedRectangleBorder(
+                    side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                color: backGroundColor,
+                shadowColor: textPassiveColor,
+                elevation: 1.5,
+                child:
+                InfoTripForCarrierWidget(tripIndex: tripIndex),//содержание карты для водителя
+              // InfoTripForPassenger(request: true, tripIndex: tripIndex,) //содержание карты для водителя
+            )),
+      ),
     );
   }
 }
@@ -217,8 +229,10 @@ class InfoTripForPassenger extends StatelessWidget {
               Expanded(child: Container()),
               Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                 TripPriceWidget(tripList: listDataTrip[tripIndex]),
-                TripAdditionalShortFactory(
-                  tripList: listDataTrip[tripIndex],
+                SizedBox(width: 80,
+                  child: TripAdditionalShortFactory(
+                    tripList: listDataTrip[tripIndex],
+                  ),
                 ),
                 const SizedBox(
                   height: 16,
@@ -545,7 +559,7 @@ class TripTimeWidget extends StatelessWidget {
                 SizedBox(
                   width: 40,
                   child: Text(
-                    tripList.destTime,
+                    tripList.depTime,
                     style: const TextStyle(
                         color: textPassiveColor,
                         fontSize: 14,
@@ -562,7 +576,7 @@ class TripTimeWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  tripList.destination,
+                  tripList.departure,
                   style: const TextStyle(
                       color: textPassiveColor,
                       fontSize: 14,
@@ -599,7 +613,7 @@ class TripTimeWidget extends StatelessWidget {
                 SizedBox(
                   width: 40,
                   child: Text(
-                    tripList.depTime,
+                    tripList.destTime,
                     style: const TextStyle(
                         color: textPassiveColor,
                         fontSize: 14,
@@ -616,7 +630,7 @@ class TripTimeWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  tripList.departure,
+                  tripList.destination,
                   style: const TextStyle(
                       color: textPassiveColor,
                       fontSize: 14,
