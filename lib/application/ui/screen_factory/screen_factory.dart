@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:untitled2/application/ui/screens/active_travel_screens/trip_screen/trip_screen.dart';
 import 'package:untitled2/application/ui/screens/bringing_screen/cod_sms_screen.dart';
 import 'package:untitled2/application/ui/screens/bringing_screen/registration_phone_screen.dart';
 import 'package:untitled2/application/ui/screens/bringing_screen/bringing_screen.dart';
@@ -41,4 +42,5 @@ class ScreenFactory {
   Widget makeTravelRequests() => const TravelRequestsScreen();
   Widget makeTravelRequestDetail() => const TravelRequestDetailScreen();
   Widget makePassengerAccepted() => const PassengerAcceptedScreen();
+  Widget makeTrip() => const TripScreen();
 }

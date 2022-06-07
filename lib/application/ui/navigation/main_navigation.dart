@@ -21,6 +21,8 @@ abstract class Screens {
   static const travelRequests = "/travelRequests";
   static const travelRequestDetail = "/travelRequests/travelRequestDetail";
   static const travelPassengerAccepted = "/travelRequests/travelRequestDetail/travelPassengerAccepted ";
+  static const travelTrip = "/travelTrip";
+
 }
 
 class MainNavigation {
@@ -45,6 +47,7 @@ class MainNavigation {
     Screens.travelRequests: (_) => _screenFactory.makeTravelRequests(),
     Screens.travelRequestDetail: (_) => _screenFactory.makeTravelRequestDetail(),
     Screens.travelPassengerAccepted: (_) => _screenFactory.makePassengerAccepted(),
+    Screens.travelTrip: (_) => _screenFactory.makeTrip()
   };
   Route<dynamic>? onGenerateRoute(RouteSettings settings){
     return null;

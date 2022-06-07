@@ -14,7 +14,7 @@ class CardActiveTravelWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: SizedBox(
         child: InkWell(
-            onTap: () => Navigator.of(context).pushNamed(Screens.tripDetalFound),
+            onTap: () => Navigator.of(context).pushNamed(Screens.travelTrip),
             child: Card(
               shape: const RoundedRectangleBorder(
                   side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
