@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 
-/// Виджет отображающийся при отсетствии активны поездок
+/// Виджет отображающийся при отсутствии активных поездок
 
 class ActiveTravelNotWidget extends StatelessWidget {
   const ActiveTravelNotWidget({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/data/data_trip/data_trip.dart';
 import 'package:untitled2/application/ui/generate/my_flutter_app_icons.dart';
-import 'package:untitled2/application/ui/widget/trip_additional_form_widget.dart';
+import 'package:untitled2/application/ui/widget/card_trip_widgets/trip_additional_form_widget.dart';
 
 //создает расширенный список дополнительных опций поездки
 class TripAdditionalFactory extends StatelessWidget {
