@@ -4,17 +4,19 @@ import 'package:untitled2/application/ui/constants/constants.dart';
 class HeadScreenWidget extends StatelessWidget {
   final String title;
   final Function() press;
+  final double topPadding, height;
   const HeadScreenWidget({Key? key,
     required this.title,
-    required this.press
+    required this.press, required this.topPadding, required this.height
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: height,
+      //200,
       child: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25, top: 87),
+        padding: EdgeInsets.only(left: 25, right: 25, top:topPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

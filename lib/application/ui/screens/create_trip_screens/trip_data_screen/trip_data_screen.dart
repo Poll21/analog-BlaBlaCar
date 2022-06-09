@@ -20,6 +20,8 @@ class _TripDataScreenState extends State<TripDataScreen> {
       body: Column(children: [
         HeadScreenWidget(
             title: 'Данные поездки',
+            height: 200,
+            topPadding: 87,
             press: () => Navigator.of(context)
                 .pushNamed(Screens.driverAdditionalOptions)),
         const SizedBox(

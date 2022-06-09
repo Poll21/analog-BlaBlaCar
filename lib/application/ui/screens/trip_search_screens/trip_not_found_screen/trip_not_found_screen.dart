@@ -14,8 +14,11 @@ class TripNotFoundScreen extends StatelessWidget {
 
         children: [
           HeadScreenWidget(
-              title: 'Нет поездок',
-              press: () => Navigator.of(context).pushNamed(Screens.tripSearch)),
+            title: 'Нет поездок',
+            height: 200,
+            topPadding: 87,
+            press: () => Navigator.of(context).pushNamed(Screens.tripSearch),
+            ),
           const SizedBox(height: 40),
           Image.asset('assets/images/trip_not_found.png', height: 194,),
           const SizedBox(height: 20),

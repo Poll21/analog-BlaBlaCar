@@ -16,6 +16,8 @@ class TripFoundScreen extends StatelessWidget {
         children: [
           HeadScreenWidget(
               title: 'ПОИСК',
+              height: 200,
+              topPadding: 87,
               press: () => Navigator.of(context).pushNamed(Screens.tripSearch)),
           Expanded(
               child: Padding(

@@ -19,6 +19,8 @@ class _AdditionalOptionsScreenState extends State<AdditionalOptionsScreen> {
       body: Column(children: [
         HeadScreenWidget(
             title: 'Дополнительные опции',
+            height: 200,
+            topPadding: 87,
             press: () =>
                 Navigator.of(context).pushNamed(Screens.driverProfile)),
         const SizedBox(

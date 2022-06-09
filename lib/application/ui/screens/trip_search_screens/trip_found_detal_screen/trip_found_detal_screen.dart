@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
+import 'package:untitled2/application/ui/widget/card_trip_widgets/avatar_widget.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import 'package:untitled2/application/ui/widget/transmittal_letter_widget.dart';
 import 'package:untitled2/application/ui/widget/card_trip_widgets/trip_additional_form_widget.dart';
+import 'package:untitled2/application/ui/widget/user_profile_widgets/user_profile_widget.dart';
 import 'package:untitled2/application/ux/factory/trip_additional_factory/trip_additional_factory.dart';
 import '../../../generate/my_flutter_app_icons.dart';
 import 'package:untitled2/application/data/data_trip/data_trip.dart';
@@ -19,6 +21,8 @@ class TripFoundDetalScreen extends StatelessWidget {
       children: [
         HeadScreenWidget(
             title: 'СТРАНИЦА ПОЕЗДКИ',
+            height: 200,
+            topPadding: 87,
             press: () => Navigator.of(context).pushNamed(Screens.tripFound)),
         Expanded(
           child: Container(
@@ -138,12 +142,22 @@ class TripDetalFoundCard extends StatelessWidget {
                   tripTime: tripTime,
                 ),
                 const SizedBox(height: 20),
-                CarrierProfileWidget(
-                  name: name,
-                  review: review,
-                  avatar: avatar,
-                  rating: rating,
-                  phone: phone,
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: AvatarWidget(idUser: 1,),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                      UserNameWidget(idUser: 1),
+                      SizedBox(height: 5,),
+                      UserPhoneWidget(idUser: 1),
+                      SizedBox(height: 5,),
+                      UserRatingWidget(idUser: 1),
+                    ],),
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
@@ -331,87 +345,7 @@ class TripInfoFoundWidget extends StatelessWidget {
   }
 }
 
-//заменить!!!!!
-class CarrierProfileWidget extends StatelessWidget {
-  final String avatar, name, phone;
-  final int review;
-  final double rating;
 
-  const CarrierProfileWidget(
-      {Key? key,
-      required this.avatar,
-      required this.name,
-      required this.review,
-      required this.rating,
-      required this.phone})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        CircleAvatar(
-          radius: 20,
-          backgroundColor: notSelectedPhoto,
-          child: Image.asset(
-            avatar,
-          ),
-        ),
-        const SizedBox(width: 8),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              name,
-              style: const TextStyle(
-                  color: textActiveColor,
-                  fontSize: 16,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(width: 5),
-            Row(
-              children: [
-                const Icon(
-                  Icons.phone,
-                  size: 15,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Text(
-                    phone,
-                    style: const TextStyle(
-                        color: textPassiveColor,
-                        fontSize: 14,
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                const Icon(
-                  Icons.star,
-                  size: 15,
-                ),
-                Text(
-                  '$rating/$review',
-                  style: const TextStyle(
-                      color: textPassiveColor,
-                      fontSize: 14,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
 
 class CarProfileFoundWidget extends StatelessWidget {
   final String carphoto, brand, carModel, carColor, carNumber;

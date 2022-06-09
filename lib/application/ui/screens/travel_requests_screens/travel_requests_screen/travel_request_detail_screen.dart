@@ -16,6 +16,8 @@ class TravelRequestDetailScreen extends StatelessWidget {
         children: [
           HeadScreenWidget(
               title: 'Пассажир',
+              topPadding: 87,
+              height: 200,
               press: () =>
                   Navigator.of(context).pushNamed(Screens.travelRequests)),
           //текст зависит от типа запроса

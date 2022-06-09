@@ -14,6 +14,8 @@ class CreateTripScreen extends StatelessWidget {
         children: [
           HeadScreenWidget(
               title: 'Создать поездку',
+              height: 200,
+              topPadding: 87,
               press: () => Navigator.of(context).pushNamed(Screens.carProfile)),
           TimeTrip(title: 'Время отправления',),
           TimeTrip(title:'Время прибытия'),

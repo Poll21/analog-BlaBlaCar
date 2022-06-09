@@ -16,6 +16,8 @@ class DriverProfileScreen extends StatelessWidget {
         children: [
           HeadScreenWidget(
               title: 'Профиль водителя',
+              height: 200,
+              topPadding: 87,
               press: () => Navigator.of(context).pushNamed(Screens.createTrip)),
           SizedBox(
             height: 25,

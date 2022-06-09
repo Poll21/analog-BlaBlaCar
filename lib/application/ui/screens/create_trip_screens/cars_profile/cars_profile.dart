@@ -19,6 +19,8 @@ class _CarsProfileScreenState extends State<CarsProfileScreen> {
         body: Column(children: [
           HeadScreenWidget(
             title:'Данные автомобиля',
+            height: 200,
+            topPadding: 87,
             press: ()=>
                 Navigator.of(context).pushNamed(Screens.main)),
           const LoadingCarPhoto(),

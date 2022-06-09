@@ -14,7 +14,11 @@ class TravelRequestsScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          HeadScreenWidget(title: 'Заявки на поездку', press: () {}),
+          HeadScreenWidget(
+              title: 'Заявки на поездку',
+              height: 200,
+              topPadding: 87,
+              press: () {}),
           Expanded(child: Padding(
             padding:  const EdgeInsets.symmetric(horizontal: 25),
             child: PassengerInformationWidget(passengerInformation: passengerInformation,),
