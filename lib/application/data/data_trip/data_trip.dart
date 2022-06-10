@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class DataTrip{
   final String departure, destination,
       destTime, depTime, dateTrip, commentTrip;
-  final int idUser, idTrip, priceTrip, pricePak, vacancies ;
+  final int idDriver, idTrip, priceTrip, pricePak, vacancies ;
   final bool package, pats, baggage, alcohol, food, babyChair, smoking;
   final List <int> passengers;
   final List <int> travelRequests;
@@ -14,7 +14,7 @@ class DataTrip{
 
   DataTrip( {
     required this.idTrip,       //id поездки
-    required this.idUser,       //id водителя
+    required this.idDriver,       //id водителя
     required this.departure,    //пункт отправления
     required this.destination,  //пункт назначения
     required this.depTime,      //время отправления
@@ -41,7 +41,7 @@ class DataTrip{
 
 final List<DataTrip> listDataTrip =[
   DataTrip(
-    idUser: 2,
+    idDriver: 2,
     idTrip: 1,
     departure: 'Москва',
     depTime: '22:33',
@@ -67,7 +67,7 @@ final List<DataTrip> listDataTrip =[
 
   ),
   DataTrip(
-    idUser: 1,
+    idDriver: 1,
     idTrip: 2,
     departure: 'Чета',
     depTime: '22:33',
@@ -92,7 +92,7 @@ final List<DataTrip> listDataTrip =[
     packageId: [1,2],
   ),
   DataTrip(
-    idUser: 2,
+    idDriver: 2,
     idTrip: 0,
     departure: 'Базнаул',
     depTime: '13:30',

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/data/data_trip/data_trip.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
-import 'package:untitled2/application/ui/widget/card_trip_widgets/avatar_widget.dart';
+import 'package:untitled2/application/ui/widget/user_profile_widgets/avatar_widget.dart';
 //отображает аватарки пассажиров поездки
 class PassengersAvatarsWidget extends StatelessWidget {
   final DataTrip tripList;

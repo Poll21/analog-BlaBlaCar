@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
-//создает отображение расширенное отобрадение дополнительных опций поездки
+//создает отображение расширенных не разрещенных дополнительных опций поездки
 
 class TripAdditionalForm extends StatelessWidget {
   final IconData iconAdd; //иконва опции
@@ -32,7 +32,7 @@ class TripAdditionalForm extends StatelessWidget {
     );
   }
 }
-
+//создает отображение расширенных не разрещенных дополнительных опций поездки
 class TripAdditionalNotForm extends StatelessWidget {
   final IconData iconAdd; //иконва опции
   final String descriptionAdd; //описание опции

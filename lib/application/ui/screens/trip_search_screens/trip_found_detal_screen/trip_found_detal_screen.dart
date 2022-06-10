@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
-import 'package:untitled2/application/ui/widget/card_trip_widgets/avatar_widget.dart';
+import 'package:untitled2/application/ui/widget/user_profile_widgets/avatar_widget.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import 'package:untitled2/application/ui/widget/transmittal_letter_widget.dart';
