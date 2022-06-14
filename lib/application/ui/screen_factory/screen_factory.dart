@@ -14,6 +14,7 @@ import 'package:untitled2/application/ui/screens/main_tabs/main_tabs_screen.dart
 import 'package:untitled2/application/ui/screens/travel_requests_screens/travel_requests_screen/passenger_accepted_screen.dart';
 import 'package:untitled2/application/ui/screens/travel_requests_screens/travel_requests_screen/travel_request_detail_screen.dart';
 import 'package:untitled2/application/ui/screens/travel_requests_screens/travel_requests_screen/travel_requests_screen.dart';
+import 'package:untitled2/application/ui/screens/trip_cancellation_screen/trip_cancellation_screen.dart';
 import 'package:untitled2/application/ui/screens/trip_search_screens/success_request_screen/success_request_screen.dart';
 import 'package:untitled2/application/ui/screens/trip_search_screens/trip_found_detal_screen/trip_found_detal_screen.dart';
 import 'package:untitled2/application/ui/screens/trip_search_screens/trip_found_screen/trip_found_screen.dart';
@@ -45,4 +46,5 @@ class ScreenFactory {
   Widget makePassengerAccepted() => const PassengerAcceptedScreen();
   Widget makeTripPassenger() => const TripScreenPassenger();
   Widget makeTripCarrier() => const TripScreenCarrier();
+  Widget makeTripCancellation() => const TripCancellationScreen();
 }

@@ -15,7 +15,6 @@ class ProceedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 340,
       height: 60,
       child: ElevatedButton(
         style: ButtonStyle(
@@ -27,14 +26,79 @@ class ProceedButton extends StatelessWidget {
           elevation: MaterialStateProperty.all<double>(0),
         ),
         onPressed: press,
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontFamily: 'Montserrat',
-            color: backGroundColor,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            letterSpacing: -0.72,
+        child: Center(
+          child: Text(
+            text,
+            style: const TextStyle(
+              fontFamily: 'Montserrat',
+              color: backGroundColor,
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              letterSpacing: -0.72,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProceedButtonShou extends StatefulWidget {
+   final String text;
+
+  const ProceedButtonShou({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  State<ProceedButtonShou> createState() => _ProceedButtonShouState();
+}
+
+class _ProceedButtonShouState extends State<ProceedButtonShou> {
+   Color _color = backGroundColor;
+   Color _textColor = textPassiveColor;
+   List<String> _cause =[];
+
+  @override
+  Widget build(BuildContext context) {
+    final String _text = widget.text;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
+      child: SizedBox(
+        height: 34,
+        child: ElevatedButton(
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  side: BorderSide(width: 2, color: _textColor),
+                  borderRadius: BorderRadius.circular(10),
+                )),
+            backgroundColor: MaterialStateProperty.all<Color>(_color),
+            elevation: MaterialStateProperty.all<double>(0),
+          ),
+          onPressed: (){
+            if (_color == primaryColor) {
+            _color = backGroundColor;
+            _textColor = textPassiveColor;
+            // _cause = _cause.add($_text);
+            setState(() {});
+          }else{
+            _color = primaryColor;
+            _textColor = backGroundColor;
+            setState(() {});}
+          },
+          child: Center(
+            child: Text(
+              _text,
+              style: TextStyle(
+                fontFamily: 'Montserrat',
+                color: _textColor,
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                letterSpacing: -0.72,
+              ),
+            ),
           ),
         ),
       ),

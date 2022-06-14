@@ -4,12 +4,9 @@ import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import 'package:untitled2/application/ui/widget/trip_widgets/list_passangers_trip_widget.dart';
-import 'package:untitled2/application/ui/widget/trip_widgets/transmittal_letter_widget.dart';
-import 'package:untitled2/application/ui/widget/user_profile_widgets/avatar_widget.dart';
 import 'package:untitled2/application/ui/widget/card_trip_widgets/trip_price_widget.dart';
 import 'package:untitled2/application/ui/widget/card_trip_widgets/trip_time_widget.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
-import 'package:untitled2/application/ui/widget/user_profile_widgets/user_profile_widget.dart';
 import 'package:untitled2/application/ux/factory/trip_additional_factory/trip_additional_factory.dart';
 import '../../../widget/card_trip_widgets/trip_data_widget.dart';
 
@@ -32,7 +29,7 @@ class TripScreenCarrier extends StatelessWidget {
                   press: () =>
                       Navigator.of(context).pushNamed(Screens.main)),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
+                padding: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
                 child: SizedBox(height: 60,
                   child: ElevatedButton(
                     style: ButtonStyle(
@@ -43,7 +40,8 @@ class TripScreenCarrier extends StatelessWidget {
                       elevation: MaterialStateProperty.all<double>(0),
                     ),
 //добавить ссылку
-                    onPressed: () {},
+                    onPressed: () =>
+                        Navigator.of(context).pushNamed(Screens.travelTripCancellation),
                     child: const Center(
                       child: Text('Отменить поездку',
                         style: TextStyle(
@@ -133,36 +131,72 @@ class TripScreenCarrier extends StatelessWidget {
 //отображает список отправителей посылок
                   child: ListPackageTripCarrier(idTrip: _idTrip,),
                 ),
-
               ],
             ),
           ),
           Padding(padding:
           const EdgeInsets.only(left: 25, right: 25, top: 24, bottom: 59),
-            child: Stack(
-              alignment: Alignment.topRight,
+            child: Row(
               children: [
-                ProceedButton(
-                    text: 'ЧАТ ПОЕЗДКИ',
-                    press: () {},
-                    color: primaryColor
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 30, top: 18),
-                  child: CircleAvatar(
-                    radius: 12,
-                    backgroundColor: errorColor,
+                Expanded(
+                  child: Stack(
+                    alignment: Alignment.topRight,
+                    children: [
+                      ProceedButton(
+                          text: 'ЧАТ ПОЕЗДКИ',
+                          press: () {},
+                          color: primaryColor
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 30, top: 18),
+                        child: CircleAvatar(
+                          radius: 12,
+                          backgroundColor: errorColor,
 //отображает количество не прочитонных сщщбщений в чате
-                    child: Text('3',
-                      style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        color: textActiveColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                          child: Text('3',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              color: textActiveColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 16,),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                        color: backGroundAvatarColor,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(color: primaryColor, width: 3)),
+                    child: Stack(
+                      alignment: Alignment.topRight,
+                      children: const [
+                        Icon(Icons.person, size: 55, color: primaryColor,),
+                    CircleAvatar(
+                      radius: 12,
+                      backgroundColor: errorColor,
+//отображает количество не просмотренных заявок напоездку
+                      child: Text('3',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          color: textActiveColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
+              ],
+            ),
                   ),
-                )
+                ),
               ],
             ),
           ),

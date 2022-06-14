@@ -91,33 +91,36 @@ class CardPassangersTripCarrier extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: const RoundedRectangleBorder(
-          side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
-          borderRadius: BorderRadius.all(Radius.circular(10))),
-      color: backGroundColor,
-      shadowColor: textPassiveColor,
-      elevation: 1.5,
-      child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 16),
-                child: AvatarWidget(idUser: idUser),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  UserNameWidget(idUser: idUser),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  UserPhoneWidget(idUser: idUser)
-                ],
-              )
-            ],
-          )),
+    return InkWell(
+      onTap: () {},
+      child: Card(
+        shape: const RoundedRectangleBorder(
+            side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        color: backGroundColor,
+        shadowColor: textPassiveColor,
+        elevation: 1.5,
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: AvatarWidget(idUser: idUser),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    UserNameWidget(idUser: idUser),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    UserPhoneWidget(idUser: idUser)
+                  ],
+                )
+              ],
+            )),
+      ),
     );
   }
 }
