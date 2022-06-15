@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/data/data_trip/data_trip.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
+import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/user_profile_widgets/avatar_widget.dart';
 import 'package:untitled2/application/ui/widget/user_profile_widgets/user_profile_widget.dart';
 
@@ -92,7 +93,8 @@ class CardPassangersTripCarrier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () =>
+          Navigator.of(context).pushNamed(Screens.leaveFeedback),
       child: Card(
         shape: const RoundedRectangleBorder(
             side: BorderSide(color: Color(0xFFE0E0E0), width: 1),

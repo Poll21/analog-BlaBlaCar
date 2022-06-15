@@ -35,7 +35,7 @@ class TripCancellationScreen extends StatelessWidget {
           ),
           Expanded(
               child: ListView(
-                children: [
+                children: const [
                   ProceedButtonShou(text: 'Не соответвуют данные',),
                   ProceedButtonShou(text: 'Просили отменить поездку',),
                   ProceedButtonShou(text: 'Место забронировано пошибке',),
@@ -45,14 +45,15 @@ class TripCancellationScreen extends StatelessWidget {
                   ProceedButtonShou(text: 'Мои планы изменились',),
                   ProceedButtonShou(text: 'Отказался ехать или изменил условия',),
                   ProceedButtonShou(text: 'Не выходит на связь',),
-
-
                 ],
               )),
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25,bottom: 58),
             child: ProceedButton(
-              press: () {}, color:primaryColor, text: 'Продолжить',),
+              press: () =>
+                  Navigator.of(context).pushNamed(Screens.travelTripCancellationLast),
+              color:primaryColor,
+              text: 'Продолжить',),
           )
 
         ],

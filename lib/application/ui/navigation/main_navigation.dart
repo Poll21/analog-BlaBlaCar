@@ -24,6 +24,9 @@ abstract class Screens {
   static const travelTripPassenger = "/travelTripPassenger";
   static const travelTripCarrier = "/travelTripCarrier";
   static const travelTripCancellation = "/travelTripCancellation";
+  static const travelTripCancellationLast = "/travelTripCancellation/TripCancellationLast";
+  static const endOfTripCarrier = "/travelTripCancellation/TripCancellationLast/endOfTripCarrier";
+  static const leaveFeedback = "/travelTripCancellation/TripCancellationLast/endOfTripCarrier/LeaveFeedback";
 
 
 }
@@ -52,7 +55,10 @@ class MainNavigation {
     Screens.travelPassengerAccepted: (_) => _screenFactory.makePassengerAccepted(),
     Screens.travelTripPassenger: (_) => _screenFactory.makeTripPassenger(),
     Screens.travelTripCarrier: (_) => _screenFactory.makeTripCarrier(),
-    Screens.travelTripCancellation: (_) => _screenFactory.makeTripCancellation()
+    Screens.travelTripCancellation: (_) => _screenFactory.makeTripCancellation(),
+    Screens.travelTripCancellationLast: (_) => _screenFactory.makeTripCancellationLast(),
+    Screens.endOfTripCarrier: (_) => _screenFactory.makeEndOfTripCarrier(),
+    Screens.leaveFeedback: (_) => _screenFactory.makeLeaveFeedback(),
 
   };
   Route<dynamic>? onGenerateRoute(RouteSettings settings){

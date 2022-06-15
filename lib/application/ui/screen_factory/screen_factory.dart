@@ -10,10 +10,13 @@ import 'package:untitled2/application/ui/screens/create_trip_screens/cars_profil
 import 'package:untitled2/application/ui/screens/create_trip_screens/create_trip_screen/create_trip_screen.dart';
 import 'package:untitled2/application/ui/screens/create_trip_screens/driver_profile_screen/driver_profile_screen.dart';
 import 'package:untitled2/application/ui/screens/create_trip_screens/trip_data_screen/trip_data_screen.dart';
+import 'package:untitled2/application/ui/screens/end_of_trip_screens/end_of_trip_screen.dart';
+import 'package:untitled2/application/ui/screens/leave_feedback_screen/leave_feedback_screen.dart';
 import 'package:untitled2/application/ui/screens/main_tabs/main_tabs_screen.dart';
 import 'package:untitled2/application/ui/screens/travel_requests_screens/travel_requests_screen/passenger_accepted_screen.dart';
 import 'package:untitled2/application/ui/screens/travel_requests_screens/travel_requests_screen/travel_request_detail_screen.dart';
 import 'package:untitled2/application/ui/screens/travel_requests_screens/travel_requests_screen/travel_requests_screen.dart';
+import 'package:untitled2/application/ui/screens/trip_cancellation_screen/trip_cancellation_last_screen.dart';
 import 'package:untitled2/application/ui/screens/trip_cancellation_screen/trip_cancellation_screen.dart';
 import 'package:untitled2/application/ui/screens/trip_search_screens/success_request_screen/success_request_screen.dart';
 import 'package:untitled2/application/ui/screens/trip_search_screens/trip_found_detal_screen/trip_found_detal_screen.dart';
@@ -22,7 +25,7 @@ import 'package:untitled2/application/ui/screens/trip_search_screens/trip_not_fo
 import 'package:untitled2/application/ui/screens/trip_search_screens/trip_search_screen/trip_search_screen.dart';
 import '../screens/create_trip_screens/payment_trip_screen/payment_completed.dart';
 import '../screens/create_trip_screens/payment_trip_screen/payment_trip_screen.dart';
-
+int id = 0;
 class ScreenFactory {
   Widget makeBringing() => const BringingScreen();
   Widget makeRegistrationgPhone() => const RegistrationPhoneScreen();
@@ -47,4 +50,7 @@ class ScreenFactory {
   Widget makeTripPassenger() => const TripScreenPassenger();
   Widget makeTripCarrier() => const TripScreenCarrier();
   Widget makeTripCancellation() => const TripCancellationScreen();
+  Widget makeTripCancellationLast() => const TripCancellationLastScreen();
+  Widget makeEndOfTripCarrier() => const EndOfTripCarrierScreen();
+  Widget makeLeaveFeedback() => const LeaveFeedbackScreen();
 }
