@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:untitled2/application/data/data_trip/data_trip.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
+import 'package:untitled2/application/ui/widget/card_fo_carrier_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import 'package:untitled2/application/ui/widget/trip_widgets/list_passangers_trip_widget.dart';
-import 'package:untitled2/application/ui/widget/trip_widgets/transmittal_letter_widget.dart';
-import 'package:untitled2/application/ui/widget/user_profile_widgets/avatar_widget.dart';
 import 'package:untitled2/application/ui/widget/card_trip_widgets/trip_price_widget.dart';
 import 'package:untitled2/application/ui/widget/card_trip_widgets/trip_time_widget.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
-import 'package:untitled2/application/ui/widget/user_profile_widgets/user_profile_widget.dart';
 import 'package:untitled2/application/ux/factory/trip_additional_factory/trip_additional_factory.dart';
 import '../../../widget/card_trip_widgets/trip_data_widget.dart';
 
@@ -149,44 +147,7 @@ class TripScreenPassenger extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
 //карта перевозчика
-                  child: Card(
-                    shape: const RoundedRectangleBorder(
-                        side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    color: backGroundColor,
-                    shadowColor: textPassiveColor,
-                    elevation: 1.5,
-                    child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 12),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                 const Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16),
-                                  child: AvatarWidget(idUser: 2),
-                                ),
-//отображает данные перевозчика
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    UserNameWidget(idUser: 2),
-                                    SizedBox(height: 5),
-                                    UserPhoneWidget(idUser: 2),
-                                    SizedBox(height: 5),
-                                    UserRatingWidget(idUser: 2),
-                                  ],
-                                )
-                              ],
-                            ),
-                            Image.asset('assets/images/horizontal.png'),
-//отображает сопроводительное письмо переревозчика
-                            const TransmittalLetterWidget(idTrip: 1),
-                          ],
-                        )
-                    ),
-                  ),
+                  child: CardFoCarrierWidget(idUser: 2),
                 ),
               ],
             ),
