@@ -36,15 +36,15 @@ class TripCancellationScreen extends StatelessWidget {
           Expanded(
               child: ListView(
                 children: const [
-                  ProceedButtonShou(text: 'Не соответвуют данные',),
-                  ProceedButtonShou(text: 'Просили отменить поездку',),
-                  ProceedButtonShou(text: 'Место забронировано пошибке',),
-                  ProceedButtonShou(text: 'Завышает цену',),
-                  ProceedButtonShou(text: 'Требует предоплату',),
-                  ProceedButtonShou(text: 'Долго подтверждение бронирования',),
-                  ProceedButtonShou(text: 'Мои планы изменились',),
-                  ProceedButtonShou(text: 'Отказался ехать или изменил условия',),
-                  ProceedButtonShou(text: 'Не выходит на связь',),
+                  ProceedButtonShou(text: 'Не соответвуют данные',color: primaryColor,),
+                  ProceedButtonShou(text: 'Просили отменить поездку',color: primaryColor,),
+                  ProceedButtonShou(text: 'Место забронировано пошибке',color: primaryColor,),
+                  ProceedButtonShou(text: 'Завышает цену',color: primaryColor,),
+                  ProceedButtonShou(text: 'Требует предоплату',color: primaryColor,),
+                  ProceedButtonShou(text: 'Долго подтверждение бронирования',color: primaryColor,),
+                  ProceedButtonShou(text: 'Мои планы изменились',color: primaryColor,),
+                  ProceedButtonShou(text: 'Отказался ехать или изменил условия',color: primaryColor,),
+                  ProceedButtonShou(text: 'Не выходит на связь',color: primaryColor,),
                 ],
               )),
           Padding(

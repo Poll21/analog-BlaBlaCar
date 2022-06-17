@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 
+//кнопка принимающая цвет, текст, функцию
 class ProceedButton extends StatelessWidget {
   final Color color;
   final String text;
@@ -45,10 +46,11 @@ class ProceedButton extends StatelessWidget {
 
 class ProceedButtonShou extends StatefulWidget {
    final String text;
+   final Color color;
 
   const ProceedButtonShou({
     Key? key,
-    required this.text,
+    required this.text, required this.color,
   }) : super(key: key);
 
   @override
@@ -78,13 +80,13 @@ class _ProceedButtonShouState extends State<ProceedButtonShou> {
             elevation: MaterialStateProperty.all<double>(0),
           ),
           onPressed: (){
-            if (_color == primaryColor) {
+            if (_color == widget.color) {
             _color = backGroundColor;
             _textColor = textPassiveColor;
             // _cause = _cause.add($_text);
             setState(() {});
           }else{
-            _color = primaryColor;
+            _color = widget.color;
             _textColor = backGroundColor;
             setState(() {});}
           },

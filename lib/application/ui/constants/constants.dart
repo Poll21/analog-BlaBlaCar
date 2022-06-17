@@ -10,6 +10,8 @@ const Color selectedColor = Color(0xFFFF9A3D);
 const Color favouriteColor = Color(0xFFFEC124);
 const Color iconDestColor = Color(0xFFFFD578);
 const Color iconDepColor = Color(0xFFEF8733);
+const Color badGradeColor = Color(0xFFEF6445);
+
 
 const Color textPassiveColor = Color(0xFF898989);
 const Color textActiveColor = Color(0xFF656F77);
