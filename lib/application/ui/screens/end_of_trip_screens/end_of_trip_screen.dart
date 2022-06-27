@@ -3,13 +3,13 @@ import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import 'package:untitled2/application/ui/widget/trip_widgets/list_passangers_trip_widget.dart';
 import '../../constants/constants.dart';
-
+//страница окончания поездки
 class EndOfTripCarrierScreen extends StatelessWidget {
   const EndOfTripCarrierScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const int _idTrip = 0;//изменить входной параметк
+    const int _idTrip = 0;//изменить входной параметр
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +72,9 @@ class EndOfTripCarrierScreen extends StatelessWidget {
 //отображает список пассажиров
               child: ListView(
                 children: [
-                  ListPassangersTripCarrier(idTrip: _idTrip,),
+                  ListPassangersTripCarrier(idTrip: _idTrip, onTap: () =>
+                      Navigator.of(context)
+                          .pushNamed(Screens.leaveFeedbackAboutCarrie),),
                 ],
               ),
             ),
@@ -81,7 +83,7 @@ class EndOfTripCarrierScreen extends StatelessWidget {
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 58),
             child: ProceedButton(
               press: () =>
-                  Navigator.of(context).pushNamed(Screens.endOfTripCarrier),
+                  Navigator.of(context).pushNamed(Screens.main),
               color:primaryColor,
               text: 'ПРОДОЛЖИТЬ',),
           )

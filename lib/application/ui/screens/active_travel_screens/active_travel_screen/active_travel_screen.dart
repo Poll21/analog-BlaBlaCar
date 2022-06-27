@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/data/data_trip/data_trip.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
+import 'package:untitled2/application/ui/widget/card_trip_widgets/active_travel_not_found_widget.dart';
 import 'package:untitled2/application/ui/widget/card_trip_widgets/card_travel_widget.dart';
 
 ///Экран активных поездок
@@ -10,8 +11,10 @@ class ActiveTravelScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: ActiveTravelWidget()
-        //ActiveTravelNotWidget(),
+    return const Scaffold(
+        body:
+        ActiveTravelWidget()
+       // ActiveTravelNotWidget(),
         );
   }
 }

@@ -5,6 +5,7 @@ const Color primaryColor = Color(0xFF4BA35B);
 const Color backGroundColor = Colors.white;
 const Color errorColor = Color(0xFFF47458);
 const Color backGroundAvatarColor = Color(0x304BA35B);
+const Color notSelectedPhoto = Color(0xFFC8E6C9);
 
 const Color selectedColor = Color(0xFFFF9A3D);
 const Color favouriteColor = Color(0xFFFEC124);
@@ -16,9 +17,9 @@ const Color badGradeColor = Color(0xFFEF6445);
 const Color textPassiveColor = Color(0xFF898989);
 const Color textActiveColor = Color(0xFF656F77);
 const Color deliveryColor = Color(0xFFC2C2C2);
-const Color notSelectedPhoto = Color(0xFFC8E6C9);
 const Color borderTextField = Color(0xFFACB8C2);
-const Color backgroundColorTextField = Color(0x72CACFD4);
+const Color backgroundColorTextField = Color(0x54F0F0F0);
+
 const Color notColor = Color(0x5ffffff);
 
 

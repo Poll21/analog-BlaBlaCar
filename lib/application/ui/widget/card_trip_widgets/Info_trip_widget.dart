@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/application/data/data_car_user/data_car_user.dart';
 import 'package:untitled2/application/data/data_trip/data_trip.dart';
 import 'package:untitled2/application/data/data_user/data_user.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
-import 'package:untitled2/application/ui/screens/active_travel_screens/active_travel_screen/active_travel_screen.dart';
 import 'package:untitled2/application/ui/widget/card_trip_widgets/info_fo_carrier_widget.dart';
 import 'package:untitled2/application/ui/widget/card_trip_widgets/passengers_avatars_widget.dart';
 import 'package:untitled2/application/ui/widget/card_trip_widgets/requests_avatars_widget.dart';
@@ -70,7 +70,7 @@ class InfoTripForCarrierWidget extends StatelessWidget {
                             fontWeight: FontWeight.w500),
                       ),
                       PassengersAvatarsWidget(//отображает аватарки пассажиров поездки
-                        tripList: listDataTrip[0],
+                        tripList: listDataTrip[tripIndex],
                       ),
                     ],
                   )),
@@ -170,6 +170,7 @@ class InfoTripForPassenger extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
                       'Пассажиры:',
@@ -179,6 +180,8 @@ class InfoTripForPassenger extends StatelessWidget {
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.w500),
                     ),
+                    const SizedBox(
+                      height: 10,),
                     PassengersAvatarsWidget(//отображает аватарки пассажиров поездки
                       tripList: listDataTrip[tripIndex],
                     ),
@@ -199,7 +202,8 @@ class InfoTripForPassenger extends StatelessWidget {
           const SizedBox(
             height: 12,
           ),
-          InfoFoCarrierWidget(listDataUser: listDataUser[tripIndex],),// отображает информацию о водителе
+          InfoFoCarrierWidget(listDataUser: listDataUser[tripIndex], listDataCar: listDataCar[tripIndex],),// отображает информацию о водителе
+
           const SizedBox(
             height: 12,
           ),

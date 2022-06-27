@@ -10,7 +10,7 @@ import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ux/factory/trip_additional_factory/trip_additional_factory.dart';
 import '../../../widget/card_trip_widgets/trip_data_widget.dart';
 
-//Экран Поезки перевозчика
+//Экран Поезки для перевозчика
 class TripScreenCarrier extends StatelessWidget {
   const TripScreenCarrier({
     Key? key,
@@ -28,9 +28,37 @@ class TripScreenCarrier extends StatelessWidget {
                   height: 150, topPadding: 70,
                   press: () =>
                       Navigator.of(context).pushNamed(Screens.main)),
+
               Padding(
                 padding: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
-                child: SizedBox(height: 60,
+                child: SizedBox(height: 40,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),)),
+                      backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
+                      elevation: MaterialStateProperty.all<double>(0),
+                    ),
+//добавить ссылку
+                    onPressed: () =>
+                        Navigator.of(context).pushNamed(Screens.endOfTripCarrier),
+                    child: const Center(
+                      child: Text('Завершить поездку',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          color: backGroundColor,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: -0.72,),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
+                child: SizedBox(height: 30,
                   child: ElevatedButton(
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -55,6 +83,7 @@ class TripScreenCarrier extends StatelessWidget {
                   ),
                 ),
               ),
+
           Expanded(
             child: ListView(
               children: [
@@ -111,11 +140,15 @@ class TripScreenCarrier extends StatelessWidget {
                       fontWeight: FontWeight.w600,),
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25),
 //отображает список пассажиров
-                  child: ListPassangersTripCarrier(idTrip: _idTrip,),
-                ),
+                  child: ListPassangersTripCarrier(
+                    idTrip: _idTrip,
+                    onTap: () =>
+                        Navigator.of(context)
+                            .pushNamed(Screens.passengerException)
+                )),
                 const Padding(
                   padding: EdgeInsets.only(left: 25, top: 10),
                   child: Text('ОТПРАВИТЕЛИ ПОСЫЛОК:',

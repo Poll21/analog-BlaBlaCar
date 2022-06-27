@@ -14,7 +14,7 @@ class DataTrip{
 
   DataTrip( {
     required this.idTrip,       //id поездки
-    required this.idDriver,       //id водителя
+    required this.idDriver,     //id водителя
     required this.departure,    //пункт отправления
     required this.destination,  //пункт назначения
     required this.depTime,      //время отправления
@@ -67,7 +67,7 @@ final List<DataTrip> listDataTrip =[
 
   ),
   DataTrip(
-    idDriver: 1,
+    idDriver: 2,
     idTrip: 2,
     departure: 'Чета',
     depTime: '22:33',
@@ -87,9 +87,9 @@ final List<DataTrip> listDataTrip =[
     babyChair: false,
     alcohol: false,
 
-    passengers: [],
-    travelRequests: [],
-    packageId: [1,2],
+    passengers: [4],
+    travelRequests: [3],
+    packageId: [1,0],
   ),
   DataTrip(
     idDriver: 2,
@@ -113,7 +113,7 @@ final List<DataTrip> listDataTrip =[
     babyChair: true,
     alcohol:true,
 
-    passengers: [4,3,2,1],
+    passengers: [4,0,2,1],
     travelRequests: [7,6,5],
     packageId: [2,3],
   ),

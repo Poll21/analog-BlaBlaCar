@@ -4,7 +4,7 @@ import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import 'package:untitled2/application/ui/widget/switch_option_widget.dart';
-
+//страница создания дополнительных опций автомобиля
 class AdditionalOptionsScreen extends StatefulWidget {
   const AdditionalOptionsScreen({Key? key}) : super(key: key);
 

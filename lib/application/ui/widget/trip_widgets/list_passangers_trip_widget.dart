@@ -64,37 +64,46 @@ class CardPassangersTrip extends StatelessWidget {
     );
   }
 }
+
 //формирует список пасажиров поездоки для перевозчика
 class ListPassangersTripCarrier extends StatelessWidget {
   final int idTrip;
+  final Function() onTap;
 
   const ListPassangersTripCarrier({
     Key? key,
     required this.idTrip,
+    required this.onTap,
+
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final List<Widget> cardPassangersTrip = listDataTrip[idTrip]
         .passengers
-        .map((int idUser) => CardPassangersTripCarrier(idUser: idUser,))
+        .map((int idUser) => CardPassangersTripCarrier(idUser: idUser, onTap: onTap,))
         .toList();
     return Column(
       children: cardPassangersTrip,
     );
   }
 }
+
 //отображает карту пассажира поездки для перевозчика
 class CardPassangersTripCarrier extends StatelessWidget {
   final int idUser;
+  final Function() onTap;
 
-  const CardPassangersTripCarrier({Key? key, required this.idUser}) : super(key: key);
+  const CardPassangersTripCarrier({
+    Key? key,
+    required this.idUser,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () =>
-          Navigator.of(context).pushNamed(Screens.leaveFeedback),
+      onTap: onTap,
       child: Card(
         shape: const RoundedRectangleBorder(
             side: BorderSide(color: Color(0xFFE0E0E0), width: 1),

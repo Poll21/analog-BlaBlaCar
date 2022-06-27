@@ -26,9 +26,11 @@ abstract class Screens {
   static const travelTripCancellation = "/travelTripCancellation";
   static const travelTripCancellationLast = "/travelTripCancellation/TripCancellationLast";
   static const endOfTripCarrier = "/travelTripCancellation/TripCancellationLast/endOfTripCarrier";
-  static const leaveFeedback = "/travelTripCancellation/TripCancellationLast/endOfTripCarrier/LeaveFeedback";
-
-
+  static const leaveFeedbackAboutCarrie = "/travelTripCancellation/TripCancellationLast/endOfTripCarrier/LeaveFeedback";
+  static const passengerException = "/travelTripCarrier/passengerException";
+  static const complaint = "/travelTripCarrier/passengerException/complaint";
+  static const complaintSent = "/travelTripCarrier/passengerException/complaint/complaintSent";
+  static const blocking = "/travelTripCarrier/passengerException/complaint/complaintSent/blocking";
 }
 
 class MainNavigation {
@@ -58,8 +60,11 @@ class MainNavigation {
     Screens.travelTripCancellation: (_) => _screenFactory.makeTripCancellation(),
     Screens.travelTripCancellationLast: (_) => _screenFactory.makeTripCancellationLast(),
     Screens.endOfTripCarrier: (_) => _screenFactory.makeEndOfTripCarrier(),
-    Screens.leaveFeedback: (_) => _screenFactory.makeLeaveFeedback(),
-
+    Screens.leaveFeedbackAboutCarrie: (_) => _screenFactory.makeLeaveFeedbackAboutCarrie(),
+    Screens.passengerException: (_) => _screenFactory.makePassengerException(),
+    Screens.complaint: (_) => _screenFactory.makeComplaint(),
+    Screens.complaintSent: (_) => _screenFactory.makeComplaintSent(),
+    Screens.blocking: (_) => _screenFactory.makeUserBlocking(),
   };
   Route<dynamic>? onGenerateRoute(RouteSettings settings){
     return null;

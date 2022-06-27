@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
 import '../../../constants/constants.dart';
-
+//подтверждение заявки пассажира на поезку
 class PassengerAcceptedScreen extends StatelessWidget {
   const PassengerAcceptedScreen({Key? key}) : super(key: key);
 

@@ -3,7 +3,7 @@ import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
-
+//страница завершения отмены поездки
 class TripCancellationLastScreen extends StatelessWidget {
   const TripCancellationLastScreen({Key? key}) : super(key: key);
 

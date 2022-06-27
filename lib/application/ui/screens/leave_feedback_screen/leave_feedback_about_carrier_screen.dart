@@ -4,18 +4,18 @@ import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/card_fo_carrier_widget.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
-
-class LeaveFeedbackScreen extends StatefulWidget {
+//страница отзыва о водителе
+class LeaveFeedbackAboutCarrierScreen extends StatefulWidget {
   //final int id;
-  const LeaveFeedbackScreen({
+  const LeaveFeedbackAboutCarrierScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<LeaveFeedbackScreen> createState() => _LeaveFeedbackScreenState();
+  State<LeaveFeedbackAboutCarrierScreen> createState() => _LeaveFeedbackAboutCarrierScreenState();
 }
 
-class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
+class _LeaveFeedbackAboutCarrierScreenState extends State<LeaveFeedbackAboutCarrierScreen> {
   @override
   Widget build(BuildContext context) {
     final int _id = 2;
@@ -93,7 +93,8 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                 ProceedButtonShou(text: 'Частые перерывы на курение', color: badGradeColor,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
-                  child: ProceedButton(text: 'ОТПРАВИТЬ ', color: primaryColor, press: () {  },),
+                  child: ProceedButton(text: 'ОТПРАВИТЬ ', color: primaryColor, press: () =>
+                      Navigator.of(context).pushNamed(Screens.blocking),),
                 ),
 
               ],

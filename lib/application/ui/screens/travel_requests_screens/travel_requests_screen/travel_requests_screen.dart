@@ -1,4 +1,4 @@
-//Все заявки на поездку
+//Все заявки на поездку от пассажиром
 
 import 'package:flutter/material.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';

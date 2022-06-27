@@ -3,7 +3,7 @@ import 'package:untitled2/application/ui/constants/constants.dart';
 import 'package:untitled2/application/ui/navigation/main_navigation.dart';
 import 'package:untitled2/application/ui/widget/head_screen_widget.dart';
 import 'package:untitled2/application/ui/widget/proceed_button.dart';
-
+//страница создания  новой поездки
 class CreateTripScreen extends StatelessWidget {
   const CreateTripScreen({Key? key}) : super(key: key);
 

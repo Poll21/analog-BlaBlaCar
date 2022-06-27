@@ -4,7 +4,7 @@ import 'package:untitled2/application/ui/widget/trip_widgets/transmittal_letter_
 import '../constants/constants.dart';
 import 'user_profile_widgets/avatar_widget.dart';
 import 'user_profile_widgets/user_profile_widget.dart';
-
+// отображает карту перевозчика
 class CardFoCarrierWidget extends StatelessWidget {
   final int idUser;
   const CardFoCarrierWidget({Key? key, required this.idUser}) : super(key: key);
@@ -29,7 +29,7 @@ class CardFoCarrierWidget extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: AvatarWidget(idUser: idUser),
                   ),
-//отображает данные перевозчика
+//отображание данных перевозчика
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -39,10 +39,25 @@ class CardFoCarrierWidget extends StatelessWidget {
                       const SizedBox(height: 5),
                       UserRatingWidget(idUser: idUser),
                     ],
-                  )
+                  ),
+//отображание данных  автомобиля перевозчика
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  UserNameWidget(idUser: idUser),
+                  const SizedBox(height: 5),
+                  UserPhoneWidget(idUser: idUser),
+                  const SizedBox(height: 5),
+                  UserRatingWidget(idUser: idUser),
+
+                ],
+              )
                 ],
               ),
-              Image.asset('assets/images/horizontal.png'),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Image.asset('assets/images/horizontal.png'),
+              ),
 //отображает сопроводительное письмо переревозчика
               const TransmittalLetterWidget(idTrip: 1),
             ],

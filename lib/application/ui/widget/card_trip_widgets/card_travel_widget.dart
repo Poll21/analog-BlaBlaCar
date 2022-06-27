@@ -12,21 +12,21 @@ class CardActiveTravelWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
-      child: SizedBox(
-        child: InkWell(
-            onTap: () => Navigator.of(context).pushNamed(Screens.travelTripCarrier),
-            child: Card(
-              shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              color: backGroundColor,
-              shadowColor: textPassiveColor,
-              elevation: 1.5,
-              child:
-              InfoTripForCarrierWidget(tripIndex: tripIndex),//содержание карты для водителя
-              // InfoTripForPassenger(request: true, tripIndex: tripIndex,) //содержание карты для пасажыра
-            )),
-      ),
+      child: InkWell(
+          onTap: () => Navigator.of(context).pushNamed(Screens.travelTripCarrier),
+          child: Card(
+            shape: const RoundedRectangleBorder(
+                side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            color: backGroundColor,
+            shadowColor: textPassiveColor,
+            elevation: 1.5,
+            child:
+            //содержание карты для водителя
+            //InfoTripForCarrierWidget(tripIndex: tripIndex),
+            //содержание карты для пассажыра
+             InfoTripForPassenger(request: true, tripIndex: tripIndex,)
+          )),
     );
   }
 }

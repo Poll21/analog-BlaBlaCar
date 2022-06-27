@@ -1,13 +1,15 @@
 // отображает информацию о водителе
 import 'package:flutter/material.dart';
+import 'package:untitled2/application/data/data_car_user/data_car_user.dart';
 import 'package:untitled2/application/data/data_user/data_user.dart';
 import 'package:untitled2/application/ui/constants/constants.dart';
 
 class InfoFoCarrierWidget extends StatelessWidget {
   final DataUser listDataUser;
+  final DataCar listDataCar;
   const InfoFoCarrierWidget({
     Key? key,
-    required this.listDataUser,
+    required this.listDataUser, required this.listDataCar,
   }) : super(key: key);
 
   @override
@@ -16,7 +18,7 @@ class InfoFoCarrierWidget extends StatelessWidget {
     final _rating = listDataUser.ratingUser;
     final _review = listDataUser.reviewUser;
     return  Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         CircleAvatar(
             radius: 20,
@@ -73,7 +75,30 @@ class InfoFoCarrierWidget extends StatelessWidget {
             ),
           ],
         ),
+
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              listDataCar.brandCar,
+              style: const TextStyle(
+                  color: textActiveColor,
+                  fontSize: 16,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(width: 5),
+            Text(
+              listDataCar.modelCar,
+              style: const TextStyle(
+                  color: textPassiveColor,
+                  fontSize: 14,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
       ],
-    );;
+    );
   }
 }
