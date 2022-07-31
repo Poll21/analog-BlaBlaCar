@@ -35,11 +35,12 @@ class BringingScreen extends StatelessWidget {
             const Text(
                 'Найдите подходящую поездку, попутчиков или отправьте груз',
                 style: TextStyle(
-                    color: textActiveColor,
-                    fontSize: 14.57,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w300,
-                    height: 1.5)),
+                  fontFamily: 'Montserrat',
+                  color: textActiveColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: -0.72,
+                )),
             const SizedBox(height: 32),
             ProceedButton(
               text: 'ПРОДОЛЖИТЬ',

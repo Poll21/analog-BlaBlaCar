@@ -9,20 +9,16 @@ class CodSmsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+          child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 17, left: 17, top: 122),
-          child: Image.asset(
+          Image.asset(
             'assets/images/sms.png',
           ),
-        ),
-        const SizedBox(height: 39),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25),
-          child: Text(
+          const Text(
             'Код подтверждения',
             style: TextStyle(
               color: primaryColor,
@@ -32,35 +28,30 @@ class CodSmsScreen extends StatelessWidget {
               letterSpacing: -1.04,
             ),
           ),
-        ),
-        const SizedBox(height: 16),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25),
-          child: Text('Введите код, отправленный по SMS',
+          const Text('Введите код, отправленный по SMS',
               style: TextStyle(
                   color: textActiveColor,
-                  fontSize: 14.57,
+                  fontSize: 15,
                   fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.w600,
                   height: 1.5)),
-        ),
-        const SizedBox(height: 17),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25),
-          child: SizedBox(
-            height: 42,
+          SizedBox(
+            height: 50,
+            width: 120,
             child: TextField(
+                textAlign: TextAlign.center,
+                maxLength: 6,
                 cursorColor: borderTextField,
+                keyboardType: TextInputType.number,
                 //controller: nameController,
                 style: TextStyle(
                   color: textPassiveColor,
-                  fontSize: 14.57,
+                  fontSize: 15,
                   fontFamily: 'Montserrat_Medium',
-                  fontStyle: FontStyle.normal,
                   fontWeight: FontWeight.w500,
                 ),
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(horizontal: 35),
+                  contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
 
                   prefixIconColor: textPassiveColor,
 
@@ -79,31 +70,25 @@ class CodSmsScreen extends StatelessWidget {
                   // ),
                 )),
           ),
-        ),
-        const SizedBox(height: 17),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
-          child: ProceedButton(
-              text: 'ПОДТВЕРДИТЬ',
-              press: () =>
-                  {Navigator.of(context).pushNamed(Screens.registrationProfile)},
-            color: primaryColor,),
-        ),
-        const SizedBox(height: 10),
-        Center(
-          child: TextButton(
+          ProceedButton(
+            text: 'ПОДТВЕРДИТЬ',
+            press: () =>
+                {Navigator.of(context).pushNamed(Screens.registrationProfile)},
+            color: primaryColor,
+          ),
+          TextButton(
             onPressed: () =>
                 {Navigator.of(context).pushNamed(Screens.constcodSms)},
             child: const Text('Код не пришёл',
                 style: TextStyle(
                     color: textActiveColor,
-                    fontSize: 12.5,
+                    fontSize: 15,
                     fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w500,
                     height: 1.5)),
           ),
-        ),
       ],
-    ));
+    ),
+        ));
   }
 }

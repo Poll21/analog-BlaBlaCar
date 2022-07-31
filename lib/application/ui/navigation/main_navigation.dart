@@ -36,7 +36,8 @@ abstract class Screens {
 class MainNavigation {
   final _screenFactory = ScreenFactory();
   Map<String, WidgetBuilder> get routes => <String, WidgetBuilder>{
-    Screens.main: (_) => _screenFactory.makeMainTabs(),
+    // Screens.main: (_) => _screenFactory.makeMainTabs(),
+    Screens.main: (_) => _screenFactory.makeBringing(),
     Screens.registrationPhone: (_) => _screenFactory.makeRegistrationgPhone(),
     Screens.constcodSms: (_) => _screenFactory.makeCodSms(),
     Screens.registrationProfile: (_) => _screenFactory.makeRegistrationProfile(),
